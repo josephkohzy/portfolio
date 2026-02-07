@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Jokoh Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="concrete-crack"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">JOKOH</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="works.html">Work</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Reel Button -->
+    <div class="reel-btn" id="reelBtn">
+        <span class="reel-tooltip">WATCH REEL</span>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <span class="video-close">&times;</span>
+            <div class="video-container">
+                <iframe id="reelVideo" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-page">
+        <div class="contact-content">
+            <h2 class="section-title" style="color: var(--lime);">LET'S CREATE TOGETHER</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 60px; color: var(--text-primary); margin-top: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Have a project in mind? 
+                Let's bring your vision to life. Contact me!     
+                Please utilize the email and linkedin only. I haven't made optimizations to receive sent messages directly from the site but I did it anyway for some coding practice :P
+            </p>
+            
+            <div class="social-links">
+                <a href="mailto:jokoh@example.com" title="Email" class="contact-link">
+                    <span style="font-size: 3rem;">✉</span>
+                    <span class="link-label">EMAIL</span>
+                    <span class="link-detail">josephkohzy@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/jokohvis/" title="LinkedIn" target="_blank" class="contact-link">
+                    <span style="font-size: 3rem; font-weight: 700;">in</span>
+                    <span class="link-label">LINKEDIN</span>
+                    <span class="link-detail">/josephkoh</span>
+                </a>
+            </div>
+
+            <div class="contact-form-section">
+                <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 2rem; color: var(--rust); margin-bottom: 30px;">Send a Message</h3>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="project">Project Type</label>
+                        <select id="project" name="project">
+                            <option value="">Select a project type</option>
+                            <option value="motion">Motion Graphics</option>
+                            <option value="3d">3D Animation</option>
+                            <option value="character">Character Design</option>
+                            <option value="social">Social Media Content</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn">SEND MESSAGE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2024 JOSEPH KOH (JOKOH). ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

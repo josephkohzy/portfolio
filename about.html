@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Jokoh Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Testimonial Card Hover Effect */
+        .testimonial-card {
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-card:hover::after {
+            content: 'VIEW FULL TESTIMONIAL';
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            pointer-events: none;
+        }
+
+        /* Testimonial Modal */
+        .testimonial-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .testimonial-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .testimonial-modal-content {
+            position: relative;
+            background-color: #fff;
+            padding: 0;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: 8px;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+        }
+
+        .testimonial-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #333;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .testimonial-close:hover {
+            background-color: #f0f0f0;
+            transform: rotate(90deg);
+        }
+
+        .testimonial-content-container {
+            width: 100%;
+            height: 80vh;
+            max-height: 800px;
+            overflow: auto;
+        }
+
+        .testimonial-content-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .testimonial-content-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .testimonial-modal-content {
+                width: 95%;
+                max-height: 85vh;
+            }
+
+            .testimonial-card:hover::after {
+                font-size: 10px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="concrete-crack"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">JOKOH</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="works.html">Work</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Reel Button -->
+    <div class="reel-btn" id="reelBtn">
+        <span class="reel-tooltip">WATCH REEL</span>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <span class="video-close">&times;</span>
+            <div class="video-container">
+                <iframe id="reelVideo" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-header">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Designer • Animator • Creator</p>
+        </div>
+        <div class="about-content fade-in">
+            <div class="about-wrapper">
+                <div class="about-top-section">
+                    <div class="about-image">
+                        <div class="about-image-container">
+                            <!-- Placeholder for Joseph's photo -->
+                        </div>
+                    </div>
+                    
+                    <div class="about-text">
+                        <h3>Hey, I'm Joseph!</h3>
+                        <p>
+                            I'm a part time student/freelancer that's currently studying Digital Media in Singapore University of Social Sciences. I work as a multimedia designer that blends storytelling and ideas 
+                            into animation and visual design. With experience in both in‑house studios and freelance jobs, I enjoy
+                            every aspect of creative media.
+                        </p>
+                        <p>
+                            I'm currently looking for an internship in my final year of university. Having experienced different sectors: From animation, social media, and even web design,
+                            I'm particularly interested in junior art director and media production roles. 
+                            
+                        </p>
+                        <p>
+                            Outside of work and university, I'm constantly working on personal 
+                            animation projects or learning new skills. Recently, I've learnt more about UI tools,
+                            particularly Figma and Webflow-The result being this website designed by yours truly! 
+                            
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Skills full width below -->
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Motion Graphics</h4>
+                        <ul>
+                            <li>After Effects</li>
+                            <li>Blender</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Design</h4>
+                        <ul>
+                            <li>Photoshop</li>
+                            <li>Illustrator</li>
+                            <li>Figma</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>2D/3D Animation</h4>
+                        <ul>
+                            <li>Photoshop</li>
+                            <li>Clip Studio Paint</li>
+                            <li>Blender</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Editing</h4>
+                        <ul>
+                            <li>Premiere Pro</li>
+                            <li>Sony Vegas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="testimonials">
+                <h3>What People Are Saying</h3>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card" data-testimonial="testimonial1">
+                        <p class="testimonial-text">
+                            Joseph has been both reliable and capable, having good time
+management and accountability. He also shows enthusiasm and dedication in
+his work, clearly taking ownership of all tasks and work assigned to him.
+                        </p>
+                        <p class="testimonial-author">Venice Tham</p>
+                        <p class="testimonial-role">Animation Supervisor, OneDash22</p>
+                    </div>
+
+                    <div class="testimonial-card" data-testimonial="testimonial2">
+                        <p class="testimonial-text">
+                            Working with Jokoh was a game-changer. His 3D renders and product animations 
+                            took our launch campaign to the next level. Highly recommended!
+                        </p>
+                        <p class="testimonial-author">Marcus Johnson</p>
+                        <p class="testimonial-role">CEO, InnovateLabs</p>
+                    </div>
+
+                    <div class="testimonial-card" data-testimonial="testimonial3">
+                        <p class="testimonial-text">
+                            Incredible attention to detail and creativity. Joseph delivered animations that 
+                            exceeded our expectations and helped us stand out in a crowded market.
+                        </p>
+                        <p class="testimonial-author">Emily Rodriguez</p>
+                        <p class="testimonial-role">Creative Lead, Pulse Media</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Modal -->
+    <div class="testimonial-modal" id="testimonialModal">
+        <div class="testimonial-modal-content">
+            <span class="testimonial-close">&times;</span>
+            <div class="testimonial-content-container" id="testimonialContent">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2026 JOSEPH KOH. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Testimonial Modal Functionality
+        const testimonialModal = document.getElementById('testimonialModal');
+        const testimonialContent = document.getElementById('testimonialContent');
+        const testimonialClose = document.querySelector('.testimonial-close');
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+                // Map testimonial IDs to their content (PDF or image paths)
+        const testimonialData = {
+            testimonial1: {
+                type: 'pdf', // Changed to match the actual file type
+                path: 'assets/images/testimonials/testimonial_venice.pdf' // Changed from .png to .pdf
+            },
+            testimonial2: {
+                type: 'pdf', // or 'image'
+                path: 'testimonials/marcus-johnson-full.pdf' // Replace with your actual file path
+            },
+            testimonial3: {
+                type: 'image', // or 'pdf'
+                path: 'testimonials/emily-rodriguez-full.png' // Replace with your actual file path
+            }
+        };
+
+        // Open modal when testimonial card is clicked
+        testimonialCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const testimonialId = this.getAttribute('data-testimonial');
+                const data = testimonialData[testimonialId];
+                
+                if (data) {
+                    // Clear previous content
+                    testimonialContent.innerHTML = '';
+                    
+                    // Load content based on type
+                    if (data.type === 'image') {
+                        testimonialContent.innerHTML = `<img src="${data.path}" alt="Full Testimonial">`;
+                    } else if (data.type === 'pdf') {
+                        testimonialContent.innerHTML = `<iframe src="${data.path}" type="application/pdf"></iframe>`;
+                    }
+                    
+                    // Show modal
+                    testimonialModal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                }
+            });
+        });
+
+        // Close modal when X is clicked
+        testimonialClose.addEventListener('click', function() {
+            testimonialModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside the content
+        testimonialModal.addEventListener('click', function(e) {
+            if (e.target === testimonialModal) {
+                testimonialModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && testimonialModal.classList.contains('active')) {
+                testimonialModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>

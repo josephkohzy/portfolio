@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process - Jokoh Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Integrated header design */
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        /* Subtle glitch effect for Creative Process title */
+        .glitch-title {
+            position: relative;
+            animation: glitchText 3s infinite;
+            margin-bottom: 15px;
+        }
+
+        .glitch-title::before,
+        .glitch-title::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+        }
+
+        .glitch-title::before {
+            left: 1px;
+            text-shadow: -1px 0 rgba(255, 107, 53, 0.5);
+            animation: glitchBefore 3s infinite linear alternate-reverse;
+            clip: rect(0, 0, 0, 0);
+        }
+
+        .glitch-title::after {
+            left: -1px;
+            text-shadow: 1px 0 rgba(0, 255, 136, 0.5);
+            animation: glitchAfter 2.5s infinite linear alternate-reverse;
+            clip: rect(0, 0, 0, 0);
+        }
+
+        @keyframes glitchText {
+            0%, 90% {
+                transform: translate(0);
+            }
+            91% {
+                transform: translate(-1px, 1px);
+            }
+            93% {
+                transform: translate(1px, -1px);
+            }
+            95% {
+                transform: translate(-1px, -1px);
+            }
+            97% {
+                transform: translate(1px, 1px);
+            }
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        @keyframes glitchBefore {
+            0%, 85% {
+                clip: rect(0, 0, 0, 0);
+            }
+            86% {
+                clip: rect(30px, 9999px, 50px, 0);
+            }
+            88% {
+                clip: rect(80px, 9999px, 100px, 0);
+            }
+            90%, 100% {
+                clip: rect(0, 0, 0, 0);
+            }
+        }
+
+        @keyframes glitchAfter {
+            0%, 87% {
+                clip: rect(0, 0, 0, 0);
+            }
+            88% {
+                clip: rect(60px, 9999px, 80px, 0);
+            }
+            90% {
+                clip: rect(20px, 9999px, 40px, 0);
+            }
+            92%, 100% {
+                clip: rect(0, 0, 0, 0);
+            }
+        }
+
+        /* Subtitle integrated styling */
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--rust);
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        /* Integrated description - seamless flow */
+        .process-description {
+            font-family: 'Space Grotesk', sans-serif;
+            max-width: 650px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-description .line-1 {
+            display: block;
+            font-size: 1.3rem;
+            color: var(--lime);
+            font-weight: 500;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .process-description .line-2 {
+            display: block;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        /* Override process gallery with better spread */
+        .process {
+            min-height: 100vh;
+            padding: 120px 60px 200px;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255,107,53,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(0,255,136,0.08) 0%, transparent 50%),
+                var(--bg-main);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Floating background elements container */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        /* Individual floating element */
+        .floating-element {
+            position: absolute;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        /* Different sizes and positions for variety */
+        .floating-element:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            top: 05%;
+            left: 05%;
+            animation: float1 20s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 06%;
+            right: 08%;
+            animation: float2 25s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 180px;
+            height: 180px;
+            top: 30%;
+            right: 60%;
+            animation: float3 30s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 69%;
+            right: 22%;
+            animation: float4 22s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(5) {
+            width: 140px;
+            height: 140px;
+            top: 51%;
+            left: 05%;
+            animation: float5 28s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(6) {
+            width: 110px;
+            height: 110px;
+            top: 11%;
+            left: 64%;
+            animation: float6 24s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(7) {
+            width: 160px;
+            height: 160px;
+            top: 57%;
+            right: 15%;
+            animation: float1 26s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(8) {
+            width: 130px;
+            height: 130px;
+            top: 44%;
+            left: 45%;
+            animation: float2 23s infinite ease-in-out;
+        }
+
+        /* Additional floating elements for lower section */
+        .floating-element:nth-child(9) {
+            width: 145px;
+            height: 145px;
+            top: 94%;
+            left: 60%;
+            animation: float3 27s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(10) {
+            width: 125px;
+            height: 125px;
+            top: 55%;
+            right: 62%;
+            animation: float4 21s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(11) {
+            width: 155px;
+            height: 155px;
+            top: 76%;
+            left: 05%;
+            animation: float5 29s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(12) {
+            width: 115px;
+            height: 115px;
+            top: 82%;
+            right: 58%;
+            animation: float6 24s infinite ease-in-out;
+        }
+
+        /* Placeholder colored backgrounds - REPLACE THESE WITH YOUR PNG IMAGES 
+        .floating-element:nth-child(1) { background: linear-gradient(135deg, #ff6b35 0%, #f5576c 100%); border-radius: 50%; }
+        .floating-element:nth-child(2) { background: linear-gradient(135deg, #00ff88 0%, #38f9d7 100%); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        .floating-element:nth-child(3) { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 40%; }
+        .floating-element:nth-child(4) { background: linear-gradient(135deg, #f093fb 0%, #fee140 100%); border-radius: 50%; }
+        .floating-element:nth-child(5) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        .floating-element:nth-child(6) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: 50%; }
+        .floating-element:nth-child(7) { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); border-radius: 45%; }
+        .floating-element:nth-child(8) { background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%); border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%; }
+        */
+
+        /* To use PNG images instead, uncomment and modify these: */
+        .floating-element:nth-child(1) { background-image: url('assets/images/floating/sketch-1.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .floating-element:nth-child(2) { background-image: url('assets/images/floating/sketch-2.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .floating-element:nth-child(3) { background-image: url('assets/images/floating/sketch-3.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .floating-element:nth-child(4) { background-image: url('assets/images/floating/sketch-4.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .floating-element:nth-child(5) { background-image: url('assets/images/floating/sketch-5.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .floating-element:nth-child(6) { background-image: url('assets/images/floating/sketch-6.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .floating-element:nth-child(7) { background-image: url('assets/images/floating/sketch-7.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .floating-element:nth-child(8) { background-image: url('assets/images/floating/sketch-8.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .floating-element:nth-child(9) { background-image: url('assets/images/floating/sketch-9.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .floating-element:nth-child(10) { background-image: url('assets/images/floating/sketch-10.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .floating-element:nth-child(11) { background-image: url('assets/images/floating/sketch-11.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .floating-element:nth-child(12) { background-image: url('assets/images/floating/sketch-12.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        
+
+        /* Floating animations with rotation */
+        @keyframes float1 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -40px) rotate(5deg);
+            }
+            50% {
+                transform: translate(-20px, -60px) rotate(-3deg);
+            }
+            75% {
+                transform: translate(40px, -30px) rotate(7deg);
+            }
+        }
+
+        @keyframes float2 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(-35px, 50px) rotate(-6deg);
+            }
+            50% {
+                transform: translate(25px, 70px) rotate(4deg);
+            }
+            75% {
+                transform: translate(-30px, 40px) rotate(-5deg);
+            }
+        }
+
+        @keyframes float3 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(40px, 35px) rotate(8deg);
+            }
+            50% {
+                transform: translate(-30px, 55px) rotate(-4deg);
+            }
+            75% {
+                transform: translate(35px, 25px) rotate(6deg);
+            }
+        }
+
+        @keyframes float4 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(-25px, -45px) rotate(-7deg);
+            }
+            50% {
+                transform: translate(35px, -65px) rotate(5deg);
+            }
+            75% {
+                transform: translate(-20px, -35px) rotate(-4deg);
+            }
+        }
+
+        @keyframes float5 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(45px, 40px) rotate(9deg);
+            }
+            50% {
+                transform: translate(-40px, 60px) rotate(-6deg);
+            }
+            75% {
+                transform: translate(50px, 30px) rotate(7deg);
+            }
+        }
+
+        @keyframes float6 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(-30px, -50px) rotate(-5deg);
+            }
+            50% {
+                transform: translate(20px, -70px) rotate(3deg);
+            }
+            75% {
+                transform: translate(-25px, -45px) rotate(-6deg);
+            }
+        }
+
+        /* Ensure gallery content is above floating elements */
+
+        /* Ensure gallery content is above floating elements */
+        .section-header,
+        .process-gallery {
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-gallery {
+            max-width: 1800px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 3600px; /* Increased to spread items more */
+            display: block;
+        }
+
+        /* Gallery items with minimal animation */
+        .gallery-item {
+            position: absolute;
+            background: var(--concrete);
+            border: 6px solid var(--rust);
+            box-shadow: 
+                12px 12px 24px rgba(0,0,0,0.4),
+                -2px -2px 8px rgba(255,255,255,0.03);
+            transition: all 0.3s ease; /* Simple, quick transition */
+            cursor: pointer;
+            opacity: 0;
+        }
+
+        /* Varied sizes for aesthetic messiness - different widths and aspect ratios */
+        .gallery-item:nth-child(1) { width: 380px; }
+        .gallery-item:nth-child(2) { width: 450px; }
+        .gallery-item:nth-child(3) { width: 340px; }
+        .gallery-item:nth-child(4) { width: 420px; }
+        .gallery-item:nth-child(5) { width: 360px; }
+        .gallery-item:nth-child(6) { width: 480px; }
+        .gallery-item:nth-child(7) { width: 400px; }
+        .gallery-item:nth-child(8) { width: 350px; }
+        .gallery-item:nth-child(9) { width: 440px; }
+        .gallery-item:nth-child(10) { width: 390px; }
+        .gallery-item:nth-child(11) { width: 460px; }
+        .gallery-item:nth-child(12) { width: 370px; }
+        .gallery-item:nth-child(13) { width: 410px; }
+        .gallery-item:nth-child(14) { width: 430px; }
+        .gallery-item:nth-child(15) { width: 350px; }
+        .gallery-item:nth-child(16) { width: 470px; }
+        .gallery-item:nth-child(17) { width: 400px; }
+        .gallery-item:nth-child(18) { width: 380px; }
+        .gallery-item:nth-child(19) { width: 420px; }
+        .gallery-item:nth-child(20) { width: 390px; }
+        .gallery-item:nth-child(21) { width: 360px; }
+
+        /* Simple reveal - no floating animation */
+        .gallery-item.reveal {
+            animation: simpleReveal 0.5s ease-out forwards; /* Faster, simpler */
+        }
+
+        @keyframes simpleReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) rotate(var(--rotate)); /* Minimal movement */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) rotate(var(--rotate));
+            }
+        }
+
+        /* Stagger the reveal slightly */
+        .gallery-item:nth-child(1) { animation-delay: 0s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.05s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.15s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.25s; }
+        .gallery-item:nth-child(7) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(8) { animation-delay: 0.35s; }
+        .gallery-item:nth-child(9) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(10) { animation-delay: 0.45s; }
+        .gallery-item:nth-child(11) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(12) { animation-delay: 0.55s; }
+        .gallery-item:nth-child(13) { animation-delay: 0.6s; }
+        .gallery-item:nth-child(14) { animation-delay: 0.65s; }
+        .gallery-item:nth-child(15) { animation-delay: 0.7s; }
+        .gallery-item:nth-child(16) { animation-delay: 0.75s; }
+        .gallery-item:nth-child(17) { animation-delay: 0.8s; }
+        .gallery-item:nth-child(18) { animation-delay: 0.85s; }
+        .gallery-item:nth-child(19) { animation-delay: 0.9s; }
+        .gallery-item:nth-child(20) { animation-delay: 0.95s; }
+        .gallery-item:nth-child(21) { animation-delay: 1s; }
+
+        /* Clean hover effect - just lift and highlight */
+        .gallery-item:hover {
+            transform: translateY(-15px) rotate(var(--rotate)) scale(1.05); /* Keep rotation, simple lift */
+            z-index: 100 !important;
+            box-shadow: 
+                20px 20px 40px rgba(0,0,0,0.6),
+                -4px -4px 12px rgba(0,255,136,0.15),
+                0 0 0 8px var(--lime);
+            border-color: var(--lime);
+        }
+
+        .gallery-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+        }
+
+        /* Varied aspect ratios for organic, messy aesthetic */
+        .gallery-item:nth-child(1) .gallery-image { aspect-ratio: 4/5; }  /* Portrait */
+        .gallery-item:nth-child(2) .gallery-image { aspect-ratio: 1/1; }  /* Square */
+        .gallery-item:nth-child(3) .gallery-image { aspect-ratio: 3/4; }  /* Portrait */
+        .gallery-item:nth-child(4) .gallery-image { aspect-ratio: 16/9; } /* Landscape */
+        .gallery-item:nth-child(5) .gallery-image { aspect-ratio: 5/4; }  /* Wide portrait */
+        .gallery-item:nth-child(6) .gallery-image { aspect-ratio: 1/1; }  /* Square */
+        .gallery-item:nth-child(7) .gallery-image { aspect-ratio: 3/4; }  /* Portrait */
+        .gallery-item:nth-child(8) .gallery-image { aspect-ratio: 4/3; }  /* Landscape */
+        .gallery-item:nth-child(9) .gallery-image { aspect-ratio: 1/1; }  /* Square */
+        .gallery-item:nth-child(10) .gallery-image { aspect-ratio: 16/9; } /* Landscape */
+        .gallery-item:nth-child(11) .gallery-image { aspect-ratio: 4/5; }  /* Portrait */
+        .gallery-item:nth-child(12) .gallery-image { aspect-ratio: 5/4; }  /* Wide portrait */
+        .gallery-item:nth-child(13) .gallery-image { aspect-ratio: 3/4; }  /* Portrait */
+        .gallery-item:nth-child(14) .gallery-image { aspect-ratio: 1/1; }  /* Square */
+        .gallery-item:nth-child(15) .gallery-image { aspect-ratio: 4/3; }  /* Landscape */
+        .gallery-item:nth-child(16) .gallery-image { aspect-ratio: 16/9; } /* Landscape */
+        .gallery-item:nth-child(17) .gallery-image { aspect-ratio: 4/5; }  /* Portrait */
+        .gallery-item:nth-child(18) .gallery-image { aspect-ratio: 1/1; }  /* Square */
+        .gallery-item:nth-child(19) .gallery-image { aspect-ratio: 3/4; }  /* Portrait */
+        .gallery-item:nth-child(20) .gallery-image { aspect-ratio: 4/3; }  /* Landscape */
+        .gallery-item:nth-child(21) .gallery-image { aspect-ratio: 1/1; }  /* Square */
+
+        /* Placeholder backgrounds for items without images */
+        .gallery-item:nth-child(1) .gallery-image { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .gallery-item:nth-child(2) .gallery-image { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .gallery-item:nth-child(3) .gallery-image { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .gallery-item:nth-child(4) .gallery-image { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .gallery-item:nth-child(5) .gallery-image { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .gallery-item:nth-child(6) .gallery-image { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .gallery-item:nth-child(7) .gallery-image { background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%); }
+        .gallery-item:nth-child(8) .gallery-image { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .gallery-item:nth-child(9) .gallery-image { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .gallery-item:nth-child(10) .gallery-image { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+        .gallery-item:nth-child(11) .gallery-image { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .gallery-item:nth-child(12) .gallery-image { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .gallery-item:nth-child(13) .gallery-image { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .gallery-item:nth-child(14) .gallery-image { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .gallery-item:nth-child(15) .gallery-image { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .gallery-item:nth-child(16) .gallery-image { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .gallery-item:nth-child(17) .gallery-image { background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%); }
+        .gallery-item:nth-child(18) .gallery-image { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .gallery-item:nth-child(19) .gallery-image { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .gallery-item:nth-child(20) .gallery-image { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+        .gallery-item:nth-child(21) .gallery-image { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+
+        .gallery-image .static-image,
+        .gallery-image .animated-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            pointer-events: none;
+        }
+
+        .gallery-image .static-image {
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+            transition: opacity 0.3s ease, visibility 0s linear 0s;
+        }
+
+        .gallery-image .animated-image {
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1;
+            transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+        }
+
+        /* Show GIF on hover */
+        .gallery-item:hover .gallery-image .static-image {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            z-index: 1 !important;
+            transition: opacity 0.3s ease, visibility 0s linear 0.3s !important;
+        }
+
+        .gallery-item:hover .gallery-image .animated-image {
+            opacity: 1 !important;
+            visibility: visible !important;
+            z-index: 2 !important;
+            transition: opacity 0.3s ease, visibility 0s linear 0s !important;
+        }
+
+        /* Gritty border effect */
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,107,53,0.1) 10px,
+                rgba(255,107,53,0.1) 11px
+            );
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        /* MORE SPREAD OUT positioning - fills the vertical space better */
+        /* Row 1 - Top */
+        .gallery-item:nth-child(1) { top: 0px; left: 5%; --rotate: -2deg; z-index: 5; }
+        .gallery-item:nth-child(2) { top: 100px; left: 35%; --rotate: 1deg; z-index: 8; }
+        .gallery-item:nth-child(3) { top: 50px; right: 8%; --rotate: 2deg; z-index: 6; }
+        
+        /* Row 2 */
+        .gallery-item:nth-child(4) { top: 520px; left: 10%; --rotate: -1deg; z-index: 7; }
+        .gallery-item:nth-child(5) { top: 580px; left: 48%; --rotate: 2deg; z-index: 4; }
+        .gallery-item:nth-child(6) { top: 620px; right: 6%; --rotate: -2deg; z-index: 9; }
+        
+        /* Row 3 */
+        .gallery-item:nth-child(7) { top: 1040px; left: 3%; --rotate: 1deg; z-index: 6; }
+        .gallery-item:nth-child(8) { top: 1100px; left: 38%; --rotate: -2deg; z-index: 7; }
+        .gallery-item:nth-child(9) { top: 1060px; right: 10%; --rotate: 2deg; z-index: 5; }
+        
+        /* Row 4 */
+        .gallery-item:nth-child(10) { top: 1560px; left: 12%; --rotate: -1deg; z-index: 8; }
+        .gallery-item:nth-child(11) { top: 1620px; left: 45%; --rotate: 2deg; z-index: 6; }
+        .gallery-item:nth-child(12) { top: 1580px; right: 8%; --rotate: -2deg; z-index: 7; }
+        
+        /* Row 5 */
+        .gallery-item:nth-child(13) { top: 2080px; left: 6%; --rotate: 2deg; z-index: 5; }
+        .gallery-item:nth-child(14) { top: 2140px; left: 36%; --rotate: -1deg; z-index: 9; }
+        .gallery-item:nth-child(15) { top: 2100px; right: 7%; --rotate: 1deg; z-index: 6; }
+        
+        /* Row 6 */
+        .gallery-item:nth-child(16) { top: 2600px; left: 15%; --rotate: -2deg; z-index: 7; }
+        .gallery-item:nth-child(17) { top: 2660px; left: 48%; --rotate: 2deg; z-index: 8; }
+        .gallery-item:nth-child(18) { top: 2620px; right: 10%; --rotate: -1deg; z-index: 5; }
+
+        /* Optional items for more content - Row 7 */
+        .gallery-item:nth-child(19) { top: 3120px; left: 8%; --rotate: 1deg; z-index: 6; }
+        .gallery-item:nth-child(20) { top: 3180px; left: 40%; --rotate: -1deg; z-index: 7; }
+        .gallery-item:nth-child(21) { top: 3140px; right: 9%; --rotate: 2deg; z-index: 8; }
+
+        /* Responsive adjustments */
+        @media (max-width: 1400px) {
+            /* Scale down all items proportionally */
+            .gallery-item:nth-child(1) { width: 320px; }
+            .gallery-item:nth-child(2) { width: 380px; }
+            .gallery-item:nth-child(3) { width: 290px; }
+            .gallery-item:nth-child(4) { width: 350px; }
+            .gallery-item:nth-child(5) { width: 310px; }
+            .gallery-item:nth-child(6) { width: 400px; }
+            .gallery-item:nth-child(7) { width: 340px; }
+            .gallery-item:nth-child(8) { width: 300px; }
+            .gallery-item:nth-child(9) { width: 370px; }
+            .gallery-item:nth-child(10) { width: 330px; }
+            .gallery-item:nth-child(11) { width: 390px; }
+            .gallery-item:nth-child(12) { width: 310px; }
+            .gallery-item:nth-child(13) { width: 350px; }
+            .gallery-item:nth-child(14) { width: 360px; }
+            .gallery-item:nth-child(15) { width: 300px; }
+            .gallery-item:nth-child(16) { width: 395px; }
+            .gallery-item:nth-child(17) { width: 340px; }
+            .gallery-item:nth-child(18) { width: 320px; }
+            .gallery-item:nth-child(19) { width: 350px; }
+            .gallery-item:nth-child(20) { width: 330px; }
+            .gallery-item:nth-child(21) { width: 310px; }
+            
+            .process-gallery {
+                min-height: 3600px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .process-gallery {
+                min-height: 7500px; /* Increased due to varied heights */
+            }
+            
+            .gallery-item {
+                width: 320px !important; /* Uniform on mobile */
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%);
+            }
+
+            /* Stack vertically on tablets/mobile with more spacing for varied heights */
+            .gallery-item:nth-child(1) { top: 0px; }
+            .gallery-item:nth-child(2) { top: 450px; }
+            .gallery-item:nth-child(3) { top: 830px; }
+            .gallery-item:nth-child(4) { top: 1240px; }
+            .gallery-item:nth-child(5) { top: 1550px; }
+            .gallery-item:nth-child(6) { top: 1950px; }
+            .gallery-item:nth-child(7) { top: 2330px; }
+            .gallery-item:nth-child(8) { top: 2690px; }
+            .gallery-item:nth-child(9) { top: 3050px; }
+            .gallery-item:nth-child(10) { top: 3430px; }
+            .gallery-item:nth-child(11) { top: 3740px; }
+            .gallery-item:nth-child(12) { top: 4190px; }
+            .gallery-item:nth-child(13) { top: 4600px; }
+            .gallery-item:nth-child(14) { top: 5010px; }
+            .gallery-item:nth-child(15) { top: 5390px; }
+            .gallery-item:nth-child(16) { top: 5730px; }
+            .gallery-item:nth-child(17) { top: 6040px; }
+            .gallery-item:nth-child(18) { top: 6490px; }
+            .gallery-item:nth-child(19) { top: 6870px; }
+            .gallery-item:nth-child(20) { top: 7250px; }
+            .gallery-item:nth-child(21) { top: 7630px; }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                width: 280px;
+            }
+
+            .process {
+                padding: 100px 30px 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="concrete-crack"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">JOKOH</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="works.html">Work</a></li>
+            <li><a href="process.html" class="active">Process</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Reel Button -->
+    <div class="reel-btn" id="reelBtn">
+        <span class="reel-tooltip">WATCH REEL</span>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <span class="video-close">&times;</span>
+            <div class="video-container">
+                <iframe id="reelVideo" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <!-- Floating background elements -->
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+
+        <div class="section-header">
+            <h2 class="section-title glitch-title" data-text="Creative Process">Creative Process</h2>
+            <p class="section-subtitle">Sketches • Studies • Experiments</p>
+            <p class="process-description">
+                <span class="line-1">Every good project uses sketches as a tool</span>
+                <span class="line-2">Hover over each image to see something cool :)</span>
+            </p>
+        </div>
+
+        <div class="process-gallery">
+            <!-- Item 1 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-1.jpg" 
+                         alt="Sketch 1" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-1-animated.gif" 
+                         alt="Sketch 1 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-2.jpg" 
+                         alt="Sketch 2" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-2-animated.gif" 
+                         alt="Sketch 2 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-3.jpg" 
+                         alt="Sketch 3" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-3-animated.gif" 
+                         alt="Sketch 3 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-4.jpg" 
+                         alt="Sketch 4" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-4-animated.gif" 
+                         alt="Sketch 4 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-5.jpg" 
+                         alt="Sketch 5" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-5-animated.gif" 
+                         alt="Sketch 5 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-6.jpg" 
+                         alt="Sketch 6" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-6-animated.gif" 
+                         alt="Sketch 6 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-7.jpg" 
+                         alt="Sketch 7" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-7-animated.gif" 
+                         alt="Sketch 7 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-8.jpg" 
+                         alt="Sketch 8" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-8-animated.gif" 
+                         alt="Sketch 8 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 9 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-9.jpg" 
+                         alt="Sketch 9" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-9-animated.gif" 
+                         alt="Sketch 9 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 10 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-10.jpg" 
+                         alt="Sketch 10" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-10-animated.gif" 
+                         alt="Sketch 10 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 11 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-11.jpg" 
+                         alt="Sketch 11" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-11-animated.gif" 
+                         alt="Sketch 11 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 12 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-12.jpg" 
+                         alt="Sketch 12" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-12-animated.gif" 
+                         alt="Sketch 12 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 13 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-13.jpg" 
+                         alt="Sketch 13" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-13-animated.gif" 
+                         alt="Sketch 13 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 14 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-14.jpg" 
+                         alt="Sketch 14" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-14-animated.gif" 
+                         alt="Sketch 14 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 15 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-15.jpg" 
+                         alt="Sketch 15" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-15-animated.gif" 
+                         alt="Sketch 15 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 16 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-16.jpg" 
+                         alt="Sketch 16" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-16-animated.gif" 
+                         alt="Sketch 16 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 17 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-17.jpg" 
+                         alt="Sketch 17" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-17-animated.gif" 
+                         alt="Sketch 17 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 18 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-18.jpg" 
+                         alt="Sketch 18" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-18-animated.gif" 
+                         alt="Sketch 18 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 19 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-19.jpg" 
+                         alt="Sketch 19" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-19-animated.gif" 
+                         alt="Sketch 19 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 20 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-20.jpg" 
+                         alt="Sketch 20" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-20-animated.gif" 
+                         alt="Sketch 20 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+
+            <!-- Item 21 -->
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <img src="assets/images/process/sketch-21.jpg" 
+                         alt="Sketch 21" 
+                         class="static-image">
+                    <img src="assets/images/process/sketch-21-animated.gif" 
+                         alt="Sketch 21 Animation" 
+                         class="animated-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2024 JOSEPH KOH (JOKOH). ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

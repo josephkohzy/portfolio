@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokoh - Multimedia Designer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="concrete-crack"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">JOKOH</a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="works.html">Work</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Reel Button -->
+    <div class="reel-btn" id="reelBtn">
+        <span class="reel-tooltip">WATCH REEL</span>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <span class="video-close">&times;</span>
+            <div class="video-container">
+                <iframe id="reelVideo" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="grunge-splatter splatter-1"></div>
+        <div class="grunge-splatter splatter-2"></div>
+        
+        <!-- Animated artifacts -->
+        <div class="artifact artifact-square" style="top: 15%; left: 10%;"></div>
+        <div class="artifact artifact-circle" style="top: 25%; right: 12%;"></div>
+        <div class="artifact artifact-triangle" style="bottom: 20%; left: 15%;"></div>
+        <div class="artifact artifact-line" style="top: 45%; right: 8%;"></div>
+        <div class="artifact artifact-square" style="bottom: 30%; right: 25%;"></div>
+        <div class="artifact artifact-circle" style="top: 60%; left: 8%;"></div>
+        
+        <div class="hero-content">
+            <h1>JOSEPH KOH</h1>
+            <p class="subtitle">Multimedia Designer • Visual Storyteller</p>
+            <div class="cta-buttons">
+                <a href="works.html" class="btn btn-primary">View Work</a>
+                <a href="contact.html" class="btn">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Work Preview -->
+    <section class="featured-preview">
+        <div class="section-header">
+            <h2 class="section-title">Featured Work</h2>
+            <p class="section-subtitle">Selected Projects</p>
+        </div>
+        <div class="projects-grid-preview">
+            <div class="project-card fade-in">
+                <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <span class="project-badge">Client</span>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Shaco: Cat in the Box</h3>
+                    <p class="project-description">
+                        Complete character design and animation concept for TFT Tactician featuring chibi-style 
+                        character art, environment design, and 10-second victory finisher storyboard.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Character</span>
+                        <span class="tag">Animation</span>
+                        <span class="tag">Concept</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <span class="project-badge">Client</span>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Brand Motion Graphics</h3>
+                    <p class="project-description">
+                        Dynamic motion graphics package for social media campaigns, featuring animated logos, 
+                        transitions, and eye-catching visual effects that increased engagement by 300%.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">After Effects</span>
+                        <span class="tag">Motion</span>
+                        <span class="tag">Social</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image" style="background-image: url('assets/images/projects/test.jpg');"> <!--background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);--> 
+                    <span class="project-badge">Client</span>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Explainer Series</h3>
+                    <p class="project-description">
+                        Series of 2D animated explainer videos for tech startup. Combined hand-drawn 
+                        illustrations with smooth character animation to simplify complex concepts.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">2D Animation</span>
+                        <span class="tag">Illustration</span>
+                        <span class="tag">Story</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view-all-link">
+            <a href="works.html">ALL WORKS →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h2 class="section-title" style="color: var(--lime);">LET'S CREATE TOGETHER</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 50px; color: var(--text-primary); margin-top: 20px;">
+                Have a project in mind? Get in touch.
+            </p>
+            <div class="social-links">
+                <a href="mailto:jokoh@example.com" title="Email">
+                    <span style="font-size: 2.5rem;">✉</span>
+                    <span class="link-label">EMAIL</span>
+                </a>
+                <a href="https://linkedin.com/in/josephkoh" title="LinkedIn" target="_blank">
+                    <span style="font-size: 2.5rem; font-weight: 700;">in</span>
+                    <span class="link-label">LINKEDIN</span>
+                </a>
+            </div>
+            <p class="footer-text">© 2024 JOSEPH KOH (JOKOH). ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
