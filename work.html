@@ -8,8 +8,8 @@
     <meta property="og:title" content="All Work — Jokoh Portfolio">
     <meta property="og:description" content="Motion, 3D, and visual storytelling by Joseph Koh, Singapore.">
     <!-- ⚠️ Upload og-preview.jpg to assets/images/ in your repo or social previews will be broken -->
-    <meta property="og:image" content="https://josephkohzy.github.io/portfolio/assets/images/og-preview.jpg">
-    <meta property="og:url" content="https://josephkohzy.github.io/portfolio/work.html">
+    <meta property="og:image" content="https://josephkoh.design/assets/images/og-preview.jpg">
+    <meta property="og:url" content="https://josephkoh.design/work.html">
     <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/images/thumbnail.png">
@@ -295,7 +295,18 @@
             position: relative;
             overflow: hidden;
             border-bottom: 1px solid rgba(255, 107, 53, 0.2);
-            transition: background-image 0.1s ease;
+        }
+
+        .project-video-hover {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
         }
 
         /* Soft texture overlay */
@@ -809,23 +820,26 @@
                 if (project.id === 'my10')    cardClass = ' my10-card';
                 if (project.id === 'unify')   cardClass = ' unify-card';
 
-                // All cards use the same gif/static image pattern
+                // All cards use webm video overlay — plays by default, static shown on hover
+                const webmUrl = project.gifUrl ? project.gifUrl.replace('.gif', '.webm') : '';
                 let imageStyle;
                 if (project.staticUrl) {
-                    // Load static thumbnail immediately; GIF lazy-loads on scroll via IntersectionObserver
                     imageStyle = `background-image: url('${project.staticUrl}'); background-size: cover; background-position: center;`;
-                } else if (project.gifUrl) {
-                    imageStyle = `background-image: url('${project.gifUrl}'); background-size: cover; background-position: center;`;
                 } else {
                     imageStyle = `background: linear-gradient(135deg, ${getGradient(index)});`;
                 }
 
+                const videoHtml = webmUrl
+                    ? `<video class="project-video-hover" muted loop playsinline preload="none"><source data-src="${webmUrl}" type="video/webm"></video>`
+                    : '';
+
                 html += `
                     <a href="${href}" class="project-card${cardClass}">
                         <div class="project-image"
-                            data-gif="${project.gifUrl || ''}"
+                            data-webm="${webmUrl}"
                             data-static="${project.staticUrl || ''}"
                             style="${imageStyle}">
+                            ${videoHtml}
                             <span class="project-badge ${badgeClass}">${badgeText}</span>
                         </div>
                         <div class="project-content">
@@ -850,47 +864,34 @@
             initScrollAnimations();
 
             // ── Lazy-load GIFs + hover swap ────────────────────────────────────
-            // Cards start showing the static thumbnail. When a card scrolls into
-            // view the GIF is preloaded in the background. Once loaded it becomes
-            // the card's live background. Hover then toggles static ↔ GIF.
-            const gifObserver = new IntersectionObserver((entries, obs) => {
+            // ── Lazy-load WebM + play by default, static on hover ─────────────
+            const videoObserver = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (!entry.isIntersecting) return;
                     const imgEl = entry.target;
-                    const gif   = imgEl.dataset.gif;
-                    if (!gif) { obs.unobserve(imgEl); return; }
-
-                    // Preload GIF off-screen
-                    const preloader = new Image();
-                    preloader.onload = function() {
-                        imgEl.dataset.gifLoaded = 'true';
-                        // Only apply GIF if not currently hovered (static is shown on hover)
-                        if (!imgEl.matches(':hover')) {
-                            imgEl.style.backgroundImage = "url('" + gif + "')";
-                        }
-                    };
-                    preloader.src = gif;
-                    obs.unobserve(imgEl); // load once, then stop observing
+                    const video = imgEl.querySelector('.project-video-hover');
+                    if (!video) { obs.unobserve(imgEl); return; }
+                    video.querySelectorAll('source[data-src]').forEach(s => { s.src = s.dataset.src; });
+                    video.load();
+                    video.play().catch(() => {});
+                    obs.unobserve(imgEl);
                 });
-            }, { rootMargin: '200px 0px', threshold: 0 }); // start loading 200px before entering viewport
+            }, { rootMargin: '200px 0px', threshold: 0 });
 
-            document.querySelectorAll('.project-image[data-gif]').forEach(function(imgEl) {
-                const gif    = imgEl.dataset.gif;
-                const Static = imgEl.dataset.static;
-                if (!gif) return;
-
-                // Queue for lazy loading
-                gifObserver.observe(imgEl);
-
-                // Hover: show static on enter, restore GIF (if loaded) on leave
+            document.querySelectorAll('.project-image[data-webm]').forEach(function(imgEl) {
+                if (!imgEl.dataset.webm) return;
+                videoObserver.observe(imgEl);
+                const video = imgEl.querySelector('.project-video-hover');
+                const staticUrl = imgEl.dataset.static;
+                if (!video) return;
                 imgEl.addEventListener('mouseenter', function() {
-                    if (Static) this.style.backgroundImage = "url('" + Static + "')";
+                    video.style.opacity = '0';
+                    video.pause();
+                    if (staticUrl) imgEl.style.backgroundImage = `url('${staticUrl}')`;
                 });
                 imgEl.addEventListener('mouseleave', function() {
-                    if (this.dataset.gifLoaded === 'true') {
-                        this.style.backgroundImage = "url('" + gif + "')";
-                    }
-                    // If GIF not loaded yet, leave the static (it's already showing)
+                    video.style.opacity = '1';
+                    video.play().catch(() => {});
                 });
             });
         }

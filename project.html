@@ -2003,6 +2003,9 @@
                     'Branding'
                 ],
                 videoUrl: 'https://youtu.be/hxNUenyc6_k',
+                socialLinks: [
+                    { platform: 'instagram', url: 'https://www.instagram.com/the_wow_movement_sg/' }
+                ],
                 images: 8,
                 details: [
                     {
@@ -2392,13 +2395,17 @@
                         description: `Description of this particular aspect of the project. Each image tells a part of the creative journey and showcases different techniques used.`
                     };
 
-                // Support GIF only for projects with a gifIndex field
-                const fileExtension = (project.gifIndex && i === project.gifIndex) ? 'gif' : 'jpg';
+                // Support WebM only for projects with a gifIndex field
+                const fileExtension = (project.gifIndex && i === project.gifIndex) ? 'webm' : 'jpg';
+                const isVideo = project.gifIndex && i === project.gifIndex;
+                const imgHtml = isVideo
+                    ? `<video muted loop playsinline autoplay style="width:100%;height:100%;object-fit:cover;display:block;"><source src="assets/projects/${project.id}/image-${i}.webm" type="video/webm"></video>`
+                    : `<img src="assets/projects/${project.id}/image-${i}.jpg" alt="${project.title} - Image ${i}">`;
 
                 galleryHTML += `
                     <div class="showcase-row">
                         <div class="showcase-image">
-                            <img src="assets/projects/${project.id}/image-${i}.${fileExtension}" alt="${project.title} - Image ${i}">
+                            ${imgHtml}
                             <div class="showcase-text">
                                 <span class="showcase-text-label">${detail.label}</span>
                                 <h3 class="showcase-text-title">${detail.title}</h3>

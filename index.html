@@ -8,8 +8,8 @@
     <meta property="og:title" content="Jokoh — Multimedia Designer Portfolio">
     <meta property="og:description" content="Motion, 3D, and visual storytelling by Joseph Koh, Singapore.">
     <!-- ⚠️ Upload og-preview.jpg to assets/images/ in your repo or social previews will be broken -->
-    <meta property="og:image" content="https://josephkohzy.github.io/portfolio/assets/images/og-preview.jpg">
-    <meta property="og:url" content="https://josephkohzy.github.io/portfolio">
+    <meta property="og:image" content="https://josephkoh.design/assets/images/og-preview.jpg">
+    <meta property="og:url" content="https://josephkoh.design">
     <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/images/thumbnail.png">
@@ -507,6 +507,18 @@
             background-position: center;
         }
 
+        .project-video-hover {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
         /* Texture overlay */
         .project-image::before {
             content: '';
@@ -853,9 +865,10 @@
             <!-- Unify -->
             <a href="unify.html" class="project-card unify-card">
                 <div class="project-image"
-                     data-gif="assets/images/projects/unify.gif"
+                     data-webm="assets/images/projects/unify.webm"
                      data-static="assets/images/projects/unify.jpg"
-                     style="background-image: url('assets/images/projects/unify.gif'); background-size: cover; background-position: center;">
+                     style="background-image: url('assets/images/projects/unify.jpg'); background-size: cover; background-position: center;">
+                    <video class="project-video-hover" muted loop playsinline preload="none"><source data-src="assets/images/projects/unify.webm" type="video/webm"></video>
                     <span class="project-badge personal">Personal</span>
                 </div>
                 <div class="project-content">
@@ -880,9 +893,10 @@
             <!-- JTC -->
             <a href="project.html?project=jtc" class="project-card">
                 <div class="project-image"
-                     data-gif="assets/images/projects/jtc.gif"
+                     data-webm="assets/images/projects/jtc.webm"
                      data-static="assets/images/projects/jtc.jpg"
-                     style="background-image: url('assets/images/projects/jtc.gif'); background-size: cover; background-position: center;">
+                     style="background-image: url('assets/images/projects/jtc.jpg'); background-size: cover; background-position: center;">
+                    <video class="project-video-hover" muted loop playsinline preload="none"><source data-src="assets/images/projects/jtc.webm" type="video/webm"></video>
                     <span class="project-badge">Client</span>
                 </div>
                 <div class="project-content">
@@ -907,9 +921,10 @@
             <!-- Dawn Sentinel -->
             <a href="project.html?project=dawn-sentinel" class="project-card">
                 <div class="project-image"
-                     data-gif="assets/images/projects/dawn-sentinel.gif"
+                     data-webm="assets/images/projects/dawn-sentinel.webm"
                      data-static="assets/images/projects/dawn-sentinel.jpg"
-                     style="background-image: url('assets/images/projects/dawn-sentinel.gif'); background-size: cover; background-position: center;">
+                     style="background-image: url('assets/images/projects/dawn-sentinel.jpg'); background-size: cover; background-position: center;">
+                    <video class="project-video-hover" muted loop playsinline preload="none"><source data-src="assets/images/projects/dawn-sentinel.webm" type="video/webm"></video>
                     <span class="project-badge">Client</span>
                 </div>
                 <div class="project-content">
@@ -934,9 +949,10 @@
             <!-- Fodder Pianist -->
             <a href="project.html?project=fodder-pianist" class="project-card">
                 <div class="project-image"
-                     data-gif="assets/images/projects/fodder-pianist.gif"
+                     data-webm="assets/images/projects/fodder-pianist.webm"
                      data-static="assets/images/projects/fodder-pianist.jpg"
-                     style="background-image: url('assets/images/projects/fodder-pianist.gif'); background-size: cover; background-position: center;">
+                     style="background-image: url('assets/images/projects/fodder-pianist.jpg'); background-size: cover; background-position: center;">
+                    <video class="project-video-hover" muted loop playsinline preload="none"><source data-src="assets/images/projects/fodder-pianist.webm" type="video/webm"></video>
                     <span class="project-badge">Client</span>
                 </div>
                 <div class="project-content">
@@ -1069,16 +1085,34 @@
     </script>
 
     <script>
-        // GIF ↔ Static swap on hover (matching work.html behaviour)
-        document.querySelectorAll('.project-image[data-gif]').forEach(function(img) {
-            const gif    = img.dataset.gif;
-            const Static = img.dataset.static;
-            if (!gif) return;
-            img.addEventListener('mouseenter', function() {
-                if (Static) this.style.backgroundImage = "url('" + Static + "')";
+        // WebM plays by default — lazy-loads src on scroll, static shows on hover
+        const videoObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const imgEl = entry.target;
+                const video = imgEl.querySelector('.project-video-hover');
+                if (!video) { obs.unobserve(imgEl); return; }
+                video.querySelectorAll('source[data-src]').forEach(s => { s.src = s.dataset.src; });
+                video.load();
+                video.play().catch(() => {});
+                obs.unobserve(imgEl);
             });
-            img.addEventListener('mouseleave', function() {
-                this.style.backgroundImage = "url('" + gif + "')";
+        }, { rootMargin: '200px 0px', threshold: 0 });
+
+        document.querySelectorAll('.project-image[data-webm]').forEach(function(imgEl) {
+            if (!imgEl.dataset.webm) return;
+            videoObserver.observe(imgEl);
+            const video = imgEl.querySelector('.project-video-hover');
+            const staticUrl = imgEl.dataset.static;
+            if (!video) return;
+            imgEl.addEventListener('mouseenter', function() {
+                video.style.opacity = '0';
+                video.pause();
+                if (staticUrl) imgEl.style.backgroundImage = `url('${staticUrl}')`;
+            });
+            imgEl.addEventListener('mouseleave', function() {
+                video.style.opacity = '1';
+                video.play().catch(() => {});
             });
         });
 
