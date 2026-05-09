@@ -53,12 +53,14 @@ const videoClose = document.querySelector('.video-close');
 const reelVideo = document.getElementById('reelVideo');
 
 // Replace this URL with your actual YouTube/Vimeo video URL
-const VIDEO_URL = 'https://www.youtube.com/embed/dQw4w9WgXcQ'; // Example - replace with your reel URL
+// ⚠️  REPLACE THIS with your actual YouTube embed URL once uploaded
+// Format: 'https://www.youtube.com/embed/YOUR_VIDEO_ID'
+const VIDEO_URL = 'https://www.youtube.com/embed/gHYi3YxvEY0?si=S-b7Du3GepbootZY';
 
 if (reelBtn) {
     reelBtn.addEventListener('click', () => {
         videoModal.style.display = 'block';
-        reelVideo.src = VIDEO_URL + '?autoplay=1';
+        reelVideo.src = VIDEO_URL + (VIDEO_URL.includes('?') ? '&' : '?') + 'autoplay=1';
         document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
     });
 }
@@ -111,7 +113,8 @@ if (logo) {
     }, 100);
 }
 
-// Clean paint trail - subtle and crisp
+// Clean paint trail - subtle and crisp (desktop only)
+if (!('ontouchstart' in window)) {
 let lastX = 0;
 let lastY = 0;
 let isDrawing = false;
@@ -152,6 +155,7 @@ document.addEventListener('mousemove', (e) => {
     lastX = e.clientX;
     lastY = e.clientY;
 });
+} // end touch guard
 
 const style = document.createElement('style');
 style.textContent = `
@@ -168,21 +172,61 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Contact form submission (basic example)
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Here you would typically send the data to a server
-        // For now, we'll just show an alert
-        alert('Thank you for your message! I will get back to you soon.');
-        
-        // Reset form
-        contactForm.reset();
+// Contact form is handled by the Formspree AJAX handler in contact.html
+
+// ── Mobile Hamburger Menu ─────────────────────────────────────────────────
+(function () {
+    // Inject hamburger button into every nav
+    const nav = document.querySelector('nav');
+    if (!nav) return;
+
+    // Create hamburger button
+    const hamburger = document.createElement('button');
+    hamburger.className = 'hamburger';
+    hamburger.setAttribute('aria-label', 'Toggle menu');
+    hamburger.innerHTML = '<span></span><span></span><span></span>';
+    nav.appendChild(hamburger);
+
+    // Create full-screen mobile nav overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-nav-overlay';
+
+    // Clone nav links for the overlay
+    const navLinks = nav.querySelector('.nav-links');
+    const clonedLinks = navLinks ? navLinks.cloneNode(true) : document.createElement('ul');
+
+    // Close button inside overlay
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'mobile-nav-close';
+    closeBtn.setAttribute('aria-label', 'Close menu');
+    closeBtn.innerHTML = '&times;';
+
+    overlay.appendChild(closeBtn);
+    overlay.appendChild(clonedLinks);
+    document.body.appendChild(overlay);
+
+    function openMenu() {
+        overlay.classList.add('open');
+        hamburger.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        overlay.classList.remove('open');
+        hamburger.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Close when a nav link is clicked
+    overlay.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
     });
-}
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
+    });
+})();

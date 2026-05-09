@@ -3,12 +3,791 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jokoh - Multimedia Designer Portfolio</title>
+    <title>Jokoh — Multimedia Designer Portfolio</title>
+    <meta name="description" content="Joseph Koh — Multimedia Designer &amp; Visual Storyteller based in Singapore. Motion graphics, 3D animation, and character design.">
+    <meta property="og:title" content="Jokoh — Multimedia Designer Portfolio">
+    <meta property="og:description" content="Motion, 3D, and visual storytelling by Joseph Koh, Singapore.">
+    <!-- ⚠️ Upload og-preview.jpg to assets/images/ in your repo or social previews will be broken -->
+    <meta property="og:image" content="https://josephkohzy.github.io/portfolio/assets/images/og-preview.jpg">
+    <meta property="og:url" content="https://josephkohzy.github.io/portfolio">
+    <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Video Background Container - Covers Entire Page */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .hero-bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        /* TV Scanline Effect - Horizontal Lines Overlay */
+        .video-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15) 0px,
+                transparent 1px,
+                transparent 2px,
+                rgba(0, 0, 0, 0.15) 3px
+            );
+            animation: scanlines 8s linear infinite;
+        }
+
+        @keyframes scanlines {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(4px);
+            }
+        }
+
+        /* Ensure existing animated backgrounds are above video */
+        body::before,
+        body::after,
+        .concrete-crack {
+            position: fixed;
+            z-index: 1;
+        }
+
+        /* All content above video */
+        nav,
+        .hero,
+        .featured-preview,
+        footer {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Reel button stays fixed at bottom right */
+        .reel-btn {
+            z-index: 1000;
+        }
+
+        /* Video modal must be above everything */
+        .video-modal {
+            position: fixed;
+            z-index: 9999 !important;
+        }
+
+        /* Enhanced hero for recruiter visibility */
+        .hero {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero overlay for readability */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.6) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            padding-top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 0;
+        }
+
+        .hero-content .subtitle {
+            margin-bottom: 0;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.75;
+            color: #e0e0e0;
+            max-width: 750px;
+            margin: 0 auto;
+            font-weight: 400;
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-description strong {
+            color: var(--lime);
+            font-weight: 600;
+        }
+
+        /* Visuals Animation - Smooth color shift */
+        .visuals-word {
+            position: relative;
+            display: inline-block;
+            color: #4facfe;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .visuals-word::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            transition: width 0.4s ease;
+        }
+
+        .visuals-word:hover::before {
+            width: 100%;
+        }
+
+        .visuals-word:hover {
+            color: #00f2fe;
+            transform: translateY(-2px);
+            text-shadow: 
+                0 0 10px rgba(79, 172, 254, 0.5),
+                0 0 20px rgba(0, 242, 254, 0.3);
+            filter: brightness(1.2);
+        }
+
+        /* Motion Animation - Subtle wave effect */
+        .motion-word {
+            position: relative;
+            display: inline-block;
+            color: #f093fb;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .motion-word:hover {
+            color: #f5576c;
+            animation: gentleWave 0.6s ease-in-out;
+            text-shadow: 
+                0 0 10px rgba(240, 147, 251, 0.5),
+                0 0 20px rgba(245, 87, 108, 0.3);
+        }
+
+        @keyframes gentleWave {
+            0%, 100% {
+                transform: translateY(0) scaleY(1);
+            }
+            25% {
+                transform: translateY(-3px) scaleY(1.05);
+            }
+            50% {
+                transform: translateY(0) scaleY(0.95);
+            }
+            75% {
+                transform: translateY(3px) scaleY(1.05);
+            }
+        }
+
+        /* Creative Chaos Animation - Intense glitch */
+        .creative-chaos {
+            position: relative;
+            display: inline-block;
+            color: var(--rust);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .creative-chaos::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--lime) 0%, transparent 70%);
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .creative-chaos:hover::before {
+            width: 150%;
+            height: 150%;
+            opacity: 0.2;
+        }
+
+        .creative-chaos::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: var(--lime);
+            opacity: 0;
+            transform: translate(2px, 2px);
+            transition: all 0.1s ease;
+            pointer-events: none;
+        }
+
+        .creative-chaos:hover {
+            color: var(--lime);
+            text-shadow: 
+                2px 2px 0 var(--rust),
+                -2px -2px 0 var(--rust),
+                0 0 20px var(--lime);
+            animation: chaosGlitch 0.3s infinite;
+        }
+
+        @keyframes chaosGlitch {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(2px, -2px);
+            }
+            60% {
+                transform: translate(-2px, -2px);
+            }
+            80% {
+                transform: translate(2px, 2px);
+            }
+        }
+
+        /* Floating particles around creative chaos */
+        .creative-chaos:hover ~ .chaos-particles {
+            opacity: 1;
+        }
+
+        .chaos-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--lime);
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            animation: chaosFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes chaosFloat {
+            0%, 100% {
+                opacity: 0;
+                transform: translate(0, 0) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(var(--tx), var(--ty)) scale(1);
+            }
+        }
+
+        .cta-buttons {
+            margin-top: 15px;
+        }
+
+        /* Unify card accent — matches works.html */
+        .unify-card {
+            border-color: rgba(53,99,233,0.3) !important;
+        }
+        .unify-card:hover {
+            border-color: rgba(53,99,233,0.65) !important;
+            box-shadow:
+                0 8px 32px rgba(0,0,0,0.35),
+                0 0 40px rgba(53,99,233,0.08) !important;
+        }
+        .unify-card::after {
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(53,99,233,0.35),
+                rgba(53,99,233,0.15),
+                transparent
+            ) !important;
+        }
+        .unify-card::before {
+            background: radial-gradient(
+                circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(53,99,233,0.18) 0%,
+                rgba(0,255,136,0.06) 40%,
+                transparent 70%
+            ) !important;
+        }
+
+        /* Project number & meta — matches works.html */
+        .project-number {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--rust);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+        .project-meta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .project-meta-item {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+        .project-meta-item:not(:last-child)::after {
+            content: '·';
+            position: absolute;
+            right: -10px;
+            color: var(--rust);
+            opacity: 0.5;
+        }
+
+        /* Featured section stays above video */
+        .featured-preview,
+        footer {
+            position: relative;
+            z-index: 2;
+            background: var(--bg-main);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                padding-top: 5vh;
+                gap: 20px;
+            }
+            
+            .hero-description {
+                font-size: 1.05rem;
+                max-width: 90%;
+            }
+
+            .cta-buttons {
+                margin-top: 10px;
+            }
+        }
+
+        /* ==========================================
+           PROJECT CARDS — matches works.html exactly
+           ========================================== */
+
+        .projects-grid-preview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            padding: 0 40px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 1200px) { .projects-grid-preview { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px)  { .projects-grid-preview { grid-template-columns: 1fr; padding: 0 20px; } }
+
+        .project-card {
+            background: rgba(30, 30, 30, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border-radius: 6px;
+            opacity: 0;
+            transform: translateY(60px) rotate(-2deg);
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0) rotate(0deg);
+        }
+
+        .project-card:nth-child(1) { transition-delay: 0.1s; }
+        .project-card:nth-child(2) { transition-delay: 0.2s; }
+        .project-card:nth-child(3) { transition-delay: 0.3s; }
+        .project-card:nth-child(4) { transition-delay: 0.4s; }
+
+        /* Mouse-tracking glow */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(255,107,53,0.15) 0%,
+                rgba(0,255,136,0.1) 40%,
+                transparent 70%
+            );
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .project-card:hover::before { opacity: 1; }
+
+        /* Animated border gradient */
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, transparent, rgba(255,107,53,0.4), rgba(0,255,136,0.4), transparent);
+            background-size: 200% 200%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            animation: borderGlow 3s linear infinite;
+        }
+        .project-card:hover::after { opacity: 1; }
+
+        @keyframes borderGlow {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            background: rgba(30, 30, 30, 0.6);
+            border-color: rgba(255, 107, 53, 0.4);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 20px rgba(255,107,53,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255,107,53,0.2);
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Texture overlay */
+        .project-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.05) 10px, rgba(0,0,0,0.05) 20px);
+            mix-blend-mode: overlay;
+        }
+
+        /* VIEW text on hover */
+        .project-image::after {
+            content: 'VIEW';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            color: white;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-shadow: 0 0 20px rgba(255,107,53,0.8), 0 0 40px rgba(0,255,136,0.6), 2px 2px 4px rgba(0,0,0,0.8);
+            letter-spacing: 8px;
+        }
+        .project-card:hover .project-image::after {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 12px; right: 12px;
+            padding: 6px 12px;
+            background: rgba(255,107,53,0.9);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+        .project-badge.personal { background: rgba(0,255,136,0.9); color: var(--coal); }
+        .project-card:hover .project-badge { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255,107,53,0.4), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .project-card:hover .project-badge.personal { box-shadow: 0 6px 20px rgba(0,255,136,0.4), inset 0 1px 0 rgba(255,255,255,0.3); }
+
+        .project-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Subtle inner glow line */
+        .project-content::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,107,53,0.3) 20%, rgba(0,255,136,0.3) 80%, transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .project-card:hover .project-content::before { opacity: 1; }
+
+        .project-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--lime);
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .project-description {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255,107,53,0.1);
+            color: var(--rust);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,107,53,0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover .tag {
+            background: rgba(255,107,53,0.2);
+            border-color: rgba(255,107,53,0.4);
+        }
+
+        /* ==========================================
+           BRANDS SECTION
+           ========================================== */
+        .brands-section {
+            background: #0a0a0a;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+            padding: 60px 0;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .brands-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .brands-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            color: var(--rust);
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Decorative lines either side of the label */
+        .brands-label::before,
+        .brands-label::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 80px;
+            height: 1px;
+            background: rgba(255, 107, 53, 0.4);
+        }
+        .brands-label::before { right: calc(100% + 16px); }
+        .brands-label::after  { left:  calc(100% + 16px); }
+
+        /* Wrapper clips the overflow and adds fade edges */
+        .brands-track-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Soft fade on left and right edges */
+        .brands-track-wrapper::before,
+        .brands-track-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .brands-track-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, #0a0a0a, transparent);
+        }
+        .brands-track-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, #0a0a0a, transparent);
+        }
+
+        /* The moving strip — holds 2 sets of logos */
+        .brands-track {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            width: max-content;
+            animation: brandScroll 28s linear infinite;
+        }
+
+        /* Pause on hover */
+        .brands-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* Scroll from right to left by exactly 50% (one full set of logos) */
+        @keyframes brandScroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Individual logo slot */
+        .brand-logo {
+            flex-shrink: 0;
+            width: 180px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 0;
+            overflow: hidden;
+            transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        .brand-logo:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 107, 53, 0.4);
+            transform: scale(1.06);
+            z-index: 2;
+        }
+
+        /* Image fills the full slot — no filter, shows actual logo colours */
+        .brand-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 14px 20px;
+            box-sizing: border-box;
+            opacity: 0.75;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Full opacity + slight zoom on hover */
+        .brand-logo:hover img {
+            opacity: 1;
+            transform: scale(1.08);
+        }
+
+        /* Brand name label — slides up from below on hover */
+        .brand-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.82);
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 5px 6px;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+            pointer-events: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .brand-logo:hover .brand-name {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <div class="concrete-crack"></div>
+
+    <!-- Background Video Layer - Under everything -->
+    <div class="video-background">
+        <video class="hero-bg-video" autoplay muted loop playsinline>
+            <source src="assets/videos/background-loop.mp4" type="video/mp4">
+            <source src="assets/videos/background-loop.webm" type="video/webm">
+        </video>
+    </div>
 
     <!-- Navigation -->
     <nav>
@@ -53,73 +832,132 @@
         <div class="hero-content">
             <h1>JOSEPH KOH</h1>
             <p class="subtitle">Multimedia Designer • Visual Storyteller</p>
+            <p class="hero-description">
+                I tell stories through <span class="visuals-word">Visuals</span>, <span class="motion-word">Motion</span>, and a tinge of <span class="creative-chaos" data-text="Creative Chaos">Creative Chaos</span>. 
+            </p>
             <div class="cta-buttons">
-                <a href="works.html" class="btn btn-primary">View Work</a>
-                <a href="contact.html" class="btn">Get In Touch</a>
+                <a href="#featured" class="btn btn-primary">View Work</a>
+                <a href="#" class="btn" id="heroReelBtn">View Reel</a>
             </div>
         </div>
     </section>
 
     <!-- Featured Work Preview -->
-    <section class="featured-preview">
+    <section id="featured" class="featured-preview">
         <div class="section-header">
             <h2 class="section-title">Featured Work</h2>
             <p class="section-subtitle">Selected Projects</p>
         </div>
         <div class="projects-grid-preview">
-            <div class="project-card fade-in">
-                <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                    <span class="project-badge">Client</span>
+
+            <!-- Unify -->
+            <a href="unify-project-detail.html" class="project-card unify-card">
+                <div class="project-image"
+                     data-gif="assets/images/projects/unify.gif"
+                     data-static="assets/images/projects/unify.jpg"
+                     style="background-image: url('assets/images/projects/unify.gif'); background-size: cover; background-position: center;">
+                    <span class="project-badge personal">Personal</span>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Shaco: Cat in the Box</h3>
+                    <div class="project-number">Project 01</div>
+                    <h3 class="project-title">Unify - UI/UX</h3>
+                    <div class="project-meta">
+                        <div class="project-meta-item">Personal Project</div>
+                        <div class="project-meta-item">2 Weeks</div>
+                    </div>
                     <p class="project-description">
-                        Complete character design and animation concept for TFT Tactician featuring chibi-style 
-                        character art, environment design, and 10-second victory finisher storyboard.
+                        A unified workplace communication platform — full UX research, competitor analysis, 
+                        personas and UI designs across web and app platforms.
                     </p>
                     <div class="project-tags">
-                        <span class="tag">Character</span>
-                        <span class="tag">Animation</span>
-                        <span class="tag">Concept</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Product Design</span>
+                        <span class="tag">Case Study</span>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="project-card fade-in">
-                <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <!-- JTC -->
+            <a href="project-detail-improved.html?project=jtc" class="project-card">
+                <div class="project-image"
+                     data-gif="assets/images/projects/jtc.gif"
+                     data-static="assets/images/projects/jtc.jpg"
+                     style="background-image: url('assets/images/projects/jtc.gif'); background-size: cover; background-position: center;">
                     <span class="project-badge">Client</span>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Brand Motion Graphics</h3>
+                    <div class="project-number">Project 02</div>
+                    <h3 class="project-title">Shaping Singapore's Future Through Digitalisation</h3>
+                    <div class="project-meta">
+                        <div class="project-meta-item">JTC Corporation</div>
+                        <div class="project-meta-item">2 Weeks</div>
+                    </div>
                     <p class="project-description">
-                        Dynamic motion graphics package for social media campaigns, featuring animated logos, 
-                        transitions, and eye-catching visual effects that increased engagement by 300%.
+                        JTC Corporation visualizer video for implementing digitalisation for the future 
+                        of their project building structures. (3D lead assistance)
                     </p>
                     <div class="project-tags">
-                        <span class="tag">After Effects</span>
-                        <span class="tag">Motion</span>
-                        <span class="tag">Social</span>
+                        <span class="tag">Visual Effects</span>
+                        <span class="tag">3D Animation</span>
+                        <span class="tag">Compositing</span>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="project-card fade-in">
-                <div class="project-image" style="background-image: url('assets/images/projects/test.jpg');"> <!--background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);--> 
+            <!-- Dawn Sentinel -->
+            <a href="project-detail-improved.html?project=dawn-sentinel" class="project-card">
+                <div class="project-image"
+                     data-gif="assets/images/projects/dawn-sentinel.gif"
+                     data-static="assets/images/projects/dawn-sentinel.jpg"
+                     style="background-image: url('assets/images/projects/dawn-sentinel.gif'); background-size: cover; background-position: center;">
                     <span class="project-badge">Client</span>
                 </div>
                 <div class="project-content">
-                    <h3 class="project-title">Explainer Series</h3>
+                    <div class="project-number">Project 03</div>
+                    <h3 class="project-title">Dawn Sentinel</h3>
+                    <div class="project-meta">
+                        <div class="project-meta-item">The WoW Movement Team</div>
+                        <div class="project-meta-item">7 Weeks</div>
+                    </div>
                     <p class="project-description">
-                        Series of 2D animated explainer videos for tech startup. Combined hand-drawn 
-                        illustrations with smooth character animation to simplify complex concepts.
+                        An open competition empowering creatives to reimagine Dawn Sentinel, 
+                        a Singaporean civic icon, through animation as a medium.
                     </p>
                     <div class="project-tags">
+                        <span class="tag">Competition</span>
                         <span class="tag">2D Animation</span>
-                        <span class="tag">Illustration</span>
-                        <span class="tag">Story</span>
+                        <span class="tag">3D Animation</span>
                     </div>
                 </div>
-            </div>
+            </a>
+
+            <!-- Fodder Pianist -->
+            <a href="project-detail-improved.html?project=fodder-pianist" class="project-card">
+                <div class="project-image"
+                     data-gif="assets/images/projects/fodder-pianist.gif"
+                     data-static="assets/images/projects/fodder-pianist.jpg"
+                     style="background-image: url('assets/images/projects/fodder-pianist.gif'); background-size: cover; background-position: center;">
+                    <span class="project-badge">Client</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-number">Project 04</div>
+                    <h3 class="project-title">Fodder Campaign</h3>
+                    <div class="project-meta">
+                        <div class="project-meta-item">Fodder Pianist</div>
+                        <div class="project-meta-item">12 Weeks</div>
+                    </div>
+                    <p class="project-description">
+                        Strengthening piano brand presence across social media through short-form video 
+                        content, achieving thousands of organic views.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Social Media</span>
+                        <span class="tag">Content</span>
+                        <span class="tag">Strategy</span>
+                    </div>
+                </div>
+            </a>
+
         </div>
 
         <div class="view-all-link">
@@ -127,27 +965,137 @@
         </div>
     </section>
 
+    <!-- Brands Section -->
+    <section class="brands-section">
+        <div class="brands-header">
+            <p class="brands-label">NOTABLE BRANDS I'VE WORKED WITH</p>
+        </div>
+
+        <!-- Scrolling ticker — two identical sets so the loop is seamless -->
+        <div class="brands-track-wrapper">
+            <div class="brands-track" id="brands-track">
+
+                <!-- SET 1 -->
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-1.png" alt="Brand 1">
+                    <span class="brand-name">Marriott</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-2.png" alt="Brand 2">
+                    <span class="brand-name">MINDEF Singapore</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-3.png" alt="Brand 3">
+                    <span class="brand-name">JTC Corporation</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-4.png" alt="Brand 4">
+                    <span class="brand-name">MOE Singapore</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-5.png" alt="Brand 5">
+                    <span class="brand-name">Singapore Armed Forces</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-6.png" alt="Brand 6">
+                    <span class="brand-name">Singapore Fintech Festival</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-7.png" alt="Brand 7">
+                    <span class="brand-name">Health Promotion Board</span>
+                </div>
+
+                <!-- SET 2 — exact duplicate, makes the loop seamless -->
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-1.png" alt="Brand 1">
+                    <span class="brand-name">Marriott</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-2.png" alt="Brand 2">
+                    <span class="brand-name">MINDEF Singapore</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-3.png" alt="Brand 3">
+                    <span class="brand-name">JTC Corporation</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-4.png" alt="Brand 4">
+                    <span class="brand-name">MOE Singapore</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-5.png" alt="Brand 5">
+                    <span class="brand-name">Singapore Armed Forces</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-6.png" alt="Brand 6">
+                    <span class="brand-name">Singapore Fintech Festival</span>
+                </div>
+                <div class="brand-logo">
+                    <img src="assets/images/brands/brand-7.png" alt="Brand 7">
+                    <span class="brand-name">Health Promotion Board</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <h2 class="section-title" style="color: var(--lime);">LET'S CREATE TOGETHER</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 50px; color: var(--text-primary); margin-top: 20px;">
-                Have a project in mind? Get in touch.
-            </p>
-            <div class="social-links">
-                <a href="mailto:jokoh@example.com" title="Email">
-                    <span style="font-size: 2.5rem;">✉</span>
-                    <span class="link-label">EMAIL</span>
-                </a>
-                <a href="https://linkedin.com/in/josephkoh" title="LinkedIn" target="_blank">
-                    <span style="font-size: 2.5rem; font-weight: 700;">in</span>
-                    <span class="link-label">LINKEDIN</span>
-                </a>
-            </div>
-            <p class="footer-text">© 2024 JOSEPH KOH (JOKOH). ALL RIGHTS RESERVED.</p>
+            <p class="footer-text">© 2026 JOSEPH KOH. ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Wire "View Reel" hero button — reuses the same modal as the bottom-right reel button.
+        // VIDEO_URL is defined in script.js (loaded just above); we read it via a small helper
+        // so there is no duplicate const declaration.
+        document.addEventListener('DOMContentLoaded', function () {
+            var heroReelBtn = document.getElementById('heroReelBtn');
+            if (!heroReelBtn) return;
+            heroReelBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var modal    = document.getElementById('videoModal');
+                var vidFrame = document.getElementById('reelVideo');
+                var url      = typeof VIDEO_URL !== 'undefined' ? VIDEO_URL : '';
+                if (modal && vidFrame && url) {
+                    modal.style.display = 'block';
+                    vidFrame.src = url + (url.includes('?') ? '&' : '?') + 'autoplay=1';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // GIF ↔ Static swap on hover (matching works.html behaviour)
+        document.querySelectorAll('.project-image[data-gif]').forEach(function(img) {
+            const gif    = img.dataset.gif;
+            const Static = img.dataset.static;
+            if (!gif) return;
+            img.addEventListener('mouseenter', function() {
+                if (Static) this.style.backgroundImage = "url('" + Static + "')";
+            });
+            img.addEventListener('mouseleave', function() {
+                this.style.backgroundImage = "url('" + gif + "')";
+            });
+        });
+
+        // Mouse tracking for card glow — matches works.html
+        document.addEventListener('mousemove', (e) => {
+            document.querySelectorAll('.project-card').forEach(card => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+            });
+        });
+
+        // Scroll reveal
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.project-card').forEach(el => cardObserver.observe(el));
+    </script>
 </body>
 </html>

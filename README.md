@@ -1,123 +1,96 @@
 # Jokoh Portfolio Website
 
-A multi-page portfolio website for Joseph Koh (Jokoh), a multimedia designer specializing in motion graphics, 3D animation, and visual design.
+A multi-page portfolio website for Joseph Koh (Jokoh), a multimedia designer specialising in motion graphics, 3D animation, and visual design.
 
-## Website Structure
+## File Structure
 
-This portfolio consists of 5 main pages:
+```
+/portfolio
+├── index.html                   # Home — hero, featured work preview, brand marquee
+├── works.html                   # Full works gallery with category filters
+├── process.html                 # Creative process gallery (sketches & studies)
+├── about.html                   # Bio, skills, and testimonials
+├── contact.html                 # Contact form (Formspree) and social links
+├── 404.html                     # Custom 404 page
+├── my10-project-detail.html     # Project detail — My 10 UX/UI case study
+├── project-detail-improved.html # Project detail — general template
+├── unify-project-detail.html    # Project detail — Unify UI/UX case study
+├── styles.css                   # Shared stylesheet for all pages
+├── script.js                    # Shared JS — animations, modal, hamburger menu
+└── assets/
+    └── images/
+        ├── og-preview.jpg           # ⚠️ Required for social previews
+        ├── joseph-koh.jpg           # About page photo
+        ├── projects/                # Project GIFs and static thumbnails
+        ├── process/                 # Process gallery images
+        ├── brands/                  # Brand logo images
+        └── testimonials/            # Testimonial PDF files
+```
 
-1. **index.html** - Home page with hero section and featured work preview
-2. **works.html** - Redirects to jokoh_all_works.html (complete works gallery with filters)
-3. **process.html** - Creative process gallery showcasing sketches and studies
-4. **about.html** - About section with bio, skills, and testimonials
-5. **contact.html** - Contact form and social links
+## Setup
 
-## Additional Pages
-
-- **jokoh_all_works.html** - Full works gallery with category filters
-- **jokoh_project_detail.html** - Individual project detail page template
-
-## Shared Files
-
-- **styles.css** - Main stylesheet for all pages
-- **script.js** - JavaScript for interactions, animations, and video modal
+1. Clone or download the repo and keep all files in the same root directory.
+2. **Add your assets** under `assets/images/` — see the structure above.
+3. **OG preview image** — upload `assets/images/og-preview.jpg` or social link previews will be broken.
+4. **Video reel** — update `VIDEO_URL` in `script.js` (search for `VIDEO_URL`) with your YouTube embed URL.
+5. **Contact form** — the Formspree ID is already set in `contact.html`. Replace it with your own at [formspree.io](https://formspree.io) if needed.
+6. **CV download** — update the `href` on the CV button in `contact.html` to point to your actual PDF.
+7. Open `index.html` in a browser to test locally, or push to GitHub Pages.
 
 ## Features
 
-### Reel Video Popup
-- The reel button (bottom right) appears on ALL pages
-- Clicking it opens a video modal with an embedded video player
-- Users can close by:
-  - Clicking the X button
-  - Clicking outside the video
-  - Pressing the Escape key
-- To change the video URL, edit line 66 in `script.js`:
-  ```javascript
-  const VIDEO_URL = 'YOUR_YOUTUBE_OR_VIMEO_EMBED_URL';
-  ```
+### Reel Video Modal
+- Floating reel button appears on every page (bottom-right)
+- Opens a full-screen video modal with autoplay
+- Close via ✕ button, clicking outside, or pressing Escape
+- To change the video: update `VIDEO_URL` in `script.js`
 
 ### Navigation
-- Consistent navigation across all pages
-- Active page highlighting
-- Smooth transitions
+- Desktop: horizontal nav with active-page highlight
+- Mobile: full-screen hamburger overlay with smooth fade transition
+- Consistent across all pages
 
 ### Animations
-- Scroll-triggered animations
-- Paint trail cursor effect
+- Scroll-triggered fade/reveal via `IntersectionObserver`
+- Paint-trail cursor effect (desktop only)
 - Logo glitch effect
-- Parallax effects on hero section
+- Parallax on hero section
+- GIF lazy-loading on scroll (works/index pages)
 
-## Setup Instructions
+### Contact Form
+- Handled via Formspree AJAX — no page reload
+- Shows success/error message inline
+- Form ID is set in `contact.html` → `<form action="https://formspree.io/f/YOUR_ID">`
 
-1. Place all files in the same directory:
-   ```
-   /portfolio
-   ├── index.html
-   ├── works.html
-   ├── process.html
-   ├── about.html
-   ├── contact.html
-   ├── jokoh_all_works.html
-   ├── jokoh_project_detail.html
-   ├── styles.css
-   └── script.js
-   ```
+## Customisation
 
-2. Update the video URL in `script.js` (line 66)
+### Colours
+Defined as CSS variables at the top of `styles.css`:
+- `--coal`: #0a0a0a — dark background
+- `--rust`: #ff6b35 — primary accent (orange)
+- `--lime`: #00ff88 — secondary accent (green)
+- `--steel`: #8a95a5 — muted text / tertiary
 
-3. Replace placeholder images/content as needed
+### Fonts (Google Fonts)
+- **Archivo Black** — headings and bold labels
+- **Space Grotesk** — body text
+- **Bebas Neue** — display / button labels
 
-4. Test all pages in a browser
-
-## Customization
-
-### Colors
-The color scheme is defined in CSS variables at the top of `styles.css`:
-- `--coal`: #0a0a0a (dark background)
-- `--rust`: #ff6b35 (primary accent - orange)
-- `--lime`: #00ff88 (secondary accent - green)
-- `--steel`: #8a95a5 (tertiary color)
-
-### Fonts
-The site uses three Google Fonts:
-- **Archivo Black** - For headings and bold text
-- **Space Grotesk** - For body text
-- **Bebas Neue** - For labels and buttons
-
-### Video Modal
-To use a different video service:
-1. Get the embed URL from YouTube, Vimeo, etc.
-2. Update `VIDEO_URL` in `script.js`
-3. Make sure to use the embed format (e.g., youtube.com/embed/VIDEO_ID)
+### Adding a New Project
+1. Add GIF + static JPG to `assets/images/projects/`
+2. Add an entry to the `projects` array in `works.html`
+3. Optionally create a new `*-project-detail.html` from the existing templates
 
 ## Browser Support
 
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Responsive design for mobile and tablet
-- CSS Grid and Flexbox for layouts
+Modern browsers — Chrome, Firefox, Safari, Edge. Uses CSS Grid, Flexbox, `IntersectionObserver`, and `backdrop-filter`.
 
-## Contact Form
+## GitHub Pages Deployment
 
-The contact form currently shows an alert on submission. To make it functional:
-1. Set up a backend service (e.g., FormSpree, Netlify Forms, or your own server)
-2. Update the form submission handler in `script.js` (around line 185)
-3. Add proper form validation and error handling
+Push all files (including `assets/`) to the root of your GitHub Pages branch. The site runs entirely from static files — no build step needed.
 
-## Notes
-
-- All pages share the same gritty, industrial aesthetic
-- The reel button is persistent across all pages
-- Navigation is consistent for easy site-wide browsing
-- Works page redirects to the full works gallery for better organization
-
-## Future Enhancements
-
-- Add actual project images
-- Connect contact form to email service
-- Add project detail pages linked from works gallery
-- Implement loading animations
-- Add more interactive elements
+> ⚠️ Make sure `assets/images/og-preview.jpg` exists in the repo before going live, or Open Graph previews (LinkedIn, iMessage, etc.) will show a broken image.
 
 ---
 
-© 2024 Joseph Koh (Jokoh). All Rights Reserved.
+© 2026 Joseph Koh (Jokoh). All Rights Reserved.

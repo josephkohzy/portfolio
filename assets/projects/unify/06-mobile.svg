@@ -1,0 +1,269 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="1600" height="1067" viewBox="0 0 1600 1067"
+  id="Unify-Board-06-Mobile-App">
+  <!-- After Effects: File → Import → as Composition — Retain Layer Sizes -->
+  <!-- Each <g id="..."> becomes a separate AE layer -->
+  <defs>
+    <radialGradient id="orb1_g6" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3563E9" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#3563E9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2_g6" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3563E9" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#3563E9" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+    </filter>
+    <filter id="blur4" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4"/>
+    </filter>
+  </defs>
+<g id="BG">
+  <rect x="0" y="0" width="1600" height="1067" fill="#07090E"/>
+  <defs>
+    <pattern id="grid_0_0" patternUnits="userSpaceOnUse" width="40" height="40">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#3563E9" stroke-width="0.8" opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect x="0" y="0" width="1600" height="1067" fill="url(#grid_0_0)"/>
+  <ellipse cx="-40" cy="-80" rx="380" ry="380" fill="url(#orb1_g6)"/>
+  <ellipse cx="1660" cy="1107" rx="260" ry="260" fill="url(#orb2_g6)"/>
+  <rect x="0" y="0" width="1600" height="70" fill="#111520"/>
+  <line x1="0" y1="70" x2="1600" y2="70" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="52" y="43" fill="#3563E9" font-size="16" font-weight="800" font-family="Bricolage Grotesque" text-anchor="start">UNIFY</text>
+  <line x1="112" y1="22" x2="112" y2="50" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="124" y="43" fill="#8B92AB" font-size="10" font-weight="400" font-family="Instrument Sans" text-anchor="start">Mobile App</text>
+  <text x="1548" y="43" fill="#8B92AB" font-size="12" font-weight="700" font-family="Bricolage Grotesque" text-anchor="end">06 — iOS App Screens</text>
+  <rect x="0" y="1065" width="1600" height="2" fill="#3563E9" opacity="0.4"/>
+</g>
+  <defs><filter id="pshadow"><feGaussianBlur in="SourceGraphic" stdDeviation="10"/></filter></defs>
+<g id="Phone-01-Chat-List">
+  <rect x="128" y="350" width="178" height="378" rx="22" fill="#000" opacity="0.35" filter="url(#pshadow)"/>
+  <rect x="120" y="334" width="178" height="378" fill="#111520" rx="22" stroke="#3563E945" stroke-width="1.5"/>
+  <rect x="187.0" y="334" width="44" height="11" fill="#07090E" rx="5"/>
+  <text x="134" y="356" fill="#5A607A" font-size="8" font-weight="500" font-family="Instrument Sans" text-anchor="start">9:41</text>
+  <text x="284" y="356" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="end">▪▪ ⚡</text>
+  <text x="134" y="386" fill="#E8EAF0" font-size="15" font-weight="800" font-family="Bricolage Grotesque" text-anchor="start">Messages</text>
+  <rect x="126" y="397" width="166" height="52" fill="rgba(53,99,233,0.14)" rx="8"/>
+  <defs><linearGradient id="cav00" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7B3FF5"/><stop offset="1" stop-color="#3563E9"/></linearGradient></defs>
+  <circle cx="147" cy="422" r="15" fill="url(#cav00)"/>
+  <text x="147" y="426" fill="#FFFFFF" font-size="7" font-weight="700" font-family="Instrument Sans" text-anchor="middle">SL</text>
+  <text x="168" y="417" fill="#E8EAF0" font-size="9" font-weight="600" font-family="Instrument Sans" text-anchor="start">Steven Lee</text>
+  <text x="288" y="417" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="end">5m</text>
+  <text x="168" y="431" fill="#5A607A" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="start">Hey, ready?</text>
+  <circle cx="282" cy="427" r="8" fill="#3563E9"/>
+  <text x="282" y="430" fill="#FFFFFF" font-size="6" font-weight="700" font-family="Instrument Sans" text-anchor="middle">2</text>
+  <defs><linearGradient id="cav01" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F97316"/><stop offset="1" stop-color="#EF4444"/></linearGradient></defs>
+  <circle cx="147" cy="480" r="15" fill="url(#cav01)"/>
+  <text x="147" y="484" fill="#FFFFFF" font-size="7" font-weight="700" font-family="Instrument Sans" text-anchor="middle">NM</text>
+  <text x="168" y="475" fill="#E8EAF0" font-size="9" font-weight="600" font-family="Instrument Sans" text-anchor="start">Nawfal M.</text>
+  <text x="288" y="475" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="end">5m</text>
+  <text x="168" y="489" fill="#5A607A" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="start">Thanks, let me…</text>
+  <defs><linearGradient id="cav02" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3563E9"/><stop offset="1" stop-color="#2952CC"/></linearGradient></defs>
+  <circle cx="147" cy="538" r="15" fill="url(#cav02)"/>
+  <text x="147" y="542" fill="#FFFFFF" font-size="7" font-weight="700" font-family="Instrument Sans" text-anchor="middle">B</text>
+  <text x="168" y="533" fill="#E8EAF0" font-size="9" font-weight="600" font-family="Instrument Sans" text-anchor="start">Bress Chat</text>
+  <text x="288" y="533" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="end">5m</text>
+  <text x="168" y="547" fill="#5A607A" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="start">Andrew: Shall…</text>
+  <circle cx="282" cy="543" r="8" fill="#3563E9"/>
+  <text x="282" y="546" fill="#FFFFFF" font-size="6" font-weight="700" font-family="Instrument Sans" text-anchor="middle">6</text>
+  <rect x="120" y="668" width="178" height="44" fill="#111520"/>
+  <line x1="120" y1="668" x2="298" y2="668" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="130" y="672" width="39" height="36" fill="rgba(53,99,233,0.14)" rx="7"/>
+  <text x="149.5" y="686" fill="#3563E9" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">💬</text>
+  <text x="149.5" y="698" fill="#3563E9" font-size="6" font-weight="600" font-family="Instrument Sans" text-anchor="middle">Chat</text>
+  <text x="188.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">✉</text>
+  <text x="188.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Email</text>
+  <text x="228.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">🔔</text>
+  <text x="228.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Remind</text>
+  <text x="267.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">👥</text>
+  <text x="267.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">People</text>
+  <text x="209.0" y="738" fill="#8B92AB" font-size="10" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Chat List</text>
+</g>
+<g id="Phone-02-Active-Chat">
+  <rect x="326" y="350" width="178" height="378" rx="22" fill="#000" opacity="0.35" filter="url(#pshadow)"/>
+  <rect x="318" y="334" width="178" height="378" fill="#111520" rx="22" stroke="#3563E945" stroke-width="1.5"/>
+  <rect x="385.0" y="334" width="44" height="11" fill="#07090E" rx="5"/>
+  <text x="332" y="356" fill="#5A607A" font-size="8" font-weight="500" font-family="Instrument Sans" text-anchor="start">9:41</text>
+  <text x="482" y="356" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="end">▪▪ ⚡</text>
+  <text x="332" y="386" fill="#E8EAF0" font-size="15" font-weight="800" font-family="Bricolage Grotesque" text-anchor="start">Messages</text>
+  <defs><linearGradient id="mav10" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7B3FF5"/><stop offset="1" stop-color="#3563E9"/></linearGradient></defs>
+  <circle cx="340" cy="418" r="11" fill="url(#mav10)"/>
+  <rect x="356" y="400" width="120" height="34" fill="#141826" rx="10" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="368" y="421" fill="#E8EAF0" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="start">Ready for 2pm?</text>
+  <rect x="366" y="472" width="120" height="36" fill="#3563E930" rx="10" stroke="#3563E950" stroke-width="1"/>
+  <text x="426" y="494" fill="#E8EAF0" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Yes, forwarded brief ↗</text>
+  <rect x="328" y="544" width="80" height="28" fill="#141826" rx="9" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <circle cx="342" cy="558" r="4" fill="#3563E9"/>
+  <circle cx="358" cy="558" r="4" fill="#3563E9"/>
+  <circle cx="374" cy="558" r="4" fill="#3563E9"/>
+  <rect x="328" y="574" width="158" height="48" fill="#3563E912" rx="8" stroke="#3563E930" stroke-width="1"/>
+  <rect x="328" y="574" width="3" height="48" fill="#3563E9"/>
+  <text x="338" y="590" fill="#3563E9" font-size="7" font-weight="600" font-family="Instrument Sans" text-anchor="start">📧 From Email</text>
+  <text x="338" y="604" fill="#E8EAF0" font-size="8" font-weight="600" font-family="Instrument Sans" text-anchor="start">RE: Design Proposal v3</text>
+  <text x="338" y="616" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="start">This looks brilliant!</text>
+  <rect x="318" y="668" width="178" height="44" fill="#111520"/>
+  <line x1="318" y1="668" x2="496" y2="668" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="328" y="672" width="39" height="36" fill="rgba(53,99,233,0.14)" rx="7"/>
+  <text x="347.5" y="686" fill="#3563E9" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">💬</text>
+  <text x="347.5" y="698" fill="#3563E9" font-size="6" font-weight="600" font-family="Instrument Sans" text-anchor="middle">Chat</text>
+  <text x="386.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">✉</text>
+  <text x="386.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Email</text>
+  <text x="426.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">🔔</text>
+  <text x="426.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Remind</text>
+  <text x="465.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">👥</text>
+  <text x="465.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">People</text>
+  <text x="407.0" y="738" fill="#8B92AB" font-size="10" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Active Chat</text>
+</g>
+<g id="Phone-03-Email-Inbox">
+  <rect x="524" y="350" width="178" height="378" rx="22" fill="#000" opacity="0.35" filter="url(#pshadow)"/>
+  <rect x="516" y="334" width="178" height="378" fill="#111520" rx="22" stroke="#3563E945" stroke-width="1.5"/>
+  <rect x="583.0" y="334" width="44" height="11" fill="#07090E" rx="5"/>
+  <text x="530" y="356" fill="#5A607A" font-size="8" font-weight="500" font-family="Instrument Sans" text-anchor="start">9:41</text>
+  <text x="680" y="356" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="end">▪▪ ⚡</text>
+  <text x="530" y="386" fill="#E8EAF0" font-size="15" font-weight="800" font-family="Bricolage Grotesque" text-anchor="start">Inbox</text>
+  <circle cx="528" cy="428" r="4" fill="#3563E9"/>
+  <defs><linearGradient id="eav220" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3563E9"/><stop offset="1" stop-color="#7B3FF5"/></linearGradient></defs>
+  <circle cx="544" cy="428" r="13" fill="url(#eav220)"/>
+  <text x="544" y="432" fill="#FFFFFF" font-size="6" font-weight="700" font-family="Instrument Sans" text-anchor="middle">SL</text>
+  <text x="562" y="422" fill="#E8EAF0" font-size="9" font-weight="600" font-family="Instrument Sans" text-anchor="start">Steven Lee</text>
+  <text x="562" y="435" fill="#E8EAF088" font-size="8" font-weight="500" font-family="Instrument Sans" text-anchor="start">RE: Design Proposal v3</text>
+  <line x1="526" y1="456" x2="684" y2="456" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <circle cx="528" cy="496" r="4" fill="#3563E9"/>
+  <defs><linearGradient id="eav221" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#EC4899"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs>
+  <circle cx="544" cy="496" r="13" fill="url(#eav221)"/>
+  <text x="544" y="500" fill="#FFFFFF" font-size="6" font-weight="700" font-family="Instrument Sans" text-anchor="middle">AS</text>
+  <text x="562" y="490" fill="#E8EAF0" font-size="9" font-weight="600" font-family="Instrument Sans" text-anchor="start">Andrew Soh</text>
+  <text x="562" y="503" fill="#E8EAF088" font-size="8" font-weight="500" font-family="Instrument Sans" text-anchor="start">Q4 Roadmap Review</text>
+  <line x1="526" y1="524" x2="684" y2="524" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <defs><linearGradient id="eav222" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#10B981"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs>
+  <circle cx="544" cy="564" r="13" fill="url(#eav222)"/>
+  <text x="544" y="568" fill="#FFFFFF" font-size="6" font-weight="700" font-family="Instrument Sans" text-anchor="middle">KS</text>
+  <text x="562" y="558" fill="#E8EAF0" font-size="9" font-weight="600" font-family="Instrument Sans" text-anchor="start">Kelly Seow</text>
+  <text x="562" y="571" fill="#E8EAF088" font-size="8" font-weight="500" font-family="Instrument Sans" text-anchor="start">Brand Assets — Final</text>
+  <line x1="526" y1="592" x2="684" y2="592" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="526" y="622" width="158" height="32" fill="#3563E9" rx="8"/>
+  <text x="607.8988764044943" y="642" fill="#FFFFFF" font-size="9" font-weight="700" font-family="Instrument Sans" text-anchor="middle">+ Compose</text>
+  <rect x="516" y="668" width="178" height="44" fill="#111520"/>
+  <line x1="516" y1="668" x2="694" y2="668" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="545.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">💬</text>
+  <text x="545.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Chat</text>
+  <rect x="565" y="672" width="39" height="36" fill="rgba(53,99,233,0.14)" rx="7"/>
+  <text x="584.5" y="686" fill="#3563E9" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">✉</text>
+  <text x="584.5" y="698" fill="#3563E9" font-size="6" font-weight="600" font-family="Instrument Sans" text-anchor="middle">Email</text>
+  <text x="624.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">🔔</text>
+  <text x="624.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Remind</text>
+  <text x="663.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">👥</text>
+  <text x="663.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">People</text>
+  <text x="605.0" y="738" fill="#8B92AB" font-size="10" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Email Inbox</text>
+</g>
+<g id="Phone-04-Reminders">
+  <rect x="722" y="350" width="178" height="378" rx="22" fill="#000" opacity="0.35" filter="url(#pshadow)"/>
+  <rect x="714" y="334" width="178" height="378" fill="#111520" rx="22" stroke="#3563E945" stroke-width="1.5"/>
+  <rect x="781.0" y="334" width="44" height="11" fill="#07090E" rx="5"/>
+  <text x="728" y="356" fill="#5A607A" font-size="8" font-weight="500" font-family="Instrument Sans" text-anchor="start">9:41</text>
+  <text x="878" y="356" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="end">▪▪ ⚡</text>
+  <text x="728" y="386" fill="#E8EAF0" font-size="15" font-weight="800" font-family="Bricolage Grotesque" text-anchor="start">Reminders</text>
+  <circle cx="734" cy="424" r="7" fill="#22C55E"/>
+  <text x="748" y="420" fill="#5A607A" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="start">Review brand assets</text>
+  <text x="748" y="432" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="start">9:00 AM</text>
+  <rect x="783" y="424" width="61.5" height="14" fill="rgba(53,99,233,0.14)" rx="3"/>
+  <text x="813.75" y="434" fill="#3563E9" font-size="6" font-weight="500" font-family="Instrument Sans" text-anchor="middle">From Chat</text>
+  <rect x="720" y="460" width="166" height="56" fill="rgba(53,99,233,0.14)" rx="8"/>
+  <circle cx="734" cy="486" r="7" fill="none" stroke="#3563E9" stroke-width="1.5"/>
+  <text x="748" y="482" fill="#E8EAF0" font-size="8" font-weight="600" font-family="Instrument Sans" text-anchor="start">Client call — Ana</text>
+  <text x="748" y="494" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="start">9:45 AM</text>
+  <rect x="783" y="486" width="61.5" height="14" fill="rgba(53,99,233,0.14)" rx="3"/>
+  <text x="813.75" y="496" fill="#3563E9" font-size="6" font-weight="500" font-family="Instrument Sans" text-anchor="middle">From Chat</text>
+  <circle cx="734" cy="548" r="7" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <text x="748" y="544" fill="#E8EAF0" font-size="8" font-weight="600" font-family="Instrument Sans" text-anchor="start">Submit revisions</text>
+  <text x="748" y="556" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="start">2:00 PM</text>
+  <rect x="783" y="548" width="56.0" height="14" fill="#F59E0B20" rx="3"/>
+  <text x="811.0" y="558" fill="#F59E0B" font-size="6" font-weight="500" font-family="Instrument Sans" text-anchor="middle">Due Soon</text>
+  <circle cx="734" cy="610" r="7" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <text x="748" y="606" fill="#E8EAF0" font-size="8" font-weight="600" font-family="Instrument Sans" text-anchor="start">Pre-meeting prep</text>
+  <text x="748" y="618" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="start">1:45 PM</text>
+  <rect x="783" y="610" width="61.5" height="14" fill="rgba(53,99,233,0.14)" rx="3"/>
+  <text x="813.75" y="620" fill="#3563E9" font-size="6" font-weight="500" font-family="Instrument Sans" text-anchor="middle">From Chat</text>
+  <rect x="714" y="668" width="178" height="44" fill="#111520"/>
+  <line x1="714" y1="668" x2="892" y2="668" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="743.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">💬</text>
+  <text x="743.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Chat</text>
+  <text x="782.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">✉</text>
+  <text x="782.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Email</text>
+  <rect x="803" y="672" width="39" height="36" fill="rgba(53,99,233,0.14)" rx="7"/>
+  <text x="822.5" y="686" fill="#3563E9" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">🔔</text>
+  <text x="822.5" y="698" fill="#3563E9" font-size="6" font-weight="600" font-family="Instrument Sans" text-anchor="middle">Remind</text>
+  <text x="861.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">👥</text>
+  <text x="861.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">People</text>
+  <text x="803.0" y="738" fill="#8B92AB" font-size="10" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Reminders</text>
+</g>
+<g id="Phone-05-People">
+  <rect x="920" y="350" width="178" height="378" rx="22" fill="#000" opacity="0.35" filter="url(#pshadow)"/>
+  <rect x="912" y="334" width="178" height="378" fill="#111520" rx="22" stroke="#3563E945" stroke-width="1.5"/>
+  <rect x="979.0" y="334" width="44" height="11" fill="#07090E" rx="5"/>
+  <text x="926" y="356" fill="#5A607A" font-size="8" font-weight="500" font-family="Instrument Sans" text-anchor="start">9:41</text>
+  <text x="1076" y="356" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="end">▪▪ ⚡</text>
+  <text x="926" y="386" fill="#E8EAF0" font-size="15" font-weight="800" font-family="Bricolage Grotesque" text-anchor="start">People</text>
+  <rect x="922" y="394" width="158" height="28" fill="#141826" rx="7" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="940" y="412" fill="#5A607A" font-size="9" font-weight="400" font-family="Instrument Sans" text-anchor="start">🔍  Search…</text>
+  <rect x="918" y="428" width="166" height="50" fill="rgba(53,99,233,0.14)" rx="8"/>
+  <defs><linearGradient id="pav240" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3563E9"/><stop offset="1" stop-color="#7B3FF5"/></linearGradient></defs>
+  <rect x="926" y="436" width="28" height="28" fill="url(#pav240)" rx="7"/>
+  <circle cx="948" cy="456" r="4" fill="#22C55E" stroke="#111520" stroke-width="1.5"/>
+  <text x="940" y="454" fill="#FFFFFF" font-size="7" font-weight="700" font-family="Instrument Sans" text-anchor="middle">SL</text>
+  <text x="960" y="448" fill="#E8EAF0" font-size="9" font-weight="600" font-family="Instrument Sans" text-anchor="start">Steven Lee</text>
+  <text x="960" y="460" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="start">Product Lead</text>
+  <rect x="1042" y="440" width="20" height="20" fill="rgba(53,99,233,0.14)" rx="5" stroke="rgba(53,99,233,0.28)" stroke-width="1"/>
+  <text x="1052" y="453" fill="#3563E9" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="middle">💬</text>
+  <rect x="1066" y="440" width="20" height="20" fill="rgba(53,99,233,0.14)" rx="5" stroke="rgba(53,99,233,0.28)" stroke-width="1"/>
+  <text x="1076" y="453" fill="#3563E9" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="middle">✉</text>
+  <line x1="922" y1="478" x2="1080" y2="478" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <defs><linearGradient id="pav241" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F97316"/><stop offset="1" stop-color="#EF4444"/></linearGradient></defs>
+  <rect x="926" y="490" width="28" height="28" fill="url(#pav241)" rx="7"/>
+  <circle cx="948" cy="510" r="4" fill="#F59E0B" stroke="#111520" stroke-width="1.5"/>
+  <text x="940" y="508" fill="#FFFFFF" font-size="7" font-weight="700" font-family="Instrument Sans" text-anchor="middle">NM</text>
+  <text x="960" y="502" fill="#E8EAF0" font-size="9" font-weight="600" font-family="Instrument Sans" text-anchor="start">Nawfal Muhammad</text>
+  <text x="960" y="514" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="start">Senior Designer</text>
+  <rect x="1042" y="494" width="20" height="20" fill="rgba(53,99,233,0.14)" rx="5" stroke="rgba(53,99,233,0.28)" stroke-width="1"/>
+  <text x="1052" y="507" fill="#3563E9" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="middle">💬</text>
+  <rect x="1066" y="494" width="20" height="20" fill="rgba(53,99,233,0.14)" rx="5" stroke="rgba(53,99,233,0.28)" stroke-width="1"/>
+  <text x="1076" y="507" fill="#3563E9" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="middle">✉</text>
+  <line x1="922" y1="532" x2="1080" y2="532" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <defs><linearGradient id="pav242" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#10B981"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs>
+  <rect x="926" y="544" width="28" height="28" fill="url(#pav242)" rx="7"/>
+  <circle cx="948" cy="564" r="4" fill="#22C55E" stroke="#111520" stroke-width="1.5"/>
+  <text x="940" y="562" fill="#FFFFFF" font-size="7" font-weight="700" font-family="Instrument Sans" text-anchor="middle">KS</text>
+  <text x="960" y="556" fill="#E8EAF0" font-size="9" font-weight="600" font-family="Instrument Sans" text-anchor="start">Kelly Seow</text>
+  <text x="960" y="568" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="start">Brand Designer</text>
+  <rect x="1042" y="548" width="20" height="20" fill="rgba(53,99,233,0.14)" rx="5" stroke="rgba(53,99,233,0.28)" stroke-width="1"/>
+  <text x="1052" y="561" fill="#3563E9" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="middle">💬</text>
+  <rect x="1066" y="548" width="20" height="20" fill="rgba(53,99,233,0.14)" rx="5" stroke="rgba(53,99,233,0.28)" stroke-width="1"/>
+  <text x="1076" y="561" fill="#3563E9" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="middle">✉</text>
+  <line x1="922" y1="586" x2="1080" y2="586" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <defs><linearGradient id="pav243" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#EC4899"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs>
+  <rect x="926" y="598" width="28" height="28" fill="url(#pav243)" rx="7"/>
+  <circle cx="948" cy="618" r="4" fill="#5A607A" stroke="#111520" stroke-width="1.5"/>
+  <text x="940" y="616" fill="#FFFFFF" font-size="7" font-weight="700" font-family="Instrument Sans" text-anchor="middle">AS</text>
+  <text x="960" y="610" fill="#E8EAF0" font-size="9" font-weight="600" font-family="Instrument Sans" text-anchor="start">Andrew Soh</text>
+  <text x="960" y="622" fill="#5A607A" font-size="7" font-weight="400" font-family="Instrument Sans" text-anchor="start">CEO</text>
+  <rect x="1042" y="602" width="20" height="20" fill="rgba(53,99,233,0.14)" rx="5" stroke="rgba(53,99,233,0.28)" stroke-width="1"/>
+  <text x="1052" y="615" fill="#3563E9" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="middle">💬</text>
+  <rect x="1066" y="602" width="20" height="20" fill="rgba(53,99,233,0.14)" rx="5" stroke="rgba(53,99,233,0.28)" stroke-width="1"/>
+  <text x="1076" y="615" fill="#3563E9" font-size="8" font-weight="400" font-family="Instrument Sans" text-anchor="middle">✉</text>
+  <line x1="922" y1="640" x2="1080" y2="640" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="912" y="668" width="178" height="44" fill="#111520"/>
+  <line x1="912" y1="668" x2="1090" y2="668" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="941.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">💬</text>
+  <text x="941.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Chat</text>
+  <text x="980.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">✉</text>
+  <text x="980.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Email</text>
+  <text x="1020.5" y="686" fill="#5A607A" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">🔔</text>
+  <text x="1020.5" y="698" fill="#5A607A" font-size="6" font-weight="400" font-family="Instrument Sans" text-anchor="middle">Remind</text>
+  <rect x="1040" y="672" width="39" height="36" fill="rgba(53,99,233,0.14)" rx="7"/>
+  <text x="1059.5" y="686" fill="#3563E9" font-size="11" font-weight="400" font-family="Instrument Sans" text-anchor="middle">👥</text>
+  <text x="1059.5" y="698" fill="#3563E9" font-size="6" font-weight="600" font-family="Instrument Sans" text-anchor="middle">People</text>
+  <text x="1001.0" y="738" fill="#8B92AB" font-size="10" font-weight="400" font-family="Instrument Sans" text-anchor="middle">People</text>
+</g>
+</svg>

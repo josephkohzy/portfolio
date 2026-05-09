@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My 10 — UX/UI Case Study · Jokoh Portfolio</title>
+    <meta name="description" content="My 10 — a UX/UI case study by Joseph Koh.">
+    <meta property="og:title" content="My 10 — Jokoh Portfolio">
+    <meta property="og:description" content="UX/UI case study by Joseph Koh, Singapore.">
+    <!-- ⚠️ Upload og-preview.jpg to assets/images/ in your repo or social previews will be broken -->
+    <meta property="og:image" content="https://josephkohzy.github.io/portfolio/assets/images/og-preview.jpg">
+    <meta property="og:url" content="https://josephkohzy.github.io/portfolio/my10-project-detail.html">
+    <meta property="og:type" content="website">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+/* ─────────────────────────────────────────────────────────────
+   BASE
+───────────────────────────────────────────────────────────── */
+body { background: #0a0a0a; }
+
+/* ─────────────────────────────────────────────────────────────
+   HERO SECTION  (standardised — matches project-detail-improved)
+───────────────────────────────────────────────────────────── */
+.section-hero {
+  padding-top: 20px;
+  position: relative;
+  z-index: 2;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.hero-container {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 64px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(255,107,53,0.25);
+  cursor: default;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  min-height: 520px;
+  max-height: 680px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+.hero-image-wrapper:hover .hero-image { transform: scale(1.05); }
+
+/* Permanent bottom scrim */
+.hero-image-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10,10,10,0.85) 0%,
+    rgba(10,10,10,0.30) 40%,
+    rgba(10,10,10,0.04) 70%,
+    transparent 100%
+  );
+  transition: background 0.55s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-image-wrapper:hover::before {
+  background: linear-gradient(
+    to top,
+    rgba(10,10,10,0.93) 0%,
+    rgba(10,10,10,0.78) 50%,
+    rgba(10,10,10,0.30) 80%,
+    rgba(10,10,10,0.04) 100%
+  );
+}
+
+/* Overlay — title always dimly visible, meta reveals on hover */
+.hero-text-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 50px 55px 45px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  color: #ff6b35;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 5px 14px;
+  background: rgba(255,107,53,0.18);
+  border-radius: 4px;
+  border: 1px solid rgba(255,107,53,0.35);
+  margin-bottom: 14px;
+  opacity: 0.6;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hero-image-wrapper:hover .hero-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 3.8rem;
+  line-height: 1.05;
+  color: #00ff88;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.6), 0 0 24px rgba(0,255,136,0.2);
+  margin: 0;
+  opacity: 0.55;
+  transition: opacity 0.5s ease, text-shadow 0.5s ease;
+}
+
+.hero-image-wrapper:hover .hero-title {
+  opacity: 1;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.7), 0 0 40px rgba(0,255,136,0.5);
+}
+
+/* Meta row — hidden until hover */
+.hero-meta-grid {
+  display: flex;
+  gap: 50px;
+  margin-top: 24px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease 0.08s, transform 0.45s ease 0.08s;
+}
+
+.hero-image-wrapper:hover .hero-meta-grid {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-meta-item {
+  padding: 12px 0;
+  border-top: 1px solid rgba(255,107,53,0.3);
+  flex: 1;
+}
+
+.hero-meta-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: #ff6b35;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.hero-meta-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e8e8e8;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   DESCRIPTION + VIDEO BLOCK  (standardised)
+───────────────────────────────────────────────────────────── */
+.project-intro-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 60px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.description-section {
+  position: relative;
+  background: rgba(20,20,20,0.7);
+  backdrop-filter: blur(10px);
+  padding: 50px;
+  margin-bottom: 48px;
+  border-radius: 10px;
+  z-index: 1;
+  isolation: isolate;
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes borderSpin { to { --border-angle: 360deg; } }
+
+.description-section::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 12px;
+  background: conic-gradient(
+    from var(--border-angle, 0deg),
+    #ff6b35   0deg,
+    #00ff88   90deg,
+    transparent 180deg,
+    #ff6b35   270deg,
+    #00ff88   360deg
+  );
+  z-index: -2;
+  animation: borderSpin 5s linear infinite;
+}
+
+.description-section::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: rgba(20,20,20,0.95);
+  border-radius: 9px;
+  z-index: -1;
+}
+
+.section-label {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.8rem;
+  color: #00ff88;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.description-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e8e8e8;
+  margin-bottom: 30px;
+}
+
+.deliverables-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+  padding: 0;
+}
+
+.deliverable-item {
+  position: relative;
+  background: rgba(0,255,136,0.06);
+  border: 1px solid rgba(0,255,136,0.2);
+  border-radius: 6px;
+  padding: 14px 18px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  color: #e8e8e8;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+  overflow: hidden;
+}
+
+.deliverable-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(0,255,136,0.12), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  pointer-events: none;
+}
+
+.deliverable-item:hover::after { transform: translateX(100%); }
+.deliverable-item:hover {
+  background: rgba(0,255,136,0.12);
+  border-color: rgba(0,255,136,0.5);
+  transform: translateY(-2px);
+}
+
+/* Video player */
+.video-section { margin-bottom: 48px; position: relative; z-index: 1; }
+
+.video-thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #111;
+  border: 1px solid rgba(255,107,53,0.25);
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.video-thumb-wrap:hover {
+  border-color: rgba(255,107,53,0.6);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  transform: translateY(-4px);
+}
+
+.video-thumb-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+.video-thumb-wrap:hover .video-thumb-bg { transform: scale(1.04); }
+
+.video-thumb-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  transition: background 0.4s;
+}
+
+.video-thumb-wrap:hover .video-thumb-scrim { background: rgba(0,0,0,0.28); }
+
+.video-play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 80px; height: 80px;
+  background: rgba(255,107,53,0.92);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #fff;
+  border: 3px solid rgba(255,255,255,0.4);
+  box-shadow: 0 0 40px rgba(255,107,53,0.5);
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+  z-index: 2;
+}
+
+.video-thumb-wrap:hover .video-play-btn {
+  transform: translate(-50%,-50%) scale(1.18);
+  box-shadow: 0 0 60px rgba(255,107,53,0.7);
+}
+
+.video-hint {
+  position: absolute;
+  bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  z-index: 2;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.video-thumb-wrap:hover .video-hint { color: rgba(255,255,255,0.9); }
+
+/* ── Video modal ── */
+.video-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(5,5,5,0.94);
+  backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+}
+
+.video-modal.open { display: flex; }
+
+.video-modal-inner {
+  position: relative;
+  width: 90%;
+  max-width: 1100px;
+  pointer-events: none;
+}
+
+.video-modal-close {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px; height: 42px;
+  margin-left: auto;
+  margin-bottom: 8px;
+  background: #ff6b35;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  user-select: none;
+}
+
+.video-modal-close:hover { background: #ff8c5a; transform: scale(1.08); }
+
+.video-modal-frame {
+  pointer-events: auto;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border: 3px solid #ff6b35;
+  box-shadow: 6px 6px 0 #00ff88;
+  background: #000;
+}
+
+.video-modal-frame iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CASE STUDY IMAGE BOARDS
+───────────────────────────────────────────────────────────── */
+.case-study-wrapper {
+  width: 100%;
+}
+
+.section-placeholder {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,107,53,0.08);
+  transition: border-color 0.3s;
+}
+
+.section-placeholder:hover {
+  border-color: rgba(255,107,53,0.25);
+}
+
+/* Images are 6000×4001 — render at full container width */
+.section-placeholder img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Preserve sharpness on high-res displays */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Empty state — JS controlled */
+.placeholder-empty {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  /* Height matches the 6000×4001 aspect ratio so layout doesn't jump when image loads */
+  aspect-ratio: 6000 / 4001;
+  background: #0e0e0e;
+  padding: 48px;
+}
+
+.placeholder-empty-icon {
+  width: 52px; height: 52px;
+  border: 2px solid rgba(255,107,53,0.2);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,107,53,0.3);
+  font-size: 1.4rem;
+}
+
+.placeholder-empty-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: rgba(255,107,53,0.35);
+  text-transform: uppercase;
+}
+
+.placeholder-empty-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.4rem;
+  color: rgba(232,232,232,0.25);
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.placeholder-empty-hint {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  color: rgba(138,149,165,0.3);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* Section label on hover (bottom-left) */
+.placeholder-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 24px 28px 20px;
+  background: linear-gradient(to top, rgba(10,10,10,0.88) 0%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.section-placeholder:hover .placeholder-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.placeholder-label-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  color: #ff6b35;
+  padding: 3px 10px;
+  border: 1px solid rgba(255,107,53,0.35);
+  border-radius: 3px;
+  background: rgba(255,107,53,0.1);
+  white-space: nowrap;
+}
+
+.placeholder-label-name {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1rem;
+  color: #00ff88;
+  text-transform: uppercase;
+  letter-spacing: -0.3px;
+}
+
+/* ── Back to top button (fixed, bottom-right) ── */
+.back-to-top {
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  z-index: 9000;
+  width: 48px; height: 48px;
+  background: rgba(10,10,10,0.9);
+  border: 1px solid rgba(255,107,53,0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff6b35;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s, transform 0.3s, border-color 0.2s, background 0.2s;
+  backdrop-filter: blur(8px);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: rgba(255,107,53,0.12);
+  border-color: #ff6b35;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FOOTER AREA (prev/next + copyright)
+───────────────────────────────────────────────────────────── */
+.footer-area {
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255,107,53,0.1);
+  padding: 56px 60px 0;
+}
+
+.proj-nav-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: rgba(255,107,53,0.4);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.proj-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.proj-nav-link {
+  position: relative;
+  padding: 30px 34px;
+  background: rgba(18,18,18,0.7);
+  border: 2px solid rgba(255,107,53,0.22);
+  border-radius: 8px;
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.proj-nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,255,136,0.06), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.proj-nav-link:hover::before { left: 100%; }
+
+.proj-nav-link:hover {
+  border-color: #00ff88;
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.45);
+}
+
+.proj-nav-direction {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(138,149,165,0.65);
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.proj-nav-arrow { color: #ff6b35; }
+
+.proj-nav-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.35rem;
+  color: #00ff88;
+  text-transform: uppercase;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+.page-footer {
+  margin-top: 56px;
+  border-top: 1px solid rgba(255,107,53,0.06);
+  padding: 36px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.page-footer p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.76rem;
+  color: rgba(138,149,165,0.4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TOP PROJECT NAV BAR  (same style as bottom, scaled down)
+───────────────────────────────────────────────────────────── */
+.proj-nav-top-bar {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 100px 60px 0;
+}
+
+.proj-nav-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.proj-nav-top-link {
+  position: relative;
+  padding: 18px 24px;
+  background: rgba(18,18,18,0.7);
+  border: 2px solid rgba(255,107,53,0.22);
+  border-radius: 8px;
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.proj-nav-top-link::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,255,136,0.06), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.proj-nav-top-link:hover::before { left: 100%; }
+
+.proj-nav-top-link:hover {
+  border-color: #00ff88;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+}
+
+.proj-nav-top-direction {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(138,149,165,0.65);
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.proj-nav-top-arrow { color: #ff6b35; }
+
+.proj-nav-top-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 0.9rem;
+  color: #00ff88;
+  text-transform: uppercase;
+  line-height: 1.15;
+  letter-spacing: -0.3px;
+}
+
+@media (max-width: 720px) {
+  .proj-nav-top-bar { padding: 90px 24px 0; }
+  .proj-nav-top-grid { grid-template-columns: 1fr; gap: 12px; }
+}
+
+
+@media (max-width: 900px) {
+  .hero-container { padding-left: 30px; padding-right: 30px; }
+  .hero-title { font-size: 2.4rem; }
+  .hero-text-overlay { padding: 30px 30px 30px; }
+  .project-intro-content { padding: 40px 30px 0; }
+  .description-section { padding: 35px; }
+  .deliverables-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .hero-title { font-size: 2rem; }
+  .hero-meta-grid { gap: 18px; flex-wrap: wrap; }
+  .footer-area { padding: 40px 24px 0; }
+  .proj-nav-grid { grid-template-columns: 1fr; }
+  .back-to-top { bottom: 24px; right: 24px; }
+  .deliverables-list { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="concrete-crack"></div>
+
+<!-- ═══════════════════════════════════════════════════
+     PORTFOLIO NAV (identical to every other page)
+═══════════════════════════════════════════════════ -->
+<nav>
+  <!--
+    LOGO IMAGE — Recommended: PNG transparent bg, ~200×60px
+    Directory: assets/images/logo.png
+    Text "JOKOH" shows as fallback if image not found.
+  -->
+  <a href="index.html" class="logo">
+    <img src="assets/images/logo.png"
+         alt="JOKOH"
+         style="height:38px;width:auto;display:block;"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='inline';">
+    <span style="display:none;">JOKOH</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="works.html" class="active">Work</a></li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════
+     TOP PROJECT NAV BAR
+═══════════════════════════════════════════════════ -->
+<div class="proj-nav-top-bar">
+  <div class="proj-nav-top-grid">
+    <a href="project-detail-improved.html?project=fodder-pianist" class="proj-nav-top-link">
+      <div class="proj-nav-top-direction"><span class="proj-nav-top-arrow">← </span>Previous Project</div>
+      <div class="proj-nav-top-title">Fodder Campaign</div>
+    </a>
+    <a href="project-detail-improved.html?project=amelie" class="proj-nav-top-link">
+      <div class="proj-nav-top-direction">Next Project<span class="proj-nav-top-arrow"> →</span></div>
+      <div class="proj-nav-top-title">Touché</div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     INTRO PANEL
+     — Project title + meta
+     — Video player
+     — Section jump nav
+     — Prev / Next project
+═══════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════
+     HERO SECTION — CSS-rendered My10 app UI
+═══════════════════════════════════════════════════ -->
+<style>
+/* ── My10 Hero ──────────────────────────────────── */
+.myio-hero-visual {
+  width:100%; height:580px;
+  background:linear-gradient(160deg,#110800 0%,#1a0e02 45%,#120900 100%);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+@keyframes bgSweep {
+  0%,100%{transform:translate(-20%,-20%) scale(1.2);opacity:.6}
+  50%{transform:translate(20%,20%) scale(1.5);opacity:1}
+}
+.myio-bg-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(70px);}
+.myio-bg-orb-1{width:480px;height:480px;background:radial-gradient(circle,rgba(232,169,74,.16) 0%,transparent 70%);top:-10%;left:5%;animation:bgSweep 12s ease-in-out infinite;}
+.myio-bg-orb-2{width:300px;height:300px;background:radial-gradient(circle,rgba(232,169,74,.08) 0%,transparent 70%);bottom:-5%;right:8%;animation:bgSweep 18s ease-in-out infinite reverse;}
+.myio-bg-orb-3{width:200px;height:200px;background:radial-gradient(circle,rgba(255,160,50,.12) 0%,transparent 70%);top:30%;right:20%;animation:bgSweep 14s ease-in-out 3s infinite;}
+.myio-hero-visual::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(232,169,74,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(232,169,74,.03) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:1;}
+.myio-particle{position:absolute;border-radius:50%;pointer-events:none;z-index:1;background:#e8a94a;}
+@keyframes particleRise{0%{transform:translateY(0) translateX(0) scale(1);opacity:0}10%{opacity:.7}90%{opacity:.4}100%{transform:translateY(-540px) translateX(var(--drift,20px)) scale(.3);opacity:0}}
+.myio-particle:nth-child(1){width:3px;height:3px;left:8%;bottom:0;animation:particleRise 9s 0s infinite linear;--drift:15px}
+.myio-particle:nth-child(2){width:2px;height:2px;left:18%;bottom:0;animation:particleRise 11s 1.5s infinite linear;--drift:-10px}
+.myio-particle:nth-child(3){width:4px;height:4px;left:28%;bottom:0;animation:particleRise 8s 3s infinite linear;--drift:25px}
+.myio-particle:nth-child(4){width:2px;height:2px;left:42%;bottom:0;animation:particleRise 13s .8s infinite linear;--drift:-18px}
+.myio-particle:nth-child(5){width:3px;height:3px;left:55%;bottom:0;animation:particleRise 10s 2.2s infinite linear;--drift:12px}
+.myio-particle:nth-child(6){width:2px;height:2px;left:68%;bottom:0;animation:particleRise 7s 4s infinite linear;--drift:-8px}
+.myio-particle:nth-child(7){width:4px;height:4px;left:78%;bottom:0;animation:particleRise 12s 1s infinite linear;--drift:20px}
+.myio-particle:nth-child(8){width:2px;height:2px;left:88%;bottom:0;animation:particleRise 9s 3.5s infinite linear;--drift:-15px}
+.myio-cluster{position:relative;z-index:3;display:flex;align-items:flex-start;justify-content:center;gap:22px;padding-top:50px;height:510px;transform-style:preserve-3d;transition:transform .12s ease-out;}
+@keyframes phoneSlideIn{0%{transform:translateY(80px) scale(.88);opacity:0}60%{transform:translateY(-8px) scale(1.02);opacity:1}100%{transform:translateY(0) scale(1);opacity:1}}
+.myio-phone{width:200px;height:430px;background:#150a01;border-radius:32px;border:1.5px solid rgba(232,169,74,.18);overflow:hidden;box-shadow:0 32px 64px rgba(0,0,0,.75),0 0 0 .5px rgba(232,169,74,.08),inset 0 1px 0 rgba(232,169,74,.06);display:flex;flex-direction:column;flex-shrink:0;opacity:0;animation:phoneSlideIn .9s cubic-bezier(.34,1.56,.64,1) forwards;}
+.myio-phone:nth-child(1){animation-delay:.15s}
+.myio-phone:nth-child(2){animation-delay:.3s}
+.myio-phone:nth-child(3){animation-delay:.45s}
+@keyframes myioFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes myioGlowPulse{0%,100%{box-shadow:0 32px 64px rgba(0,0,0,.75),0 0 0 .5px rgba(232,169,74,.1),0 0 20px rgba(232,169,74,0)}50%{box-shadow:0 40px 80px rgba(0,0,0,.8),0 0 0 1px rgba(232,169,74,.4),0 0 40px rgba(232,169,74,.15)}}
+.myio-phone-main{animation:phoneSlideIn .9s cubic-bezier(.34,1.56,.64,1) .3s forwards,myioFloat 5s ease-in-out 1.2s infinite,myioGlowPulse 3s ease-in-out 1.2s infinite!important;}
+@keyframes myioSway{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-6px) rotate(.4deg)}66%{transform:translateY(-3px) rotate(-.3deg)}}
+.myio-phone-side-visible{animation:myioSway 6.5s ease-in-out 1.5s infinite!important;opacity:.72!important;}
+@keyframes scanSweep{0%{transform:translateY(-100%);opacity:0}5%{opacity:1}95%{opacity:.6}100%{transform:translateY(500%);opacity:0}}
+.myio-phone-main::after{content:'';position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(232,169,74,.6),transparent);animation:scanSweep 6s ease-in-out 2s infinite;pointer-events:none;z-index:99;}
+.myio-toast{position:absolute;top:70px;right:28px;z-index:10;background:rgba(20,10,2,.96);border:1px solid rgba(232,169,74,.4);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px;box-shadow:0 12px 32px rgba(0,0,0,.5);transform:translateX(120%);opacity:0;transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s ease;pointer-events:none;max-width:200px;}
+.myio-toast.show{transform:translateX(0);opacity:1;}
+.myio-toast-dot{width:8px;height:8px;border-radius:50%;background:#e8a94a;flex-shrink:0;animation:myioDotPulse 1.2s ease-in-out infinite;}
+@keyframes myioDotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.myio-toast-text{font-family:'Space Grotesk',sans-serif;font-size:8.5px;color:#e8a94a;line-height:1.4;}
+.myio-toast-sub{font-family:'Space Grotesk',sans-serif;font-size:7.5px;color:#8a7055;}
+.myio-hero-pill{position:absolute;top:22px;left:50%;transform:translateX(-50%) translateY(-20px);display:flex;align-items:center;gap:8px;padding:5px 16px 5px 8px;background:rgba(232,169,74,.1);border:1px solid rgba(232,169,74,.28);border-radius:100px;z-index:4;white-space:nowrap;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e8a94a;opacity:0;animation:pillEntry .7s ease .6s forwards;}
+@keyframes pillEntry{to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.myio-hero-pill-dot{width:22px;height:22px;background:#e8a94a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Georgia',serif;font-size:11px;font-weight:900;color:#1a0e02;}
+.myio-bar{height:30px;padding:0 14px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:600;color:#c8a87a;}
+.myio-ph-title{padding:2px 14px 8px;flex-shrink:0;font-family:'Georgia',serif;font-size:18px;font-weight:900;color:#fdf6ea;letter-spacing:-.04em;}
+/* Active amber row — static, no shimmer */
+.myio-active-row{background:rgba(232,169,74,.13);border:1px solid rgba(232,169,74,.28);border-radius:8px;}
+.hero-image-wrapper:hover .hero-text-overlay{z-index:10;}
+@media(max-width:900px){.myio-hero-visual{height:400px}.myio-cluster{gap:10px;padding-top:28px;height:370px}.myio-phone{width:120px;height:320px;border-radius:20px}.myio-phone:nth-child(1),.myio-phone:nth-child(3){display:none}.myio-bg-orb{display:none}.myio-toast{display:none}}
+
+        /* ── MY10 PHONE SCREEN MICRO-COMPONENTS ── */
+
+        /* --- shared phone-screen typography --- */
+        .m10-bar{height:28px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:600;color:#c8a878;}
+        .m10-notch{width:66px;height:14px;background:#110900;border-radius:0 0 10px 10px;position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:10;}
+
+        /* --- Login Screen --- */
+        .m10-login{padding:2rem 1.1rem 1.2rem;display:flex;flex-direction:column;align-items:center;gap:.55rem;flex:1;background:radial-gradient(ellipse 70% 55% at 50% 25%,rgba(232,169,74,.07),transparent 70%);}
+        .m10-login-logo-wrap{display:flex;align-items:center;justify-content:center;width:100%;margin-bottom:.1rem;}
+        .m10-login-logo-img{max-width:120px;max-height:48px;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 0 8px rgba(232,169,74,.3));}
+        .m10-login-logo{font-family:'Georgia',serif;font-size:2.6rem;font-weight:900;color:#e8a94a;letter-spacing:-.04em;line-height:1;text-align:center;margin-bottom:.1rem;}
+        .m10-login-logo span{-webkit-text-stroke:1.5px #e8a94a;color:transparent;}
+        .m10-login-welcome{font-family:'Space Grotesk',sans-serif;font-size:7px;letter-spacing:.25em;text-transform:uppercase;color:rgba(232,169,74,.5);margin-bottom:.1rem;}
+        .m10-login-tagline{font-family:'Georgia',serif;font-style:italic;font-size:8px;color:rgba(255,235,200,.3);margin-bottom:.7rem;}
+        .m10-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(232,169,74,.18);border-radius:8px;padding:.5rem .7rem;font-family:'Space Grotesk',sans-serif;font-size:8.5px;color:rgba(255,235,200,.45);}
+        .m10-input-forgot{align-self:flex-end;font-family:'Space Grotesk',sans-serif;font-size:7px;color:rgba(232,169,74,.55);}
+        .m10-btn-primary{width:100%;background:#e8a94a;color:#1a0d02;border-radius:10px;padding:.55rem;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;text-align:center;margin-top:.2rem;}
+        .m10-divider{display:flex;align-items:center;gap:.5rem;width:100%;font-family:'Space Grotesk',sans-serif;font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,168,120,.35);}
+        .m10-divider::before,.m10-divider::after{content:'';flex:1;height:1px;background:rgba(232,169,74,.12);}
+        .m10-btn-google{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.52rem;font-family:'Space Grotesk',sans-serif;font-size:9px;color:rgba(255,235,200,.6);text-align:center;}
+        .m10-login-footer{font-family:'Space Grotesk',sans-serif;font-size:7px;color:rgba(200,168,120,.4);text-align:center;margin-top:.2rem;}
+        .m10-login-footer span{color:#e8a94a;}
+
+        /* --- Home Dashboard --- */
+        .m10-home-header{padding:.5rem 1.1rem .4rem;display:flex;align-items:center;justify-content:space-between;}
+        .m10-home-greeting{font-family:'Space Grotesk',sans-serif;font-size:8px;color:rgba(200,168,120,.5);}
+        .m10-home-name{font-family:'Georgia',serif;font-size:14px;font-weight:900;color:#fdf6ea;letter-spacing:-.02em;}
+        .m10-search-icon{width:26px;height:26px;border-radius:50%;background:rgba(232,169,74,.12);border:1px solid rgba(232,169,74,.2);display:flex;align-items:center;justify-content:center;font-size:12px;color:#e8a94a;}
+        .m10-feature-card{margin:.3rem .9rem;background:linear-gradient(135deg,rgba(232,169,74,.18),rgba(232,169,74,.08));border:1px solid rgba(232,169,74,.35);border-radius:12px;padding:.65rem .9rem;}
+        .m10-feature-title{font-family:'Georgia',serif;font-size:13px;font-weight:900;color:#fdf6ea;margin-bottom:.15rem;}
+        .m10-feature-sub{font-family:'Space Grotesk',sans-serif;font-size:7.5px;color:rgba(200,168,120,.6);}
+        .m10-section-row{padding:.4rem 1.1rem .2rem;display:flex;align-items:center;justify-content:space-between;}
+        .m10-section-label{font-family:'Space Grotesk',sans-serif;font-size:7.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,168,120,.5);}
+        .m10-toggle{width:26px;height:14px;background:#e8a94a;border-radius:7px;position:relative;}
+        .m10-toggle::after{content:'';position:absolute;right:2px;top:2px;width:10px;height:10px;background:#1a0d02;border-radius:50%;}
+        .m10-list-row{display:flex;align-items:center;gap:.55rem;padding:.5rem .9rem;border-bottom:1px solid rgba(255,255,255,.04);}
+        .m10-list-row.active{background:rgba(232,169,74,.12);border:1px solid rgba(232,169,74,.28);border-radius:10px;margin:.15rem .6rem;padding:.5rem .7rem;}
+        .m10-list-rank{font-family:'Georgia',serif;font-size:13px;font-weight:900;color:rgba(232,169,74,.35);min-width:14px;}
+        .m10-list-rank.active{color:#e8a94a;}
+        .m10-list-thumb{width:28px;height:28px;border-radius:7px;flex-shrink:0;}
+        .m10-list-info .m10-list-title{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:600;color:#fdf6ea;}
+        .m10-list-info .m10-list-sub{font-family:'Space Grotesk',sans-serif;font-size:7.5px;color:rgba(200,168,120,.5);}
+        .m10-fab{position:absolute;bottom:52px;right:16px;width:34px;height:34px;background:#e8a94a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:300;color:#1a0d02;box-shadow:0 6px 18px rgba(232,169,74,.4);}
+        .m10-bottom-nav{margin-top:auto;display:flex;justify-content:space-around;align-items:center;padding:.55rem .5rem .8rem;border-top:1px solid rgba(232,169,74,.1);}
+        .m10-nav-dot{width:28px;height:28px;border-radius:50%;background:rgba(232,169,74,.12);display:flex;align-items:center;justify-content:center;}
+        .m10-nav-dot.active{background:#e8a94a;}
+
+        /* --- List View --- */
+        .m10-list-header{padding:.5rem 1.1rem .4rem;border-bottom:1px solid rgba(232,169,74,.1);}
+        .m10-list-header-back{font-family:'Space Grotesk',sans-serif;font-size:7.5px;color:#e8a94a;margin-bottom:.2rem;}
+        .m10-list-header-title{font-family:'Georgia',serif;font-size:14px;font-weight:900;color:#fdf6ea;}
+        .m10-lv-row{display:flex;align-items:center;gap:.5rem;padding:.4rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.04);}
+        .m10-lv-num{font-family:'Georgia',serif;font-size:13px;font-weight:900;min-width:16px;}
+        .m10-lv-num.n1{color:#e8a94a;}
+        .m10-lv-num.n2,.m10-lv-num.n3{color:rgba(232,169,74,.7);}
+        .m10-lv-num.nrest{color:rgba(232,169,74,.3);}
+        .m10-lv-swatch{width:24px;height:24px;border-radius:6px;flex-shrink:0;}
+        .m10-lv-name{font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:600;color:#fdf6ea;}
+        .m10-lv-genre{font-family:'Space Grotesk',sans-serif;font-size:7px;color:rgba(200,168,120,.5);}
+
+</style>
+
+<section class="section-hero" id="top">
+  <div class="hero-container">
+    <div class="hero-image-wrapper">
+
+      <!-- ── Animated My10 phone cluster ── -->
+      <div class="myio-hero-visual" id="myioHeroVisual">
+        <div class="myio-bg-orb myio-bg-orb-1"></div>
+        <div class="myio-bg-orb myio-bg-orb-2"></div>
+        <div class="myio-bg-orb myio-bg-orb-3"></div>
+        <div class="myio-particle"></div><div class="myio-particle"></div>
+        <div class="myio-particle"></div><div class="myio-particle"></div>
+        <div class="myio-particle"></div><div class="myio-particle"></div>
+        <div class="myio-particle"></div><div class="myio-particle"></div>
+
+        <!-- Floating pill label -->
+        <div class="myio-hero-pill">
+          <div class="myio-hero-pill-dot">m</div>
+          MYIO Research · Branding · UI/UX Design
+        </div>
+
+        <!-- Toast notification -->
+        <div class="myio-toast" id="myioToast">
+          <div class="myio-toast-dot"></div>
+          <div>
+            <div class="myio-toast-text">List updated!</div>
+            <div class="myio-toast-sub">Top Anime · All Time · 10 entries</div>
+          </div>
+        </div>
+
+        <!-- Phone cluster -->
+        <div class="myio-cluster" id="myioCluster">
+
+          <!-- LEFT PHONE: Login Screen -->
+          <div class="myio-phone myio-phone-side-visible" style="position:relative;">
+            <div class="m10-notch"></div>
+            <div class="m10-bar">9:41 <span style="opacity:.45">▪▪▪ ⚡</span></div>
+            <div class="m10-login">
+              <div class="m10-login-welcome">Welcome Back</div>
+
+              <!--
+                APP LOGO IMAGE
+                Replace src with your logo file path.
+                Recommended: PNG with transparent background, ~320 × 120 px (2× for retina)
+                Directory: assets/images/myio-logo.png
+                The text fallback (my10•) shows automatically if the image fails to load.
+              -->
+              <div class="m10-login-logo-wrap">
+                <img
+                  src="assets/images/myio-logo.png"
+                  alt="MYIO"
+                  class="m10-login-logo-img"
+                  onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+                >
+                <div class="m10-login-logo" style="display:none;">my<span>10</span><span style="color:#e8a94a;font-style:normal;font-size:1rem;">•</span></div>
+              </div>
+
+              <div class="m10-login-tagline">Your favourites, ranked.</div>
+              <div class="m10-input" style="margin-top:.4rem;">Email/username</div>
+              <div class="m10-input">Password</div>
+              <div class="m10-input-forgot">Forgot Password?</div>
+              <div class="m10-btn-primary">Sign in</div>
+              <div class="m10-divider">OR</div>
+              <div class="m10-btn-google">Continue with Google</div>
+              <div class="m10-login-footer">New here? <span>Create account</span></div>
+            </div>
+          </div>
+
+          <!-- CENTRE PHONE: Home Dashboard (main floating) -->
+          <div class="myio-phone myio-phone-main" style="position:relative;">
+            <div class="m10-notch"></div>
+            <div class="m10-bar">9:41 <span style="opacity:.45">▪▪▪ ⚡</span></div>
+
+            <!-- Header -->
+            <div class="m10-home-header">
+              <div>
+                <div class="m10-home-greeting">Good evening,</div>
+                <div class="m10-home-name">Jordan K.</div>
+              </div>
+              <div class="m10-search-icon">🔍</div>
+            </div>
+
+            <!-- Featured list card -->
+            <div class="m10-feature-card">
+              <div class="m10-feature-title">Top Anime · All Time</div>
+              <div class="m10-feature-sub">10 entries · updated 2d ago</div>
+            </div>
+
+            <!-- My Lists section -->
+            <div class="m10-section-row">
+              <div class="m10-section-label">My Lists</div>
+              <div class="m10-toggle"></div>
+            </div>
+
+            <!-- List rows -->
+            <div class="m10-list-row">
+              <div class="m10-list-rank">1</div>
+              <div class="m10-list-thumb" style="background:linear-gradient(135deg,#c87d3a,#7a3e10);"></div>
+              <div class="m10-list-info">
+                <div class="m10-list-title">Top Songs · 2024</div>
+                <div class="m10-list-sub">10 entries</div>
+              </div>
+            </div>
+            <div class="m10-list-row active">
+              <div class="m10-list-rank active">2</div>
+              <div class="m10-list-thumb" style="background:linear-gradient(135deg,#2a3a5c,#1a2540);"></div>
+              <div class="m10-list-info">
+                <div class="m10-list-title">Top Anime · All Time</div>
+                <div class="m10-list-sub">10 entries</div>
+              </div>
+            </div>
+            <div class="m10-list-row">
+              <div class="m10-list-rank">3</div>
+              <div class="m10-list-thumb" style="background:linear-gradient(135deg,#4a7a6a,#1a3a30);"></div>
+              <div class="m10-list-info">
+                <div class="m10-list-title">Celebrity Crushes</div>
+                <div class="m10-list-sub">6 entries</div>
+              </div>
+            </div>
+
+            <!-- FAB -->
+            <div class="m10-fab">+</div>
+
+            <!-- Bottom nav -->
+            <div class="m10-bottom-nav">
+              <div class="m10-nav-dot active"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><rect x="0" y="0" width="5" height="5" rx="1" fill="#1a0d02"/><rect x="7" y="0" width="5" height="5" rx="1" fill="#1a0d02"/><rect x="0" y="7" width="5" height="5" rx="1" fill="#1a0d02"/><rect x="7" y="7" width="5" height="5" rx="1" fill="#1a0d02"/></svg></div>
+              <div class="m10-nav-dot"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4.5" r="2.2" stroke="rgba(232,169,74,.5)" stroke-width="1.2"/><path d="M2 11c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" stroke="rgba(232,169,74,.5)" stroke-width="1.2"/></svg></div>
+              <div class="m10-nav-dot"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 3h8M2 6h5M2 9h3" stroke="rgba(232,169,74,.5)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+            </div>
+          </div>
+
+          <!-- RIGHT PHONE: List View -->
+          <div class="myio-phone myio-phone-side-visible" style="position:relative;">
+            <div class="m10-notch"></div>
+            <div class="m10-bar">9:41 <span style="opacity:.45">▪▪▪ ⚡</span></div>
+
+            <div class="m10-list-header">
+              <div class="m10-list-header-back">← Back</div>
+              <div class="m10-list-header-title">Top Anime · All Time</div>
+            </div>
+
+            <!-- Scrollable list area — flex:1 keeps nav anchored at bottom -->
+            <div style="flex:1;overflow:hidden;display:flex;flex-direction:column;">
+            <div class="m10-lv-row">
+              <div class="m10-lv-num n1">1</div>
+              <div class="m10-lv-swatch" style="background:linear-gradient(135deg,#c87d3a,#7a3e10);"></div>
+              <div><div class="m10-lv-name">Vinland Saga</div><div class="m10-lv-genre">Action · Historical</div></div>
+            </div>
+            <div class="m10-lv-row">
+              <div class="m10-lv-num n2">2</div>
+              <div class="m10-lv-swatch" style="background:linear-gradient(135deg,#2a3a5c,#111a30);"></div>
+              <div><div class="m10-lv-name">Attack on Titan</div><div class="m10-lv-genre">Dark Fantasy · Shōnen</div></div>
+            </div>
+            <div class="m10-lv-row">
+              <div class="m10-lv-num n3">3</div>
+              <div class="m10-lv-swatch" style="background:linear-gradient(135deg,#4a6e5a,#1a3028);"></div>
+              <div><div class="m10-lv-name">Mushishi</div><div class="m10-lv-genre">Supernatural · Slice of Life</div></div>
+            </div>
+            <div class="m10-lv-row">
+              <div class="m10-lv-num nrest">4</div>
+              <div class="m10-lv-swatch" style="background:linear-gradient(135deg,#5a3a6e,#2a1040);"></div>
+              <div><div class="m10-lv-name">Hunter x Hunter</div><div class="m10-lv-genre">Adventure · Shōnen</div></div>
+            </div>
+            <div class="m10-lv-row">
+              <div class="m10-lv-num nrest">5</div>
+              <div class="m10-lv-swatch" style="background:linear-gradient(135deg,#6e2a2a,#400a0a);"></div>
+              <div><div class="m10-lv-name">Tokyo Ghoul</div><div class="m10-lv-genre">Dark Fantasy · Seinen</div></div>
+            </div>
+            <div class="m10-lv-row">
+              <div class="m10-lv-num nrest">6</div>
+              <div class="m10-lv-swatch" style="background:linear-gradient(135deg,#3a5a6e,#102840);"></div>
+              <div><div class="m10-lv-name">KonoSuba</div><div class="m10-lv-genre">Comedy · Isekai</div></div>
+            </div>
+            <div class="m10-lv-row" style="opacity:.7;">
+              <div class="m10-lv-num nrest">7</div>
+              <div class="m10-lv-swatch" style="background:linear-gradient(135deg,#2a4a6e,#0a1e40);"></div>
+              <div><div class="m10-lv-name">One Piece</div><div class="m10-lv-genre">Adventure · Shōnen</div></div>
+            </div>
+            <div class="m10-lv-row" style="opacity:.55;">
+              <div class="m10-lv-num nrest">8</div>
+              <div class="m10-lv-swatch" style="background:linear-gradient(135deg,#1a1a2a,#0a0a18);"></div>
+              <div><div class="m10-lv-name">Death Note</div><div class="m10-lv-genre">Mystery · Shōnen</div></div>
+            </div>
+            <div class="m10-lv-row" style="opacity:.4;border-bottom:none;">
+              <div class="m10-lv-num nrest">9</div>
+              <div class="m10-lv-swatch" style="background:linear-gradient(135deg,#3a2a4a,#1a0a28);"></div>
+              <div><div class="m10-lv-name">Psycho-Pass</div><div class="m10-lv-genre">Mystery · Seinen</div></div>
+            </div>
+            </div><!-- /list scroll area -->
+
+            <div class="m10-bottom-nav">
+              <div class="m10-nav-dot"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><rect x="0" y="0" width="5" height="5" rx="1" fill="rgba(232,169,74,.4)"/><rect x="7" y="0" width="5" height="5" rx="1" fill="rgba(232,169,74,.4)"/><rect x="0" y="7" width="5" height="5" rx="1" fill="rgba(232,169,74,.4)"/><rect x="7" y="7" width="5" height="5" rx="1" fill="rgba(232,169,74,.4)"/></svg></div>
+              <div class="m10-nav-dot active"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 3h8M2 6h5M2 9h3" stroke="#1a0d02" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              <div class="m10-nav-dot"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4.5" r="2.2" stroke="rgba(232,169,74,.4)" stroke-width="1.2"/><path d="M2 11c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" stroke="rgba(232,169,74,.4)" stroke-width="1.2"/></svg></div>
+            </div>
+          </div>
+
+        </div><!-- /myio-cluster -->
+      </div><!-- /myio-hero-visual -->
+
+      <div class="hero-text-overlay">
+        <div class="hero-label">MYIO Research &middot; Branding &middot; UI/UX Design</div>
+        <h1 class="hero-title">MYIO</h1>
+        <div class="hero-meta-grid">
+          <div class="hero-meta-item"><div class="hero-meta-label">Client</div><div class="hero-meta-value">Venture</div></div>
+          <div class="hero-meta-item"><div class="hero-meta-label">Duration</div><div class="hero-meta-value">6 Weeks</div></div>
+          <div class="hero-meta-item"><div class="hero-meta-label">Role</div><div class="hero-meta-value">Product Designer</div></div>
+          <div class="hero-meta-item"><div class="hero-meta-label">Tools</div><div class="hero-meta-value">Figma &middot; Illustrator &middot; Webflow</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══════════════════════════════════════════════════
+     DESCRIPTION + VIDEO  (standardised)
+═══════════════════════════════════════════════════ -->
+<div class="project-intro-content">
+
+  <section class="description-section">
+    <span class="section-label">Project Description:</span>
+    <p class="description-text">
+      Full UX/UI case study for My 10 — a top-10 list maker app. The project covers number
+      psychology research, platform fragmentation analysis, affinity mapping, and a complete
+      design pipeline from branding through high-fidelity screens, user flow, and design
+      refinement testing.
+    </p>
+    <span class="section-label">Key Deliverables:</span>
+    <ul class="deliverables-list">
+      <li class="deliverable-item">UX Research &amp; Affinity Mapping</li>
+      <li class="deliverable-item">Brand Identity &amp; Design System</li>
+      <li class="deliverable-item">Hand drawn &amp; Digital Wireframes</li>
+      <li class="deliverable-item">User Flow Diagram</li>
+      <li class="deliverable-item">Fully Compiled PDF</li>
+      <li class="deliverable-item">App Visualiser</li>
+    </ul>
+  </section>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     CASE STUDY IMAGE BOARDS
+     Replace src="" with your exported Illustrator PNG/JPG.
+     Recommended: export at 6000×4001px (your artboard size).
+     The <img> renders at 100% page width; height follows the ratio automatically.
+═══════════════════════════════════════════════════ -->
+<div class="case-study-wrapper">
+
+  <!-- 01 HERO -->
+  <div class="section-placeholder" id="section-hero">
+    <img src="assets/projects/my10/01-hero.jpg" alt="My 10 - hero">
+    <div class="placeholder-empty">
+      <div class="placeholder-empty-icon">◻</div>
+      <span class="placeholder-empty-num">Section 01</span>
+      <h2 class="placeholder-empty-title">Hero</h2>
+      <p class="placeholder-empty-hint">Replace src="" with your exported Illustrator board</p>
+    </div>
+    <div class="placeholder-label">
+      <span class="placeholder-label-num">01</span>
+      <span class="placeholder-label-name">Hero</span>
+    </div>
+  </div>
+
+  <!-- 02 INTRODUCTION -->
+  <div class="section-placeholder" id="section-intro">
+    <img src="assets/projects/my10/02-intro.jpg" alt="My 10 - intro">
+    <div class="placeholder-empty">
+      <div class="placeholder-empty-icon">◻</div>
+      <span class="placeholder-empty-num">Section 02</span>
+      <h2 class="placeholder-empty-title">Introduction</h2>
+      <p class="placeholder-empty-hint">Replace src="" with your exported Illustrator board</p>
+    </div>
+    <div class="placeholder-label">
+      <span class="placeholder-label-num">02</span>
+      <span class="placeholder-label-name">Introduction</span>
+    </div>
+  </div>
+
+  <!-- 03 PSYCHOLOGY OF NUMBERS -->
+  <div class="section-placeholder" id="section-psych">
+    <img src="assets/projects/my10/03-psych.jpg" alt="My 10 - psych">
+    <div class="placeholder-empty">
+      <div class="placeholder-empty-icon">◻</div>
+      <span class="placeholder-empty-num">Section 03</span>
+      <h2 class="placeholder-empty-title">Psychology of Numbers</h2>
+      <p class="placeholder-empty-hint">Replace src="" with your exported Illustrator board</p>
+    </div>
+    <div class="placeholder-label">
+      <span class="placeholder-label-num">03</span>
+      <span class="placeholder-label-name">Psychology of Numbers</span>
+    </div>
+  </div>
+
+  <!-- 04 PLATFORM FRAGMENTATION -->
+  <div class="section-placeholder" id="section-platforms">
+    <img src="assets/projects/my10/04-platforms.jpg" alt="My 10 - platforms">
+    <div class="placeholder-empty">
+      <div class="placeholder-empty-icon">◻</div>
+      <span class="placeholder-empty-num">Section 04</span>
+      <h2 class="placeholder-empty-title">Platform Fragmentation</h2>
+      <p class="placeholder-empty-hint">Replace src="" with your exported Illustrator board</p>
+    </div>
+    <div class="placeholder-label">
+      <span class="placeholder-label-num">04</span>
+      <span class="placeholder-label-name">Platform Fragmentation</span>
+    </div>
+  </div>
+
+  <!-- 05 UX RESEARCH -->
+  <div class="section-placeholder" id="section-uxresearch">
+    <img src="assets/projects/my10/05-uxresearch.jpg" alt="My 10 - research">
+    <div class="placeholder-empty">
+      <div class="placeholder-empty-icon">◻</div>
+      <span class="placeholder-empty-num">Section 05</span>
+      <h2 class="placeholder-empty-title">UX Research</h2>
+      <p class="placeholder-empty-hint">Replace src="" with your exported Illustrator board</p>
+    </div>
+    <div class="placeholder-label">
+      <span class="placeholder-label-num">05</span>
+      <span class="placeholder-label-name">UX Research</span>
+    </div>
+  </div>
+
+  <!-- 06 BRANDING -->
+  <div class="section-placeholder" id="section-branding">
+    <img src="assets/projects/my10/06-branding.jpg" alt="My 10 - branding">
+    <div class="placeholder-empty">
+      <div class="placeholder-empty-icon">◻</div>
+      <span class="placeholder-empty-num">Section 06</span>
+      <h2 class="placeholder-empty-title">Branding</h2>
+      <p class="placeholder-empty-hint">Replace src="" with your exported Illustrator board</p>
+    </div>
+    <div class="placeholder-label">
+      <span class="placeholder-label-num">06</span>
+      <span class="placeholder-label-name">Branding</span>
+    </div>
+  </div>
+
+  <!-- 07 WIREFRAMES -->
+  <div class="section-placeholder" id="section-wireframes">
+    <img src="assets/projects/my10/07-wireframes.jpg" alt="My 10 - wireframes">
+    <div class="placeholder-empty">
+      <div class="placeholder-empty-icon">◻</div>
+      <span class="placeholder-empty-num">Section 07</span>
+      <h2 class="placeholder-empty-title">Wireframes</h2>
+      <p class="placeholder-empty-hint">Replace src="" with your exported Illustrator board</p>
+    </div>
+    <div class="placeholder-label">
+      <span class="placeholder-label-num">07</span>
+      <span class="placeholder-label-name">Wireframes</span>
+    </div>
+  </div>
+
+  <!-- 08 Core Visuals -->
+  <div class="section-placeholder" id="section-hifi">
+    <img src="assets/projects/my10/08-coreapps.jpg" alt="My 10 - coreapps">
+    <div class="placeholder-empty">
+      <div class="placeholder-empty-icon">◻</div>
+      <span class="placeholder-empty-num">Section 08</span>
+      <h2 class="placeholder-empty-title">High Fidelity</h2>
+      <p class="placeholder-empty-hint">Replace src="" with your exported Illustrator board</p>
+    </div>
+    <div class="placeholder-label">
+      <span class="placeholder-label-num">08</span>
+      <span class="placeholder-label-name">High Fidelity</span>
+    </div>
+  </div>
+
+  <!-- 09 USER FLOW -->
+  <div class="section-placeholder" id="section-userflow">
+    <img src="assets/projects/my10/09 - userflow.jpg" alt="My 10 - userflow">
+    <div class="placeholder-empty">
+      <div class="placeholder-empty-icon">◻</div>
+      <span class="placeholder-empty-num">Section 09</span>
+      <h2 class="placeholder-empty-title">User Flow</h2>
+      <p class="placeholder-empty-hint">Replace src="" with your exported Illustrator board</p>
+    </div>
+    <div class="placeholder-label">
+      <span class="placeholder-label-num">09</span>
+      <span class="placeholder-label-name">User Flow</span>
+    </div>
+  </div>
+
+  <!-- 10 UI DESIGNS / FEATURES -->
+  <div class="section-placeholder" id="section-features">
+    <img src="assets/projects/my10/10 -features.jpg" alt="My 10 - features">
+    <div class="placeholder-empty">
+      <div class="placeholder-empty-icon">◻</div>
+      <span class="placeholder-empty-num">Section 10</span>
+      <h2 class="placeholder-empty-title">UI Designs / Features</h2>
+      <p class="placeholder-empty-hint">Replace src="" with your exported Illustrator board</p>
+    </div>
+    <div class="placeholder-label">
+      <span class="placeholder-label-num">10</span>
+      <span class="placeholder-label-name">UI Designs / Features</span>
+    </div>
+  </div>
+
+  <!-- 11 REFINING -->
+  <div class="section-placeholder" id="section-refining">
+    <img src="assets/projects/my10/11 -refining.jpg" alt="My 10 - refining">
+    <div class="placeholder-empty">
+      <div class="placeholder-empty-icon">◻</div>
+      <span class="placeholder-empty-num">Section 11</span>
+      <h2 class="placeholder-empty-title">Refining</h2>
+      <p class="placeholder-empty-hint">Replace src="" with your exported Illustrator board</p>
+    </div>
+    <div class="placeholder-label">
+      <span class="placeholder-label-num">11</span>
+      <span class="placeholder-label-name">Refining</span>
+    </div>
+  </div>
+
+
+</div><!-- /case-study-wrapper -->
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER: PREV/NEXT + COPYRIGHT
+═══════════════════════════════════════════════════ -->
+<div class="footer-area">
+  <span class="proj-nav-label">More Projects</span>
+  <div class="proj-nav-grid">
+    <a href="project-detail-improved.html?project=fodder-pianist" class="proj-nav-link">
+      <div class="proj-nav-direction"><span class="proj-nav-arrow">← </span>Previous Project</div>
+      <div class="proj-nav-title">Fodder Campaign</div>
+    </a>
+    <a href="project-detail-improved.html?project=amelie" class="proj-nav-link">
+      <div class="proj-nav-direction">Next Project<span class="proj-nav-arrow"> →</span></div>
+      <div class="proj-nav-title">Touché</div>
+    </a>
+  </div>
+  <footer class="page-footer">
+    <p>© 2026 JOSEPH KOH. ALL RIGHTS RESERVED.</p>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     BACK TO TOP BUTTON
+═══════════════════════════════════════════════════ -->
+<a href="#top" class="back-to-top" id="backToTop" title="Back to top">↑</a>
+
+<!-- ═══════════════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════════════ -->
+<script>
+// My10 toast trigger
+(function(){
+  var toast = document.getElementById('myioToast');
+  if(!toast) return;
+  setTimeout(function(){ toast.classList.add('show'); }, 2400);
+  setTimeout(function(){ toast.classList.remove('show'); }, 5600);
+  setInterval(function(){
+    toast.classList.add('show');
+    setTimeout(function(){ toast.classList.remove('show'); }, 3200);
+  }, 9000);
+})();
+
+/* ── 1. Video setup ────────────────────────────────────────────
+   Replace VIDEO_ID with your YouTube video ID.
+   e.g. for https://youtu.be/dC9dBWfSVWw → 'dC9dBWfSVWw'
+   Leave as '' to show a plain dark thumbnail until you have a video.
+─────────────────────────────────────────────────────────────── */
+var VIDEO_ID  = '';   // ← paste your YouTube video ID here
+var VIDEO_URL = VIDEO_ID
+  ? 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID + '?autoplay=1&rel=0'
+  : '';
+
+// Set YouTube thumbnail if we have an ID
+if (VIDEO_ID) {
+
+// Close modal on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeVideoModal();
+});
+
+/* ── 2. Image placeholder logic ────────────────────────────────
+   For each placeholder: show the image if src is set, otherwise
+   show the empty-state panel. Bulletproof — no :has() CSS.
+─────────────────────────────────────────────────────────────── */
+document.querySelectorAll('.section-placeholder').forEach(function(block) {
+  var img   = block.querySelector('img');
+  var empty = block.querySelector('.placeholder-empty');
+  if (!img || !empty) return;
+  var src = img.getAttribute('src');
+  if (src && src.trim() !== '') {
+    img.style.display   = 'block';
+    empty.style.display = 'none';
+  } else {
+    img.style.display   = 'none';
+    empty.style.display = 'flex';
+  }
+});
+
+/* ── 3. Back-to-top visibility ─────────────────────────────────
+   Appears after scrolling past the intro panel.
+─────────────────────────────────────────────────────────────── */
+var btt = document.getElementById('backToTop');
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 600) {
+    btt.classList.add('visible');
+  } else {
+    btt.classList.remove('visible');
+  }
+}, { passive: true });
+
+/* ── 4. Smooth scroll for section jump links ──────────────────
+   Offsets by the fixed nav height (~80px) so headings aren't
+   hidden behind the nav bar.
+─────────────────────────────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    var id = this.getAttribute('href').slice(1);
+    var target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    var offset = target.getBoundingClientRect().top + window.scrollY - 82;
+    window.scrollTo({ top: offset, behavior: 'smooth' });
+  });
+});
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

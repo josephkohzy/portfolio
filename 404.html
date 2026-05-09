@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Page Not Found · Jokoh Portfolio</title>
+    <meta name="description" content="Page not found — Joseph Koh Multimedia Designer Portfolio.">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .not-found-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .glitch-404 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(8rem, 22vw, 18rem);
+            line-height: 1;
+            color: var(--rust);
+            position: relative;
+            display: inline-block;
+            letter-spacing: 8px;
+            text-shadow:
+                4px 4px 0 rgba(0,255,136,0.4),
+                -4px -4px 0 rgba(0,0,0,0.6);
+            animation: glitch404 4s ease-in-out infinite;
+        }
+
+        @keyframes glitch404 {
+            0%, 90%, 100% {
+                transform: translate(0);
+                filter: none;
+            }
+            92% {
+                transform: translate(-3px, 1px);
+                filter: hue-rotate(90deg);
+            }
+            94% {
+                transform: translate(3px, -1px);
+                filter: hue-rotate(180deg);
+            }
+            96% {
+                transform: translate(0);
+                filter: none;
+            }
+            98% {
+                transform: translate(2px, 2px);
+                filter: hue-rotate(270deg);
+            }
+        }
+
+        .not-found-label {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1rem, 3vw, 1.6rem);
+            color: var(--lime);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            margin-top: -10px;
+        }
+
+        .not-found-msg {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 480px;
+            line-height: 1.7;
+            margin: 0 auto 48px;
+        }
+
+        .not-found-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-home {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 16px 36px;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn-home.primary {
+            background: var(--rust);
+            color: #fff;
+            box-shadow: 4px 4px 0 rgba(0,255,136,0.3);
+        }
+
+        .btn-home.primary:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 rgba(0,255,136,0.5);
+        }
+
+        .btn-home.secondary {
+            background: transparent;
+            color: var(--lime);
+            border: 2px solid var(--lime);
+        }
+
+        .btn-home.secondary:hover {
+            background: rgba(0,255,136,0.08);
+            transform: translate(-2px, -2px);
+        }
+
+        .not-found-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--rust);
+            margin: 0 auto 32px;
+        }
+    </style>
+</head>
+<body>
+    <div class="concrete-crack"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">JOKOH</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="works.html">Work</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="not-found-wrapper">
+        <div class="glitch-404">404</div>
+        <p class="not-found-label">Page Not Found</p>
+        <div class="not-found-divider"></div>
+        <p class="not-found-msg">
+            Looks like this frame didn't render. The page you're looking for has either moved, been deleted, or never existed.
+        </p>
+        <div class="not-found-actions">
+            <a href="index.html" class="btn-home primary">← Back Home</a>
+            <a href="works.html" class="btn-home secondary">View Work</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2026 JOSEPH KOH. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
