@@ -1765,7 +1765,7 @@
         <a href="index.html" class="logo">JOKOH</a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="works.html" class="active">Work</a></li>
+            <li><a href="work.html" class="active">Work</a></li>
             <li><a href="process.html">Process</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -1949,7 +1949,7 @@
                 videoUrl: '',
                 images: 0,
                 isCustomPage: true,
-                customPageUrl: 'unify-project-detail.html'
+                customPageUrl: 'unify.html'
             },
             {
                 id: 'jtc',
@@ -2105,7 +2105,7 @@
                 videoUrl: '',
                 images: 0,
                 isCustomPage: true,
-                customPageUrl: 'my10-project-detail.html'
+                customPageUrl: 'my10.html'
             },
             {
                 id: 'amelie',
@@ -2181,6 +2181,7 @@
                 ],
                 videoUrl: '',
                 images: 5,
+                gifIndex: 5,
                 // Optional: Custom text for each image (array matches images count)
                 details: [
                     {
@@ -2391,8 +2392,8 @@
                         description: `Description of this particular aspect of the project. Each image tells a part of the creative journey and showcases different techniques used.`
                     };
 
-                // Support GIF for last image, JPG for others
-                const fileExtension = (i === project.images) ? 'gif' : 'jpg';
+                // Support GIF only for projects with a gifIndex field
+                const fileExtension = (project.gifIndex && i === project.gifIndex) ? 'gif' : 'jpg';
 
                 galleryHTML += `
                     <div class="showcase-row">

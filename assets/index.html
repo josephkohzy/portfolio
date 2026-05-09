@@ -97,7 +97,7 @@
             z-index: 9999 !important;
         }
 
-        /* ── Hero ─────────────────────────────────── */
+        /* Enhanced hero for recruiter visibility */
         .hero {
             width: 100%;
             min-height: 100vh;
@@ -106,11 +106,14 @@
             justify-content: center;
         }
 
+        /* Hero overlay for readability */
         .hero::before {
             content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: radial-gradient(ellipse at center, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.6) 100%);
             z-index: 1;
             pointer-events: none;
@@ -122,41 +125,17 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 18px;
+            gap: 25px;
             position: relative;
             z-index: 3;
-            text-align: center;
         }
 
-        /* Name — subtle, semi-transparent, understated */
         .hero-content h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.2rem, 5vw, 4rem);
-            font-weight: 200;
-            letter-spacing: 0.25em;
-            line-height: 1;
-            color: rgba(255, 255, 255, 0.45);
-            margin: 0;
-            text-transform: uppercase;
-            -webkit-text-stroke: unset;
-            text-stroke: unset;
-            text-shadow: none;
-            animation: none;
+            margin-bottom: 0;
         }
 
-        .hero-content h1::after {
-            display: none;
-        }
-
-        /* Subtitle */
         .hero-content .subtitle {
-            font-size: clamp(1rem, 2vw, 1.4rem);
-            font-weight: 400;
-            font-family: 'Space Grotesk', sans-serif;
-            color: var(--text-secondary);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin: 0;
+            margin-bottom: 0;
         }
 
         .hero-description {
@@ -173,10 +152,6 @@
         .hero-description strong {
             color: var(--lime);
             font-weight: 600;
-        }
-
-        .cta-buttons {
-            margin-top: 8px;
         }
 
         /* Visuals Animation - Smooth color shift */
@@ -200,14 +175,16 @@
             transition: width 0.4s ease;
         }
 
-        .visuals-word:hover::before { width: 100%; }
+        .visuals-word:hover::before {
+            width: 100%;
+        }
 
         .visuals-word:hover {
             color: #00f2fe;
             transform: translateY(-2px);
             text-shadow: 
-                0 0 10px rgba(79,172,254,0.5),
-                0 0 20px rgba(0,242,254,0.3);
+                0 0 10px rgba(79, 172, 254, 0.5),
+                0 0 20px rgba(0, 242, 254, 0.3);
             filter: brightness(1.2);
         }
 
@@ -225,18 +202,26 @@
             color: #f5576c;
             animation: gentleWave 0.6s ease-in-out;
             text-shadow: 
-                0 0 10px rgba(240,147,251,0.5),
-                0 0 20px rgba(245,87,108,0.3);
+                0 0 10px rgba(240, 147, 251, 0.5),
+                0 0 20px rgba(245, 87, 108, 0.3);
         }
 
         @keyframes gentleWave {
-            0%, 100% { transform: translateY(0) scaleY(1); }
-            25%       { transform: translateY(-3px) scaleY(1.05); }
-            50%       { transform: translateY(0) scaleY(0.95); }
-            75%       { transform: translateY(3px) scaleY(1.05); }
+            0%, 100% {
+                transform: translateY(0) scaleY(1);
+            }
+            25% {
+                transform: translateY(-3px) scaleY(1.05);
+            }
+            50% {
+                transform: translateY(0) scaleY(0.95);
+            }
+            75% {
+                transform: translateY(3px) scaleY(1.05);
+            }
         }
 
-        /* Creative Chaos Animation */
+        /* Creative Chaos Animation - Intense glitch */
         .creative-chaos {
             position: relative;
             display: inline-block;
@@ -249,8 +234,10 @@
         .creative-chaos::before {
             content: '';
             position: absolute;
-            top: 50%; left: 50%;
-            width: 0; height: 0;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
             background: radial-gradient(circle, var(--lime) 0%, transparent 70%);
             opacity: 0;
             transform: translate(-50%, -50%);
@@ -260,15 +247,18 @@
         }
 
         .creative-chaos:hover::before {
-            width: 150%; height: 150%;
+            width: 150%;
+            height: 150%;
             opacity: 0.2;
         }
 
         .creative-chaos::after {
             content: attr(data-text);
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             color: var(--lime);
             opacity: 0;
             transform: translate(2px, 2px);
@@ -286,11 +276,21 @@
         }
 
         @keyframes chaosGlitch {
-            0%, 100% { transform: translate(0, 0); }
-            20%  { transform: translate(-2px, 2px); }
-            40%  { transform: translate(2px, -2px); }
-            60%  { transform: translate(-2px, -2px); }
-            80%  { transform: translate(2px, 2px); }
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(2px, -2px);
+            }
+            60% {
+                transform: translate(-2px, -2px);
+            }
+            80% {
+                transform: translate(2px, 2px);
+            }
         }
 
         /* Floating particles around creative chaos */
@@ -324,7 +324,7 @@
             margin-top: 15px;
         }
 
-        /* Unify card accent — matches work.html */
+        /* Unify card accent — matches works.html */
         .unify-card {
             border-color: rgba(53,99,233,0.3) !important;
         }
@@ -352,7 +352,7 @@
             ) !important;
         }
 
-        /* Project number & meta — matches work.html */
+        /* Project number & meta — matches works.html */
         .project-number {
             font-size: 0.7rem;
             font-weight: 700;
@@ -394,21 +394,21 @@
         @media (max-width: 768px) {
             .hero-content {
                 padding-top: 5vh;
-                gap: 16px;
+                gap: 20px;
             }
-
+            
             .hero-description {
-                font-size: 1rem;
+                font-size: 1.05rem;
                 max-width: 90%;
             }
 
             .cta-buttons {
-                margin-top: 8px;
+                margin-top: 10px;
             }
         }
 
         /* ==========================================
-           PROJECT CARDS — matches work.html exactly
+           PROJECT CARDS — matches works.html exactly
            ========================================== */
 
         .projects-grid-preview {
@@ -794,7 +794,7 @@
         <a href="index.html" class="logo">JOKOH</a>
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="work.html">Work</a></li>
+            <li><a href="works.html">Work</a></li>
             <li><a href="process.html">Process</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -820,7 +820,7 @@
     <section id="home" class="hero">
         <div class="grunge-splatter splatter-1"></div>
         <div class="grunge-splatter splatter-2"></div>
-
+        
         <!-- Animated artifacts -->
         <div class="artifact artifact-square" style="top: 15%; left: 10%;"></div>
         <div class="artifact artifact-circle" style="top: 25%; right: 12%;"></div>
@@ -828,12 +828,12 @@
         <div class="artifact artifact-line" style="top: 45%; right: 8%;"></div>
         <div class="artifact artifact-square" style="bottom: 30%; right: 25%;"></div>
         <div class="artifact artifact-circle" style="top: 60%; left: 8%;"></div>
-
+        
         <div class="hero-content">
-            <h1>Joseph Koh</h1>
-            <p class="subtitle">Multimedia Designer · Visual Storyteller</p>
+            <h1>JOSEPH KOH</h1>
+            <p class="subtitle">Multimedia Designer • Visual Storyteller</p>
             <p class="hero-description">
-                I tell stories through <span class="visuals-word">Visuals</span>, <span class="motion-word">Motion</span>, and a tinge of <span class="creative-chaos" data-text="Creative Chaos">Creative Chaos</span>.
+                I tell stories through <span class="visuals-word">Visuals</span>, <span class="motion-word">Motion</span>, and a tinge of <span class="creative-chaos" data-text="Creative Chaos">Creative Chaos</span>. 
             </p>
             <div class="cta-buttons">
                 <a href="#featured" class="btn btn-primary">View Work</a>
@@ -851,7 +851,7 @@
         <div class="projects-grid-preview">
 
             <!-- Unify -->
-            <a href="unify.html" class="project-card unify-card">
+            <a href="unify-project-detail.html" class="project-card unify-card">
                 <div class="project-image"
                      data-gif="assets/images/projects/unify.gif"
                      data-static="assets/images/projects/unify.jpg"
@@ -878,7 +878,7 @@
             </a>
 
             <!-- JTC -->
-            <a href="project.html?project=jtc" class="project-card">
+            <a href="project-detail-improved.html?project=jtc" class="project-card">
                 <div class="project-image"
                      data-gif="assets/images/projects/jtc.gif"
                      data-static="assets/images/projects/jtc.jpg"
@@ -905,7 +905,7 @@
             </a>
 
             <!-- Dawn Sentinel -->
-            <a href="project.html?project=dawn-sentinel" class="project-card">
+            <a href="project-detail-improved.html?project=dawn-sentinel" class="project-card">
                 <div class="project-image"
                      data-gif="assets/images/projects/dawn-sentinel.gif"
                      data-static="assets/images/projects/dawn-sentinel.jpg"
@@ -932,7 +932,7 @@
             </a>
 
             <!-- Fodder Pianist -->
-            <a href="project.html?project=fodder-pianist" class="project-card">
+            <a href="project-detail-improved.html?project=fodder-pianist" class="project-card">
                 <div class="project-image"
                      data-gif="assets/images/projects/fodder-pianist.gif"
                      data-static="assets/images/projects/fodder-pianist.jpg"
@@ -961,7 +961,7 @@
         </div>
 
         <div class="view-all-link">
-            <a href="work.html">ALL WORKS →</a>
+            <a href="works.html">ALL WORKS →</a>
         </div>
     </section>
 
@@ -1069,7 +1069,7 @@
     </script>
 
     <script>
-        // GIF ↔ Static swap on hover (matching work.html behaviour)
+        // GIF ↔ Static swap on hover (matching works.html behaviour)
         document.querySelectorAll('.project-image[data-gif]').forEach(function(img) {
             const gif    = img.dataset.gif;
             const Static = img.dataset.static;
@@ -1082,7 +1082,7 @@
             });
         });
 
-        // Mouse tracking for card glow — matches work.html
+        // Mouse tracking for card glow — matches works.html
         document.addEventListener('mousemove', (e) => {
             document.querySelectorAll('.project-card').forEach(card => {
                 const rect = card.getBoundingClientRect();
