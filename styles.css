@@ -132,6 +132,104 @@
                 8px 8px 0 rgba(0,0,0,0.3);
         }
 
+        /* ── Logo animations ─────────────────────────────────── */
+
+        /* J image: gentle bounce */
+        @keyframes logo-j-bob {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            30%       { transform: translateY(-3px) rotate(0.5deg); }
+            60%       { transform: translateY(1px) rotate(-0.5deg); }
+        }
+
+        /* OKOH: shadow colour slowly pulses rust → lime → rust */
+        @keyframes logo-shadow-pulse {
+            0%, 100% {
+                text-shadow:
+                    3px 3px 0 var(--rust),
+                    6px 6px 0 rgba(0,0,0,0.3);
+            }
+            50% {
+                text-shadow:
+                    3px 3px 0 #00cc6a,
+                    6px 6px 0 rgba(0,0,0,0.3);
+            }
+        }
+
+        /* J drop-shadow pulses to match */
+        @keyframes logo-j-shadow-pulse {
+            0%, 100% {
+                filter: drop-shadow(3px 3px 0 var(--rust)) drop-shadow(6px 6px 0 rgba(0,0,0,0.3));
+            }
+            50% {
+                filter: drop-shadow(3px 3px 0 #00cc6a) drop-shadow(6px 6px 0 rgba(0,0,0,0.3));
+            }
+        }
+
+        /* Individual letter float — staggered */
+        @keyframes logo-letter-float {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-3px); }
+        }
+
+        /* Logo: image J + text OKOH side-by-side */
+        .logo-img-wrap {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            line-height: 1;
+            text-shadow: none;
+        }
+
+        .logo-j-img {
+            /* Exactly matches cap-height of Archivo Black 2.2rem */
+            height: 2.2rem !important;
+            width: auto !important;
+            max-height: 2.2rem !important;
+            max-width: none !important;
+            display: inline-block !important;
+            flex-shrink: 0;
+            vertical-align: middle;
+            object-fit: contain;
+            /* Idle animations */
+            animation:
+                logo-j-bob         2.8s ease-in-out infinite,
+                logo-j-shadow-pulse 4s   ease-in-out infinite;
+            transition: filter 0.3s ease;
+        }
+
+        .logo-img-wrap:hover .logo-j-img {
+            animation: none;
+            filter: drop-shadow(4px 4px 0 var(--rust)) drop-shadow(8px 8px 0 rgba(0,0,0,0.3));
+        }
+
+        .logo-okoh {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.2rem;
+            color: var(--lime);
+            letter-spacing: 3px;
+            line-height: 1;
+            /* Split into individual spans via JS for stagger; fallback animates whole word */
+            animation: logo-shadow-pulse 4s ease-in-out infinite;
+            transition: text-shadow 0.3s ease;
+        }
+
+        /* Per-letter float — applied by JS (see script.js addition below) */
+        .logo-okoh .logo-letter {
+            display: inline-block;
+            animation: logo-letter-float 2.4s ease-in-out infinite;
+        }
+        .logo-okoh .logo-letter:nth-child(1) { animation-delay: 0s; }
+        .logo-okoh .logo-letter:nth-child(2) { animation-delay: 0.15s; }
+        .logo-okoh .logo-letter:nth-child(3) { animation-delay: 0.30s; }
+        .logo-okoh .logo-letter:nth-child(4) { animation-delay: 0.45s; }
+
+        .logo-img-wrap:hover .logo-okoh {
+            animation: none;
+            text-shadow:
+                4px 4px 0 var(--rust),
+                8px 8px 0 rgba(0,0,0,0.3);
+        }
+
         .nav-links {
             display: flex;
             gap: 35px;

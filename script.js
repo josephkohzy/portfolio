@@ -230,3 +230,19 @@ document.head.appendChild(style);
         if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
     });
 })();
+
+// ── Logo letter stagger ───────────────────────────────────────────────────
+// Wraps each character in .logo-okoh with a <span class="logo-letter">
+// so the CSS nth-child stagger animation applies per letter.
+(function () {
+    document.querySelectorAll('.logo-okoh').forEach(el => {
+        const text = el.textContent;
+        el.textContent = '';
+        [...text].forEach(char => {
+            const span = document.createElement('span');
+            span.className = 'logo-letter';
+            span.textContent = char;
+            el.appendChild(span);
+        });
+    });
+})();
