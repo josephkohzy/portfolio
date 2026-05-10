@@ -119,15 +119,42 @@
             text-decoration: none;
             position: relative;
             letter-spacing: 3px;
-            text-shadow: 
-                3px 3px 0 var(--rust),
-                6px 6px 0 rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            line-height: 1;
             transition: all 0.3s ease;
         }
 
         .logo:hover {
             transform: translateY(-3px);
-            text-shadow: 
+        }
+
+        /* Logo image acts as the 'J' — height matches cap height of 2.2rem text */
+        .logo-img {
+            height: 2.2rem;
+            width: auto;
+            display: block;
+            object-fit: contain;
+            filter: drop-shadow(2px 2px 0 var(--rust));
+            transition: filter 0.3s ease;
+        }
+
+        .logo:hover .logo-img {
+            filter: drop-shadow(3px 3px 0 var(--rust)) drop-shadow(-1px -1px 0 var(--lime));
+        }
+
+        .logo-text {
+            text-shadow:
+                3px 3px 0 var(--rust),
+                6px 6px 0 rgba(0,0,0,0.3);
+            transition: text-shadow 0.3s ease;
+            /* Slightly tuck OKOH toward the image */
+            margin-left: -1px;
+        }
+
+        .logo:hover .logo-text {
+            text-shadow:
                 4px 4px 0 var(--rust),
                 8px 8px 0 rgba(0,0,0,0.3);
         }

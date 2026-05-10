@@ -468,6 +468,182 @@
             .perf-hole { width: 11px; height: 16px; }
         }
 
+        /* ── Sketchpad section ───────────────────────────── */
+        .sketchpad-section {
+            margin: 0 0 60px;
+            position: relative;
+        }
+        .sketchpad-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .sketchpad-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 6px;
+            color: rgba(0,255,136,0.5);
+            white-space: nowrap;
+        }
+        .sketchpad-rule {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(0,255,136,0.2), transparent);
+        }
+        .sketchpad-frame {
+            position: relative;
+            border: 1px solid rgba(139,115,85,0.4);
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.5), inset 0 0 40px rgba(0,0,0,0.2);
+        }
+        /* Film-frame corner notches */
+        .sketchpad-frame::before, .sketchpad-frame::after {
+            content: '';
+            position: absolute;
+            width: 16px; height: 16px;
+            border-color: rgba(139,115,85,0.5);
+            border-style: solid;
+            z-index: 3;
+            pointer-events: none;
+        }
+        .sketchpad-frame::before { top: 10px; left: 10px; border-width: 1px 0 0 1px; }
+        .sketchpad-frame::after  { bottom: 10px; right: 10px; border-width: 0 1px 1px 0; }
+
+        /* Canvas wrapper — holds paper texture behind canvas */
+        .sketch-canvas-wrap {
+            position: relative;
+            width: 100%;
+            height: 380px;
+        }
+        @media (max-width: 600px) { .sketch-canvas-wrap { height: 260px; } }
+
+        /* SVG paper texture sits behind the canvas */
+        .sketch-paper-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+        }
+
+        #sketchCanvas {
+            position: absolute;
+            inset: 0;
+            display: block;
+            width: 100%; height: 100%;
+            cursor: crosshair;
+            touch-action: none;
+            background: transparent;
+        }
+
+        .sketchpad-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: rgba(30,22,14,0.92);
+            border-top: 1px solid rgba(139,115,85,0.25);
+            flex-wrap: wrap;
+        }
+        .sketch-tool-btn {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            padding: 6px 14px;
+            border: 1px solid rgba(255,107,53,0.35);
+            background: transparent;
+            color: rgba(255,107,53,0.6);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border-radius: 1px;
+        }
+        .sketch-tool-btn:hover  { border-color: #ff6b35; color: #ff6b35; background: rgba(255,107,53,0.08); }
+        .sketch-tool-btn.active { border-color: #00ff88; color: #00ff88; background: rgba(0,255,136,0.07); }
+
+        /* Divider between tool groups */
+        .sketch-divider {
+            width: 1px; height: 22px;
+            background: rgba(139,115,85,0.25);
+            flex-shrink: 0;
+        }
+
+        /* Native color picker */
+        .sketch-color-native {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            overflow: hidden;
+            padding: 0;
+            background: none;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .sketch-color-native input[type="color"] {
+            position: absolute;
+            inset: -4px;
+            width: calc(100% + 8px);
+            height: calc(100% + 8px);
+            border: none;
+            cursor: pointer;
+            opacity: 0;
+        }
+        .sketch-color-swatch {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: background 0.1s;
+        }
+
+        /* Preset swatches */
+        .sketch-preset-btn {
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: transform 0.15s ease, border-color 0.15s ease;
+            flex-shrink: 0;
+        }
+        .sketch-preset-btn:hover  { transform: scale(1.2); border-color: rgba(255,255,255,0.4); }
+        .sketch-preset-btn.active { transform: scale(1.2); border-color: rgba(255,255,255,0.6); }
+        .sketch-preset-btn.sketch-preset-white { border: 2px solid rgba(0,0,0,0.18); }
+
+        .sketch-size-wrap {
+            display: flex; align-items: center; gap: 8px;
+            margin-left: auto;
+        }
+        .sketch-size-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.6rem; letter-spacing: 3px;
+            color: rgba(255,255,255,0.2); text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .sketch-size-slider {
+            -webkit-appearance: none; appearance: none;
+            width: 72px; height: 3px;
+            background: rgba(255,107,53,0.25);
+            border-radius: 2px; outline: none;
+        }
+        .sketch-size-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px; height: 14px;
+            border-radius: 50%; background: #ff6b35; cursor: pointer;
+        }
+        .sketch-size-slider::-moz-range-thumb {
+            width: 14px; height: 14px;
+            border-radius: 50%; background: #ff6b35; cursor: pointer; border: none;
+        }
+        .sketch-dl-btn {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.72rem; letter-spacing: 2px; padding: 6px 14px;
+            border: 1px solid rgba(0,255,136,0.3); background: transparent;
+            color: rgba(0,255,136,0.5); cursor: pointer;
+            transition: all 0.15s ease; border-radius: 1px;
+        }
+        .sketch-dl-btn:hover { border-color: #00ff88; color: #00ff88; background: rgba(0,255,136,0.07); }
+
     </style>
 </head>
 <body>
@@ -643,6 +819,77 @@
                     <span class="end-rule"></span>
                     <span class="end-label">© Jokoh 2026</span>
                 </div>
+
+                <!-- ── Your Turn — Sketchpad ──────────────────── -->
+                <div class="sketchpad-section">
+                    <div class="sketchpad-header">
+                        <span class="sketchpad-label">▸ Your Turn</span>
+                        <span class="sketchpad-rule"></span>
+                        <span class="sketchpad-label">Frame 18</span>
+                    </div>
+
+                    <div class="sketchpad-frame">
+                        <div class="sketch-canvas-wrap">
+                            <!-- Crosshatch grid background -->
+                            <svg class="sketch-paper-bg" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <pattern id="crosshatch" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <!-- Vertical lines -->
+                                        <line x1="20" y1="0" x2="20" y2="20" stroke="rgba(0,0,0,0.07)" stroke-width="0.5"/>
+                                        <!-- Horizontal lines -->
+                                        <line x1="0" y1="20" x2="20" y2="20" stroke="rgba(0,0,0,0.07)" stroke-width="0.5"/>
+                                    </pattern>
+                                </defs>
+                                <!-- White base -->
+                                <rect width="100%" height="100%" fill="#ffffff"/>
+                                <!-- Crosshatch grid -->
+                                <rect width="100%" height="100%" fill="url(#crosshatch)"/>
+                            </svg>
+                            <canvas id="sketchCanvas"></canvas>
+                        </div>
+
+                        <div class="sketchpad-toolbar">
+                            <!-- Tools -->
+                            <button class="sketch-tool-btn active" id="toolPen">PEN</button>
+                            <button class="sketch-tool-btn" id="toolEraser">ERASER</button>
+                            <button class="sketch-tool-btn" id="toolClear">CLEAR</button>
+
+                            <div class="sketch-divider"></div>
+
+                            <!-- Full color picker -->
+                            <label class="sketch-color-native" title="Pick any colour">
+                                <input type="color" id="colorPicker" value="#111111">
+                                <div class="sketch-color-swatch" id="colorSwatch" style="background:#111111;"></div>
+                            </label>
+
+                            <!-- Quick preset swatches — full spectrum -->
+                            <button class="sketch-preset-btn active" data-color="#111111" style="background:#111111;" title="Ink Black"></button>
+                            <button class="sketch-preset-btn" data-color="#5c3d1a" style="background:#5c3d1a;" title="Sepia Brown"></button>
+                            <button class="sketch-preset-btn" data-color="#888888" style="background:#888888;" title="Mid Grey"></button>
+                            <button class="sketch-preset-btn sketch-preset-white" data-color="#ffffff" style="background:#ffffff;" title="White"></button>
+                            <button class="sketch-preset-btn" data-color="#e63946" style="background:#e63946;" title="Red"></button>
+                            <button class="sketch-preset-btn" data-color="#ff6b35" style="background:#ff6b35;" title="Rust Orange"></button>
+                            <button class="sketch-preset-btn" data-color="#ffbe0b" style="background:#ffbe0b;" title="Yellow"></button>
+                            <button class="sketch-preset-btn" data-color="#80b918" style="background:#80b918;" title="Lime Green"></button>
+                            <button class="sketch-preset-btn" data-color="#00c864" style="background:#00c864;" title="Green"></button>
+                            <button class="sketch-preset-btn" data-color="#00b4d8" style="background:#00b4d8;" title="Cyan"></button>
+                            <button class="sketch-preset-btn" data-color="#2255cc" style="background:#2255cc;" title="Ink Blue"></button>
+                            <button class="sketch-preset-btn" data-color="#7b2d8b" style="background:#7b2d8b;" title="Purple"></button>
+                            <button class="sketch-preset-btn" data-color="#e040fb" style="background:#e040fb;" title="Magenta"></button>
+                            <button class="sketch-preset-btn" data-color="#ff006e" style="background:#ff006e;" title="Hot Pink"></button>
+
+                            <!-- Size -->
+                            <div class="sketch-size-wrap">
+                                <span class="sketch-size-label">Size</span>
+                                <input type="range" min="1" max="40" value="3" class="sketch-size-slider" id="brushSize">
+                            </div>
+
+                            <!-- Download -->
+                            <button class="sketch-dl-btn" id="sketchDownload">↓ SAVE</button>
+                        </div>
+                    </div>
+                </div>
+
             </main>
 
         </div><!-- /.process-stage -->
@@ -705,6 +952,179 @@
             item.addEventListener('mouseenter', () => video.play().catch(() => {}));
             item.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
         });
+    </script>
+
+    <script>
+    /* ── Sketchpad ─────────────────────────────────────────── */
+    (function () {
+        const canvas  = document.getElementById('sketchCanvas');
+        const ctx     = canvas.getContext('2d');
+        const picker  = document.getElementById('colorPicker');
+        const swatch  = document.getElementById('colorSwatch');
+
+        let drawing   = false;
+        let tool      = 'pen';
+        let color     = '#111111';
+        let brushSize = 3;
+        let lastX = 0, lastY = 0;
+
+        /* ── Canvas sizing (hi-DPI) ─────────────────────── */
+        function resize() {
+            const dpr  = window.devicePixelRatio || 1;
+            const wrap = canvas.parentElement;
+            const w    = wrap.clientWidth;
+            const h    = wrap.clientHeight;
+            /* Preserve existing drawing */
+            const tmp  = document.createElement('canvas');
+            tmp.width  = canvas.width;
+            tmp.height = canvas.height;
+            tmp.getContext('2d').drawImage(canvas, 0, 0);
+
+            canvas.width  = w * dpr;
+            canvas.height = h * dpr;
+            canvas.style.width  = w + 'px';
+            canvas.style.height = h + 'px';
+            ctx.scale(dpr, dpr);
+            /* Restore */
+            ctx.drawImage(tmp, 0, 0, w, h);
+            setupCtx();
+        }
+
+        function setupCtx() {
+            ctx.lineCap  = 'round';
+            ctx.lineJoin = 'round';
+        }
+
+        /* ── Pointer helpers ────────────────────────────── */
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const src  = e.touches ? e.touches[0] : e;
+            return [src.clientX - rect.left, src.clientY - rect.top];
+        }
+
+        /* ── Drawing ────────────────────────────────────── */
+        function startDraw(e) {
+            e.preventDefault();
+            drawing = true;
+            [lastX, lastY] = getPos(e);
+            /* Dot on tap/click */
+            ctx.beginPath();
+            const r = (tool === 'eraser' ? brushSize * 3 : brushSize) / 2;
+            ctx.arc(lastX, lastY, r, 0, Math.PI * 2);
+            ctx.fillStyle = tool === 'eraser' ? 'rgba(0,0,0,0)' : color;
+            if (tool === 'eraser') {
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.fill();
+                ctx.globalCompositeOperation = 'source-over';
+            } else {
+                ctx.fill();
+            }
+        }
+
+        function draw(e) {
+            if (!drawing) return;
+            e.preventDefault();
+            const [x, y] = getPos(e);
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(x, y);
+            if (tool === 'eraser') {
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.strokeStyle = 'rgba(0,0,0,1)';
+                ctx.lineWidth   = brushSize * 3;
+            } else {
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.strokeStyle = color;
+                ctx.lineWidth   = brushSize;
+            }
+            ctx.stroke();
+            [lastX, lastY] = [x, y];
+        }
+
+        function stopDraw() { drawing = false; }
+
+        canvas.addEventListener('mousedown',  startDraw);
+        canvas.addEventListener('mousemove',  draw);
+        canvas.addEventListener('mouseup',    stopDraw);
+        canvas.addEventListener('mouseleave', stopDraw);
+        canvas.addEventListener('touchstart', startDraw, { passive: false });
+        canvas.addEventListener('touchmove',  draw,      { passive: false });
+        canvas.addEventListener('touchend',   stopDraw);
+
+        /* ── Tools ──────────────────────────────────────── */
+        function setTool(t) {
+            tool = t;
+            document.querySelectorAll('.sketch-tool-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tool' + t.charAt(0).toUpperCase() + t.slice(1)).classList.add('active');
+        }
+
+        document.getElementById('toolPen').addEventListener('click',    () => setTool('pen'));
+        document.getElementById('toolEraser').addEventListener('click', () => setTool('eraser'));
+        document.getElementById('toolClear').addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        /* ── Color picker (full spectrum) ───────────────── */
+        function applyColor(hex) {
+            color = hex;
+            swatch.style.background = hex;
+            picker.value = hex;
+            /* Sync presets */
+            document.querySelectorAll('.sketch-preset-btn').forEach(b => {
+                b.classList.toggle('active', b.dataset.color.toLowerCase() === hex.toLowerCase());
+            });
+            setTool('pen');
+        }
+
+        picker.addEventListener('input', () => applyColor(picker.value));
+
+        /* ── Preset swatches ────────────────────────────── */
+        document.querySelectorAll('.sketch-preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => applyColor(btn.dataset.color));
+        });
+
+        /* ── Brush size ─────────────────────────────────── */
+        document.getElementById('brushSize').addEventListener('input', function () {
+            brushSize = parseInt(this.value);
+        });
+
+        /* ── Save — composites drawing onto paper texture ── */
+        document.getElementById('sketchDownload').addEventListener('click', function () {
+            /* Draw on an offscreen canvas: paper bg first, then user strokes */
+            const off  = document.createElement('canvas');
+            off.width  = canvas.width;
+            off.height = canvas.height;
+            const octx = off.getContext('2d');
+
+            /* White base */
+            octx.fillStyle = '#ffffff';
+            octx.fillRect(0, 0, off.width, off.height);
+
+            /* Crosshatch grid */
+            octx.strokeStyle = 'rgba(0,0,0,0.07)';
+            octx.lineWidth = 0.5;
+            const step = 20 * (window.devicePixelRatio || 1);
+            for (let x = step; x < off.width; x += step) {
+                octx.beginPath(); octx.moveTo(x, 0); octx.lineTo(x, off.height); octx.stroke();
+            }
+            for (let y = step; y < off.height; y += step) {
+                octx.beginPath(); octx.moveTo(0, y); octx.lineTo(off.width, y); octx.stroke();
+            }
+
+            /* User strokes */
+            octx.drawImage(canvas, 0, 0);
+
+            const link = document.createElement('a');
+            link.download = 'jokoh-sketch.png';
+            link.href = off.toDataURL('image/png');
+            link.click();
+        });
+
+        /* ── Init ───────────────────────────────────────── */
+        resize();
+        setupCtx();
+        window.addEventListener('resize', resize);
+    })();
     </script>
 </body>
 </html>
