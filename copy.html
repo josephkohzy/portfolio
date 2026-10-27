@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy — Jokoh Portfolio</title>
+    <meta name="description" content="UX writing, content design, and copywriting by Joseph Koh — copy shown in context, inside real UI.">
+    <meta property="og:title" content="Copy — Jokoh Portfolio">
+    <meta property="og:description" content="Words that work as hard as the interfaces they live inside.">
+    <meta property="og:image" content="https://josephkoh.design/assets/images/og-preview.jpg">
+    <meta property="og:url" content="https://josephkoh.design/copy.html">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/images/thumbnail.png">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* ── Page Hero ───────────────────────────────────────── */
+        .copy-hero {
+            padding: 160px 60px 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .copy-hero-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .copy-hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--lime);
+            margin-bottom: 20px;
+        }
+
+        .copy-hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--rust);
+        }
+
+        .copy-hero h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 0.92;
+            color: #fff;
+            text-shadow: 4px 4px 0 var(--rust), 8px 8px 0 rgba(0,0,0,0.4);
+            margin: 0 0 28px;
+        }
+
+        .copy-hero-rule {
+            width: 60px;
+            height: 3px;
+            background: var(--rust);
+            margin-bottom: 24px;
+        }
+
+        .copy-hero-desc {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1rem, 1.6vw, 1.2rem);
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        .copy-hero-desc strong { color: var(--text-primary); font-weight: 600; }
+
+        .copy-hero-pillars {
+            display: flex;
+            gap: 24px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .hero-pillar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+        }
+
+        .hero-pillar::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--rust);
+            opacity: 0.7;
+        }
+
+        .hero-pillar.active { color: var(--lime); }
+        .hero-pillar.active::before { background: var(--lime); opacity: 1; }
+
+        /* ── Filter Bar ──────────────────────────────────────── */
+        .copy-filters {
+            padding: 0 60px 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .copy-filters-inner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-group-divider {
+            width: 1px;
+            height: 20px;
+            background: rgba(255,255,255,0.1);
+            margin: 0 4px;
+        }
+
+        .filter-btn {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 7px 16px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--rust);
+            color: #fff;
+            border-color: var(--rust);
+        }
+
+        .filter-btn.ux-filter:hover, .filter-btn.ux-filter.active {
+            background: transparent;
+            color: var(--lime);
+            border-color: var(--lime);
+        }
+
+        /* ── Section Dividers ────────────────────────────────── */
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            padding: 0 0 40px;
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.08) 0%, transparent 100%);
+        }
+
+        .section-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            color: var(--rust);
+            letter-spacing: 2px;
+            flex-shrink: 0;
+        }
+
+        .section-title-block {
+            flex-shrink: 0;
+        }
+
+        .section-title-block h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            margin: 0 0 2px;
+        }
+
+        .section-title-block p {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        /* ── Grid ────────────────────────────────────────────── */
+        .copy-section {
+            padding: 0 60px 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .copy-grid {
+            max-width: 960px;
+            margin: 0 auto 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+        }
+
+        /* ── Card Base ───────────────────────────────────────── */
+        .copy-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 40px 44px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .copy-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--rust);
+            transition: height 0.35s ease;
+        }
+
+        .copy-card:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,107,53,0.25);
+        }
+
+        .copy-card:hover::before { height: 100%; }
+
+        .copy-card.full { grid-column: 1 / -1; }
+        .copy-card.hidden { display: none; }
+
+        /* ── UX Writing Cards ────────────────────────────────── */
+        .ux-card::before { background: var(--lime); }
+        .ux-card:hover { border-color: rgba(0,255,136,0.2); }
+
+        .ux-card-layout {
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+
+        .ux-annotation {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .ux-anno-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lime);
+            opacity: 0.7;
+            margin: 0 0 12px;
+        }
+
+        .ux-anno-heading {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.15rem;
+            color: #fff;
+            margin: 0 0 14px;
+            line-height: 1.2;
+        }
+
+        .ux-anno-body {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.88rem;
+            line-height: 1.72;
+            color: var(--text-secondary);
+            margin: 0 0 28px;
+        }
+
+        .ux-principles {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ux-principle {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding: 12px 14px;
+            background: rgba(0,255,136,0.04);
+            border: 1px solid rgba(0,255,136,0.1);
+            border-radius: 2px;
+        }
+
+        .principle-rule {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--lime);
+            letter-spacing: 0.5px;
+        }
+
+        .principle-eg {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.45;
+        }
+
+        .ux-mockup-wrap {
+            flex-shrink: 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        /* ── Phone Frame ────────────────────────────────────── */
+        .phone-shell {
+            width: 218px;
+            height: 446px;
+            background: linear-gradient(160deg, #1c1c1e 0%, #0f0f11 100%);
+            border-radius: 44px;
+            border: 1.5px solid rgba(255,255,255,0.13);
+            box-shadow:
+                inset 0 0 0 0.5px rgba(255,255,255,0.04),
+                0 40px 90px rgba(0,0,0,0.85),
+                0 0 0 1px rgba(0,0,0,0.4),
+                0 0 50px rgba(0,255,136,0.05);
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .phone-dyn-island {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 82px;
+            height: 24px;
+            background: #0f0f11;
+            border-radius: 20px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            position: absolute;
+            inset: 6px 4px 6px 4px;
+            border-radius: 40px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background: #f8f7f4;
+        }
+
+        /* App UI inside phone */
+        .app-statusbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13px 18px 4px;
+            background: #f8f7f4;
+            flex-shrink: 0;
+        }
+
+        .app-statusbar .app-time {
+            font-size: 10px;
+            font-weight: 700;
+            color: #1a1a1a;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .app-statusbar .app-icons {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .app-statusbar .app-icons svg {
+            width: 12px;
+            height: 12px;
+            fill: #1a1a1a;
+        }
+
+        .app-content {
+            flex: 1;
+            overflow: hidden;
+            padding: 8px 16px 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0 12px;
+            flex-shrink: 0;
+        }
+
+        .app-bar-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: 0.5px;
+        }
+
+        .app-back {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
+            color: #ff6b35;
+            font-weight: 600;
+        }
+
+        /* App step indicator */
+        .app-steps {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 28px;
+            flex-shrink: 0;
+        }
+
+        .app-step-dot {
+            height: 4px;
+            border-radius: 2px;
+            background: #e5e3df;
+            flex: 1;
+        }
+
+        .app-step-dot.active {
+            background: #ff6b35;
+        }
+
+        /* Onboarding screen content */
+        .app-onboard-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #ff6b35, #ff8a5c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            flex-shrink: 0;
+        }
+
+        .app-onboard-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
+
+        .app-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .app-sub {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10.5px;
+            color: #6b6b6b;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .app-helper {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 9.5px;
+            color: #9a9a9a;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            padding: 8px 10px;
+            background: rgba(255,107,53,0.06);
+            border-radius: 6px;
+            border-left: 2px solid rgba(255,107,53,0.3);
+        }
+
+        .app-btn {
+            display: block;
+            text-align: center;
+            background: #ff6b35;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 11px;
+            border-radius: 10px;
+            letter-spacing: 0.3px;
+            margin-bottom: 10px;
+            cursor: default;
+        }
+
+        .app-link {
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
+            color: #ff6b35;
+            font-weight: 600;
+        }
+
+        /* Empty state screen */
+        .app-empty-illustration {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            padding: 10px 0 16px;
+        }
+
+        .app-empty-icon {
+            width: 52px;
+            height: 52px;
+            background: #f0eee9;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .app-empty-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: #c8c4bc;
+            fill: none;
+        }
+
+        .app-empty-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .app-empty-sub {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
+            color: #8a8a8a;
+            text-align: center;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            max-width: 140px;
+        }
+
+        /* ── Form Mockup (web UI) ────────────────────────────── */
+        .form-mockup-shell {
+            background: #f8f7f4;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.7), 0 0 40px rgba(0,255,136,0.04);
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .form-mockup-browser-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 14px;
+            background: #1c1c1e;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .browser-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+
+        .browser-dot.red { background: #ff5f57; }
+        .browser-dot.yellow { background: #febc2e; }
+        .browser-dot.green { background: #28c840; }
+
+        .browser-url {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 9px;
+            color: rgba(255,255,255,0.3);
+            margin-left: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .form-mockup-body {
+            padding: 20px 20px 20px;
+            background: #f8f7f4;
+        }
+
+        .form-mockup-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 18px;
+        }
+
+        .form-field-group {
+            margin-bottom: 14px;
+        }
+
+        .form-label {
+            display: block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            color: #4a4a4a;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .form-input {
+            display: block;
+            width: 100%;
+            padding: 9px 12px;
+            border-radius: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            background: #fff;
+            border: 1.5px solid #e2e0dc;
+            color: #1a1a1a;
+        }
+
+        .form-input.error { border-color: #e53e3e; background: #fff5f5; }
+        .form-input.success { border-color: #38a169; }
+
+        .form-helper {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 9.5px;
+            color: #8a8a8a;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .form-error-msg {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 9.5px;
+            color: #e53e3e;
+            margin-top: 4px;
+            display: flex;
+            align-items: flex-start;
+            gap: 4px;
+            line-height: 1.4;
+        }
+
+        .form-error-msg::before {
+            content: '↑';
+            flex-shrink: 0;
+            margin-top: 0px;
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            padding: 11px;
+            background: #1a1a1a;
+            color: #fff;
+            border-radius: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 18px;
+            cursor: default;
+            letter-spacing: 0.5px;
+        }
+
+        .form-submit-btn.rust {
+            background: #ff6b35;
+        }
+
+        .form-legal {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 8.5px;
+            color: #aaa;
+            margin-top: 10px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* ── Notification Cards ──────────────────────────────── */
+        .notification-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .notif-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 14px;
+            padding: 12px 14px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 2px 6px rgba(0,0,0,0.3);
+            backdrop-filter: blur(12px);
+        }
+
+        .notif-app-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            background: linear-gradient(135deg, #ff6b35, #ff8a5c);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .notif-app-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .notif-app-icon.lime {
+            background: linear-gradient(135deg, #00cc6a, #00ff88);
+        }
+
+        .notif-app-icon.dark {
+            background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+        }
+
+        .notif-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .notif-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .notif-app-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            color: #6b6b6b;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .notif-time {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 9.5px;
+            color: #a0a0a0;
+        }
+
+        .notif-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+            line-height: 1.3;
+        }
+
+        .notif-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            color: #4a4a4a;
+            line-height: 1.4;
+        }
+
+        /* ── Tooltip Mockup ──────────────────────────────────── */
+        .tooltip-mockup-wrap {
+            position: relative;
+        }
+
+        .tooltip-ui-surface {
+            background: #f8f7f4;
+            border-radius: 10px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tooltip-ui-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #e8e6e3;
+            position: relative;
+        }
+
+        .tooltip-ui-row.highlighted {
+            border-color: #ff6b35;
+            box-shadow: 0 0 0 2px rgba(255,107,53,0.15);
+        }
+
+        .tooltip-row-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .tooltip-row-sub {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 9.5px;
+            color: #8a8a8a;
+            margin-top: 2px;
+        }
+
+        .tooltip-toggle {
+            width: 36px;
+            height: 20px;
+            background: #ff6b35;
+            border-radius: 20px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .tooltip-toggle::after {
+            content: '';
+            position: absolute;
+            right: 3px;
+            top: 3px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .tooltip-toggle.off {
+            background: #e0ddd8;
+        }
+
+        .tooltip-toggle.off::after {
+            right: auto;
+            left: 3px;
+        }
+
+        .tooltip-bubble {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1a1a;
+            color: #f0f0f0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 9.5px;
+            line-height: 1.5;
+            padding: 10px 12px;
+            border-radius: 8px;
+            width: 200px;
+            text-align: left;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            z-index: 10;
+        }
+
+        .tooltip-bubble::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #1a1a1a;
+        }
+
+        .tooltip-info-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255,107,53,0.15);
+            border: 1px solid rgba(255,107,53,0.4);
+            color: #ff6b35;
+            font-size: 9px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            cursor: default;
+            flex-shrink: 0;
+        }
+
+        .tooltip-ui-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ── Microcopy Annotation Overlay ────────────────────── */
+        .microcopy-wrap {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .microcopy-form-col {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .microcopy-notes-col {
+            width: 220px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .micro-note {
+            padding: 12px 14px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .micro-note-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--rust);
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .micro-note-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .micro-note-body {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.35);
+            line-height: 1.5;
+        }
+
+        .anno-dot {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--rust);
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 8px;
+            font-weight: 700;
+            vertical-align: middle;
+            margin-left: 4px;
+            position: relative;
+            top: -1px;
+        }
+
+        /* ── Card Meta ───────────────────────────────────────── */
+        .card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .card-type {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            border-radius: 2px;
+        }
+
+        .type-brand     { background: rgba(255,107,53,0.12); color: var(--rust);  border: 1px solid rgba(255,107,53,0.3); }
+        .type-social    { background: rgba(0,255,136,0.08);  color: var(--lime);  border: 1px solid rgba(0,255,136,0.25); }
+        .type-long      { background: rgba(138,149,165,0.1); color: var(--steel); border: 1px solid rgba(138,149,165,0.25); }
+        .type-concept   { background: rgba(255,255,255,0.05); color: var(--text-secondary); border: 1px solid rgba(255,255,255,0.1); }
+        .type-ux        { background: rgba(0,255,136,0.07); color: var(--lime); border: 1px solid rgba(0,255,136,0.2); }
+        .type-microcopy { background: rgba(0,255,136,0.07); color: var(--lime); border: 1px solid rgba(0,255,136,0.2); }
+        .type-onboarding{ background: rgba(255,107,53,0.09); color: #ff8a5c; border: 1px solid rgba(255,107,53,0.22); }
+        .type-error     { background: rgba(229,62,62,0.08); color: #fc8181; border: 1px solid rgba(229,62,62,0.2); }
+        .type-notif     { background: rgba(138,149,165,0.1); color: var(--steel); border: 1px solid rgba(138,149,165,0.2); }
+
+        .card-client {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.22);
+        }
+
+        .card-source {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.18);
+            margin-bottom: 20px;
+        }
+
+        .card-source::before { content: '↳'; font-size: 0.75rem; color: var(--rust); opacity: 0.6; }
+
+        /* ── Typography: existing card types ─────────────────── */
+        .tagline-text {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            line-height: 1.1;
+            color: #fff;
+            margin: 0 0 18px;
+            letter-spacing: -0.01em;
+        }
+
+        .tagline-sub {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .social-platform {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--lime);
+            margin-bottom: 16px;
+        }
+
+        .social-platform::before { content: '↗'; font-size: 0.8rem; }
+
+        .social-body {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.97rem;
+            line-height: 1.78;
+            color: var(--text-primary);
+            margin: 0 0 14px;
+            white-space: pre-wrap;
+        }
+
+        .social-tags {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(0,255,136,0.45);
+            font-weight: 600;
+        }
+
+        .longform-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 14px;
+        }
+
+        .longform-body {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.82;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .longform-body strong { color: var(--text-primary); font-weight: 600; }
+        .longform-body em { font-style: normal; color: var(--rust); }
+
+        .pull-quote {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+            line-height: 1.3;
+            color: #fff;
+            margin: 0 0 18px;
+            padding-left: 22px;
+            border-left: 3px solid var(--lime);
+            letter-spacing: -0.01em;
+        }
+
+        .pull-quote-context {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .headline-stack { display: flex; flex-direction: column; gap: 20px; }
+
+        .headline-item {
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .headline-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .headline-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.2);
+            margin-bottom: 8px;
+        }
+
+        .headline-main {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1rem, 1.8vw, 1.4rem);
+            color: #fff;
+            line-height: 1.15;
+            margin: 0 0 6px;
+        }
+
+        .headline-support {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .manifesto-card {
+            background: rgba(255,107,53,0.04);
+            border: 1px solid rgba(255,107,53,0.15);
+        }
+
+        .manifesto-card::before { background: var(--lime); }
+
+        .manifesto-lines { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+
+        .manifesto-lines li {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(0.92rem, 1.3vw, 1.05rem);
+            line-height: 1.55;
+            color: var(--text-primary);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .manifesto-lines li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--rust);
+            font-weight: 700;
+        }
+
+        /* ── CTA ─────────────────────────────────────────────── */
+        .copy-cta {
+            padding: 0 60px 120px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .copy-cta-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .copy-cta p {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+        }
+
+        .copy-cta p strong { color: var(--text-primary); }
+
+        /* ── Responsive ──────────────────────────────────────── */
+        @media (max-width: 900px) {
+            .copy-hero    { padding: 140px 32px 60px; }
+            .copy-filters { padding: 0 32px 48px; }
+            .copy-section { padding: 0 32px 80px; }
+            .copy-cta     { padding: 0 32px 80px; }
+            .copy-grid    { grid-template-columns: 1fr; }
+            .copy-card.full { grid-column: 1; }
+            .ux-card-layout { flex-direction: column-reverse; }
+            .phone-shell { width: 190px; height: 388px; }
+            .microcopy-wrap { flex-direction: column; }
+            .microcopy-notes-col { width: 100%; flex-direction: row; flex-wrap: wrap; }
+            .micro-note { flex: 1 1 180px; }
+            .tooltip-bubble { width: 160px; font-size: 8.5px; }
+        }
+
+        @media (max-width: 600px) {
+            .copy-hero    { padding: 120px 20px 48px; }
+            .copy-filters { padding: 0 20px 40px; }
+            .copy-section { padding: 0 20px 60px; }
+            .copy-cta     { padding: 0 20px 60px; }
+            .copy-card    { padding: 28px 24px; }
+            .ux-mockup-wrap { width: 100%; }
+        }
+
+        /* ── MYIO Brand Colors ───────────────────────────────── */
+        /* Warm earth: Void #14100a · Slate #261a0e · Cream #fdf6ea · Sand #e8a94a · Umber #8c5c28 */
+        .phone-shell.myio {
+            box-shadow: 0 40px 90px rgba(0,0,0,0.85), 0 0 0 1px rgba(0,0,0,0.4), 0 0 50px rgba(232,169,74,0.08);
+        }
+        .phone-shell.myio .phone-screen  { background: #14100a; }
+        .phone-shell.myio .app-statusbar { background: #14100a; }
+        .phone-shell.myio .app-time      { color: #fdf6ea !important; }
+        .phone-shell.myio .app-statusbar svg { fill: #fdf6ea !important; }
+        .phone-shell.myio .app-content   { background: #14100a; }
+        .phone-shell.myio .app-bar-title { color: #fdf6ea !important; }
+        .phone-shell.myio .app-empty-icon { background: #261a0e; border: 1px solid rgba(140,92,40,0.3); }
+        .phone-shell.myio .app-empty-icon svg { stroke: #8c5c28; fill: none; }
+        .phone-shell.myio .app-empty-title { color: #fdf6ea; }
+        .phone-shell.myio .app-empty-sub  { color: #8c7a60; }
+        .phone-shell.myio .app-btn         { background: #e8a94a; color: #14100a; }
+        .phone-shell.myio .app-link        { color: #e8a94a; }
+
+        /* ── Unify Brand Colors ──────────────────────────────── */
+        /* Corporate dark: Card #141826 · Blue #3563C4 · Text #E9EAF0 · Muted #7A8399 */
+        .phone-shell.unify {
+            box-shadow: 0 40px 90px rgba(0,0,0,0.85), 0 0 0 1px rgba(0,0,0,0.4), 0 0 50px rgba(53,99,196,0.1);
+        }
+        .phone-shell.unify .phone-screen  { background: #0d111e; }
+        .phone-shell.unify .app-statusbar { background: #0d111e; }
+        .phone-shell.unify .app-time      { color: #e9eaf0 !important; }
+        .phone-shell.unify .app-statusbar svg { fill: #e9eaf0 !important; }
+        .phone-shell.unify .app-content   { background: #0d111e; }
+        .phone-shell.unify .app-bar-title { color: #e9eaf0 !important; }
+        .phone-shell.unify .app-steps .app-step-dot        { background: #1e2a42; }
+        .phone-shell.unify .app-steps .app-step-dot.active { background: #3563c4; }
+        .phone-shell.unify .app-onboard-icon { background: linear-gradient(135deg, #2952b4, #3563c4); }
+        .phone-shell.unify .app-heading  { color: #e9eaf0; }
+        .phone-shell.unify .app-sub      { color: #7a8399; }
+        .phone-shell.unify .app-helper   { background: rgba(53,99,196,0.12); border-left-color: rgba(53,99,196,0.5); color: #7a8399; }
+        .phone-shell.unify .app-btn      { background: #3563c4; color: #fff; }
+        .phone-shell.unify .app-link     { color: #5b8ae8; }
+
+        /* ── Unify Web Form Colors ───────────────────────────── */
+        .unify-form .form-mockup-body   { background: #141826; }
+        .unify-form .form-mockup-title  { color: #e9eaf0; }
+        .unify-form .form-label         { color: #5b6a87; }
+        .unify-form .form-input         { background: #1e2840; border-color: #263355; color: #e9eaf0; }
+        .unify-form .form-input.error   { background: #1e1630; border-color: #e53e3e !important; color: #fc8181; }
+        .unify-form .form-input.success { background: #1e2840; border-color: #2d5a4f; color: #e9eaf0; }
+        .unify-form .form-helper        { color: #4a5a7a; }
+        .unify-form .form-helper span   { color: #7a9ac8 !important; }
+        .unify-form .form-error-msg     { color: #fc8181; }
+        .unify-form .form-submit-btn    { background: #3563c4; color: #fff; }
+        .unify-form .form-submit-btn.rust { background: #3563c4; }
+        .unify-form .form-legal         { color: #3a4a66; }
+        .unify-form .anno-dot           { background: #3563c4; }
+        .unify-form .micro-note-num     { background: #3563c4; }
+        /* Tooltip UI overrides for Unify */
+        .unify-form .tooltip-ui-surface { background: #141826; }
+        .unify-form .tooltip-ui-row     { background: #1a2135; border-color: #263355; }
+        .unify-form .tooltip-ui-row.highlighted { border-color: #3563c4; box-shadow: 0 0 0 2px rgba(53,99,196,0.2); }
+        .unify-form .tooltip-row-label  { color: #e9eaf0; }
+        .unify-form .tooltip-row-sub    { color: #4a5a7a; }
+        .unify-form .tooltip-toggle     { background: #3563c4; }
+        .unify-form .tooltip-toggle.off { background: #1e2840; }
+        .unify-form .tooltip-info-icon  { background: rgba(53,99,196,0.15); border-color: rgba(53,99,196,0.4); color: #5b8ae8; }
+        .unify-form .tooltip-bubble     { background: #1a2135; border: 1px solid #263355; color: #a8b8d4; }
+        .unify-form .tooltip-bubble::after { border-top-color: #1a2135; }
+        /* Export link in Unify settings */
+        .unify-form .tooltip-ui-right span[style] { color: #5b8ae8 !important; }
+        /* Section label */
+        .unify-form p[style*="6b6b6b"] { color: #4a5a7a !important; }
+
+        /* ── Mockup Image Assets (swap with Figma exports) ─────── */
+        /* To replace: swap src in any <img data-figma-swap="true"> */
+        .mockup-img {
+            display: block;
+            border-radius: 0;
+            max-width: 100%;
+            height: auto;
+        }
+        .mockup-img.phone-img {
+            border-radius: 44px;
+            box-shadow:
+                0 40px 90px rgba(0,0,0,0.85),
+                0 0 0 1px rgba(0,0,0,0.4),
+                0 0 50px rgba(53,99,196,0.08);
+        }
+        .mockup-img.myio-img {
+            box-shadow:
+                0 40px 90px rgba(0,0,0,0.85),
+                0 0 0 1px rgba(0,0,0,0.4),
+                0 0 50px rgba(232,169,74,0.08);
+        }
+        .mockup-img.form-img {
+            border-radius: 12px;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.7), 0 0 40px rgba(0,255,136,0.04);
+            width: 100%;
+        }
+        .mockup-img.notif-img,
+        .mockup-img.tooltip-img {
+            width: 100%;
+            border-radius: 6px;
+        }
+        /* Figma swap hint shown in dev tools / source only */
+        /* Replace src="assets/mockup-XXX.png" with your Figma PNG export */
+        /* ── Mockup Image Assets ─────────────────────────────── */
+        /* To swap in a Figma export: replace src on any [data-figma-swap] img */
+        .mockup-img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        .phone-img {
+            max-height: 446px;
+            width: auto;
+            margin: 0 auto;
+            filter: drop-shadow(0 28px 56px rgba(0,0,0,0.65));
+        }
+        .form-img {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 12px;
+            filter: drop-shadow(0 16px 40px rgba(0,0,0,0.5));
+        }
+        .notif-img {
+            width: 100%;
+            max-width: 380px;
+            filter: drop-shadow(0 16px 40px rgba(0,0,0,0.4));
+        }
+        .microcopy-img {
+            width: 100%;
+            border-radius: 12px;
+            filter: drop-shadow(0 16px 40px rgba(0,0,0,0.5));
+        }
+    </style>
+</head>
+<body>
+    <div class="concrete-crack"></div>
+
+    <nav>
+        <a href="index.html" class="logo logo-img-wrap">
+            <img src="assets/images/logo.png" alt="J" class="logo-j-img" onerror="this.style.display='none'">
+            <span class="logo-okoh">OKOH</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="copy.html" class="active">Copy</a></li>
+            <li><a href="process.html">Process</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="reel-btn" id="reelBtn">
+        <span class="reel-tooltip">WATCH REEL</span>
+    </div>
+
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <span class="video-close">&times;</span>
+            <div class="video-container">
+                <iframe id="reelVideo" width="100%" height="100%" src="" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Hero ──────────────────────────────────────────────── -->
+    <div class="copy-hero fade-in">
+        <div class="copy-hero-inner">
+        <span class="copy-hero-eyebrow">Content Design & Copy</span>
+        <h1>Words<br>That<br>Work</h1>
+        <div class="copy-hero-rule"></div>
+        <p class="copy-hero-desc">
+            From <strong>UX microcopy inside real UI</strong> to brand lines, social, and long-form —
+            every piece here is written with a visual designer's eye for where the words live,
+            not just what they say.
+        </p>
+        <div class="copy-hero-pillars">
+            <span class="hero-pillar active">UX Writing</span>
+            <span class="hero-pillar active">Content Design</span>
+            <span class="hero-pillar">Brand Copy</span>
+            <span class="hero-pillar">Social</span>
+            <span class="hero-pillar">Long-form</span>
+        </div>
+        </div>
+    </div>
+
+    <!-- ── Filters ───────────────────────────────────────────── -->
+    <div class="copy-filters">
+        <div class="copy-filters-inner">
+        <div class="filter-group">
+            <button class="filter-btn active" data-filter="all">All</button>
+        </div>
+        <div class="filter-group-divider"></div>
+        <div class="filter-group">
+            <button class="filter-btn ux-filter" data-filter="ux">UX Writing</button>
+            <button class="filter-btn ux-filter" data-filter="microcopy">Microcopy</button>
+            <button class="filter-btn ux-filter" data-filter="onboarding">Onboarding</button>
+        </div>
+        <div class="filter-group-divider"></div>
+        <div class="filter-group">
+            <button class="filter-btn" data-filter="brand">Brand</button>
+            <button class="filter-btn" data-filter="social">Social</button>
+            <button class="filter-btn" data-filter="long">Long-form</button>
+            <button class="filter-btn" data-filter="concept">Concept</button>
+        </div>
+        </div>
+    </div>
+
+    <!-- ── Grid ──────────────────────────────────────────────── -->
+    <div class="copy-section">
+
+        <!-- UX Writing Section -->
+        <div style="max-width: 960px; margin: 0 auto 28px;">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <div class="section-title-block">
+                    <h2>UX Writing & Content Design</h2>
+                    <p>Copy shown in context — inside real UI patterns</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="copy-grid">
+
+            <!-- ─ UX 1. Onboarding Flow (full) ───────────────── -->
+            <div class="copy-card ux-card full" data-category="ux onboarding">
+                <div class="card-meta">
+                    <span class="card-type type-onboarding">Onboarding Flow</span>
+                    <span class="card-client">Unify — Workplace Communication Platform</span>
+                </div>
+                <div class="ux-card-layout">
+                    <div class="ux-annotation">
+                        <p class="ux-anno-label">UX Writing Notes</p>
+                        <p class="ux-anno-heading">Welcome screens should welcome, not instruct.</p>
+                        <p class="ux-anno-body">
+                            Most onboarding screens fail because they celebrate the product before the user has experienced any value.
+                            This welcome copy flips the frame — "Your team is already here. You just haven't arrived yet" — so
+                            the user feels like they're catching up to something real, not starting from zero.
+                            It reduces the psychological distance between signup and first value, without a single feature name.
+                        </p>
+                        <div class="ux-principles">
+                            <div class="ux-principle">
+                                <span class="principle-rule">Presuppose the good outcome</span>
+                                <span class="principle-eg">"Your team is already here" implies connection already exists — users just need to arrive.</span>
+                            </div>
+                            <div class="ux-principle">
+                                <span class="principle-rule">Name the action, not the feature</span>
+                                <span class="principle-eg">"Connect Slack workspace" beats "Add integration" — it describes what happens, not what it is.</span>
+                            </div>
+                            <div class="ux-principle">
+                                <span class="principle-rule">Earn the secondary CTA</span>
+                                <span class="principle-eg">"Or start with email instead" is permission, not a fallback — it respects user workflow without friction.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ↓ Figma export slot — swap src with your polished export -->
+                    <div class="ux-mockup-wrap">
+                        <img src="mockup-unify-onboarding.png"
+                             alt="Unify onboarding — welcome screen with UX copy in context"
+                             class="mockup-img phone-img"
+                             data-figma-swap="true"
+                             data-mockup-label="Unify / Onboarding / Step 1 of 3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─ UX 2. Empty State (half) ────────────────────── -->
+            <div class="copy-card ux-card" data-category="ux">
+                <div class="card-meta">
+                    <span class="card-type type-ux">Empty State</span>
+                    <span class="card-client">MYIO — List Maker App</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:24px;align-items:center;">
+                    <!-- ↓ Figma export slot -->
+                    <div class="ux-mockup-wrap">
+                        <img src="mockup-myio-empty.png"
+                             alt="MYIO empty state — Your lists live here"
+                             class="mockup-img phone-img"
+                             data-figma-swap="true"
+                             data-mockup-label="MYIO / Empty State / My Lists">
+                    </div>
+                    <div style="max-width:100%;">
+                        <p class="ux-anno-label">Copy Intent</p>
+                        <p style="font-family:'Space Grotesk',sans-serif;font-size:0.83rem;color:var(--text-secondary);line-height:1.65;margin:0;">Empty states shouldn't just describe emptiness — they should make starting feel irresistible. The specific example ("your top 5 albums right now") lowers the blank-page anxiety that stops first-time engagement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─ UX 3. Error Messages (half) ─────────────────── -->
+            <div class="copy-card ux-card" data-category="ux microcopy">
+                <div class="card-meta">
+                    <span class="card-type type-error">Error Messages</span>
+                    <span class="card-client">Unify — Sign-in Flow</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:20px;">
+                    <!-- ↓ Figma export slot -->
+                    <img src="mockup-unify-error.png"
+                         alt="Unify error state — sign-in form with error copy in context"
+                         class="mockup-img form-img"
+                         data-figma-swap="true"
+                         data-mockup-label="Unify / Error States / Sign-in">
+                    <div>
+                        <p class="ux-anno-label">Copy Intent</p>
+                        <div class="ux-principles" style="gap:8px;">
+                            <div class="ux-principle">
+                                <span class="principle-rule"><span class="anno-dot" style="background:#3563c4;margin-right:4px;">1</span> Specific, not accusatory</span>
+                                <span class="principle-eg">"Looks like a typo" vs "Invalid email" — one helps, one blames.</span>
+                            </div>
+                            <div class="ux-principle">
+                                <span class="principle-rule"><span class="anno-dot" style="background:#3563c4;margin-right:4px;">2</span> Offer an exit</span>
+                                <span class="principle-eg">Always link the recovery path inside the error — never make users hunt for it.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─ UX 4. Microcopy System (full) ───────────────── -->
+            <div class="copy-card ux-card full" data-category="ux microcopy onboarding">
+                <div class="card-meta">
+                    <span class="card-type type-microcopy">Microcopy System</span>
+                    <span class="card-client">Unify — Account Setup</span>
+                </div>
+                <div class="microcopy-wrap">
+                    <!-- ↓ Figma export slot -->
+                    <div class="microcopy-form-col">
+                        <img src="mockup-unify-microcopy.png"
+                             alt="Unify microcopy system — annotated signup form"
+                             class="mockup-img microcopy-img"
+                             data-figma-swap="true"
+                             data-mockup-label="Unify / Microcopy / Signup Form">
+                    </div>
+                    <div class="microcopy-notes-col">
+                        <div class="micro-note">
+                            <div class="micro-note-num">1</div>
+                            <p class="micro-note-title">Label copy</p>
+                            <p class="micro-note-body">"Full name" not "Name" — specificity prevents confusion about format.</p>
+                        </div>
+                        <div class="micro-note">
+                            <div class="micro-note-num">2</div>
+                            <p class="micro-note-title">Context label</p>
+                            <p class="micro-note-body">"Work email" sets expectations — users know this is for team use, not personal.</p>
+                        </div>
+                        <div class="micro-note">
+                            <div class="micro-note-num">3</div>
+                            <p class="micro-note-title">Permission note</p>
+                            <p class="micro-note-body">Pre-empt the "will you spam me?" anxiety. A soft promise reduces drop-off at email fields.</p>
+                        </div>
+                        <div class="micro-note">
+                            <div class="micro-note-num">4</div>
+                            <p class="micro-note-title">Field label</p>
+                            <p class="micro-note-body">Simple — no decoration. The helper text below does the explaining.</p>
+                        </div>
+                        <div class="micro-note">
+                            <div class="micro-note-num">5</div>
+                            <p class="micro-note-title">Helper tone</p>
+                            <p class="micro-note-body">"One you'll actually remember" acknowledges real behaviour without lecturing about security hygiene.</p>
+                        </div>
+                        <div class="micro-note">
+                            <div class="micro-note-num">6</div>
+                            <p class="micro-note-title">CTA copy</p>
+                            <p class="micro-note-body">"Create my account" vs "Submit" — first person ownership, action orientation, zero ambiguity.</p>
+                        </div>
+                        <div class="micro-note">
+                            <div class="micro-note-num">7</div>
+                            <p class="micro-note-title">Legal micro</p>
+                            <p class="micro-note-body">"It's yours" turns legal boilerplate into a trust signal. Human, not corporate.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─ UX 5. Push Notifications (half) ─────────────── -->
+            <div class="copy-card ux-card" data-category="ux microcopy">
+                <div class="card-meta">
+                    <span class="card-type type-notif">Push Notifications</span>
+                    <span class="card-client">Unify & MYIO</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:20px;">
+                    <!-- ↓ Figma export slot -->
+                    <img src="mockup-notifications.png"
+                         alt="Push notification copy — Unify and MYIO notification cards"
+                         class="mockup-img notif-img"
+                         data-figma-swap="true"
+                         data-mockup-label="Unify + MYIO / Push Notifications">
+                    <div>
+                        <p class="ux-anno-label">Copy Intent</p>
+                        <p style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;color:var(--text-secondary);line-height:1.65;margin:0;">Each notification earns its push. The copy names who did what, quotes enough to make opening feel worth it, and treats "nothing new" as a positive — not a non-event. The "all caught up" notification acknowledges the user's time, which builds trust in the channel over time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─ UX 6. Tooltip & Helper Text (half) ──────────── -->
+            <div class="copy-card ux-card" data-category="ux microcopy">
+                <div class="card-meta">
+                    <span class="card-type type-microcopy">Tooltips & Helper Text</span>
+                    <span class="card-client">Unify — Settings</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:20px;">
+                    <!-- ↓ Figma export slot -->
+                    <img src="mockup-unify-tooltip.png"
+                         alt="Unify tooltip copy — settings UI with focus mode tooltip"
+                         class="mockup-img form-img"
+                         data-figma-swap="true"
+                         data-mockup-label="Unify / Tooltips / Settings">
+                    <div>
+                        <p class="ux-anno-label">Copy Intent</p>
+                        <p style="font-family:'Space Grotesk',sans-serif;font-size:0.82rem;color:var(--text-secondary);line-height:1.65;margin:0 0 12px;">Good tooltip copy doesn't repeat the label — it answers the unspoken question: "But what actually happens when I turn this on?" The focus mode tooltip specifies the edge case (urgent items still get through) so users can trust the setting without anxiety.</p>
+                        <div class="ux-principle">
+                            <span class="principle-rule">Subtext does the heavy lifting</span>
+                            <span class="principle-eg">".CSV · compatible with Notion &amp; Sheets" tells users what they can do with their data before they even ask.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /copy-grid (ux) -->
+
+        <!-- Brand & Creative Section -->
+        <div style="max-width: 960px; margin: 0 auto 28px;">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <div class="section-title-block">
+                    <h2>Brand & Creative Copy</h2>
+                    <p>Headlines, taglines, social captions, and long-form</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="copy-grid">
+
+            <!-- ─ 1. UNIFY — Brand tagline ────────────────────── -->
+            <div class="copy-card full" data-category="brand">
+                <div class="card-meta">
+                    <span class="card-type type-brand">Brand Tagline</span>
+                    <span class="card-client">Unify — Workplace Communication Platform</span>
+                </div>
+                <p class="tagline-text">Stop switching.<br>Start working.</p>
+                <p class="tagline-sub">
+                    Unify consolidates chat, email, reminders, and team coordination into one workspace — built for the reality that workers jump between Slack, Teams, Gmail, and Notion up to six times an hour. The tagline doesn't sell features. It names the exhaustion first, then offers the exit.
+                </p>
+            </div>
+
+            <!-- ─ 2. MYIO — Social caption ────────────────────── -->
+            <div class="copy-card" data-category="social">
+                <div class="card-meta">
+                    <span class="card-type type-social">Social Caption</span>
+                    <span class="card-client">MYIO — Top 10 List Maker App</span>
+                </div>
+                <span class="social-platform">Instagram / TikTok</span>
+                <p class="social-body">You have a top 10 for everything.
+
+Best albums of the year. Favourite comfort shows. That running list of restaurants you keep meaning to try.
+
+It's all living rent-free in your head.
+
+MYIO gives it somewhere to go.</p>
+                <p class="social-tags">#myio #topten #listapp #productivity</p>
+            </div>
+
+            <!-- ─ 3. TOUCHÉ — Social caption ──────────────────── -->
+            <div class="copy-card" data-category="social">
+                <div class="card-meta">
+                    <span class="card-type type-social">Social Caption</span>
+                    <span class="card-client">Touché — Romcom Visual Novel</span>
+                </div>
+                <span class="social-platform">Twitter / X</span>
+                <p class="social-body">She's a French exchange student.
+He's terrible at feelings.
+They meet in a corridor neither of them meant to be in.
+
+This is not a meet-cute. This is a slow disaster with good music and worse timing.
+
+Touché. Out soon.</p>
+                <p class="social-tags">#visualnovel #romcom #indiegame #touche</p>
+            </div>
+
+            <!-- ─ 4. UNIFY — Long-form onboarding copy ────────── -->
+            <div class="copy-card full" data-category="long">
+                <div class="card-meta">
+                    <span class="card-type type-long">Long-form / Onboarding Copy</span>
+                    <span class="card-client">Unify — Workplace Communication Platform</span>
+                </div>
+                <p class="longform-title">Welcome screen — first login</p>
+                <p class="longform-body" style="max-width: 680px;">
+                    <strong>Your team is already in here somewhere.</strong><br><br>
+                    Unify pulls your existing channels, email threads, and reminders into one place — so the first thing you see every morning isn't twelve tabs. It's one.
+                    <br><br>
+                    Connect your accounts below. It takes about two minutes. After that, you won't think about the tool at all.
+                    <em>That's the point.</em>
+                </p>
+            </div>
+
+            <!-- ─ 5. Generic brand — tagline variants ─────────── -->
+            <div class="copy-card" data-category="brand">
+                <div class="card-meta">
+                    <span class="card-type type-brand">Tagline Variants</span>
+                    <span class="card-client">Concept — Streetwear Label</span>
+                </div>
+                <div class="headline-stack">
+                    <div class="headline-item">
+                        <p class="headline-label">Primary line</p>
+                        <p class="headline-main">Worn in. Never worn out.</p>
+                        <p class="headline-support">Longevity as personality — the brand ages with you.</p>
+                    </div>
+                    <div class="headline-item">
+                        <p class="headline-label">Seasonal variant</p>
+                        <p class="headline-main">Built for wherever you end up.</p>
+                        <p class="headline-support">Open-ended geography. Speaks to movement and adaptability.</p>
+                    </div>
+                    <div class="headline-item">
+                        <p class="headline-label">Campaign — minimalist</p>
+                        <p class="headline-main">Less logo. More look.</p>
+                        <p class="headline-support">Positions the brand against hype-heavy competitors without naming them.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─ 6. Generic — ad headlines (F&B) ────────────── -->
+            <div class="copy-card" data-category="brand">
+                <div class="card-meta">
+                    <span class="card-type type-brand">Ad Headlines</span>
+                    <span class="card-client">Concept — F&amp;B Brand</span>
+                </div>
+                <div class="headline-stack">
+                    <div class="headline-item">
+                        <p class="headline-label">Option A — Confidence</p>
+                        <p class="headline-main">You already know this is going to be good.</p>
+                        <p class="headline-support">For a brand with a reputation it's ready to own.</p>
+                    </div>
+                    <div class="headline-item">
+                        <p class="headline-label">Option B — Curiosity</p>
+                        <p class="headline-main">Not for everyone. (But probably for you.)</p>
+                        <p class="headline-support">Selective framing that makes the audience feel chosen.</p>
+                    </div>
+                    <div class="headline-item">
+                        <p class="headline-label">Option C — Direct</p>
+                        <p class="headline-main">Eat well. Leave happy. Come back tomorrow.</p>
+                        <p class="headline-support">Three beats, one promise. Rhythm does the persuading.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─ 7. TOUCHÉ — Pull quote ───────────────────────── -->
+            <div class="copy-card full" data-category="concept">
+                <div class="card-meta">
+                    <span class="card-type type-concept">Game Pitch / Pull Quote</span>
+                    <span class="card-client">Touché — Romcom Visual Novel</span>
+                </div>
+                <p class="pull-quote">
+                    "Every route ends differently. Every choice you skip is a version of them you'll never see."
+                </p>
+                <p class="pull-quote-context">
+                    Written as the pitch hook for Touché's branching narrative structure. Visual novel marketing lives or dies on making the player feel like their decisions matter before they've made a single one. This line sells replayability without using the word — and puts the emotional cost of inaction front and centre, which is exactly the genre's appeal.
+                </p>
+            </div>
+
+            <!-- ─ 8. MYIO — Long-form / product page ──────────── -->
+            <div class="copy-card" data-category="long">
+                <div class="card-meta">
+                    <span class="card-type type-long">Long-form / Product Page</span>
+                    <span class="card-client">MYIO — Top 10 List Maker App</span>
+                </div>
+                <p class="longform-title">App store description</p>
+                <p class="longform-body">
+                    There are apps for tasks. Apps for notes. Apps for habits, goals, budgets, and mood boards.
+                    <br><br>
+                    <strong>MYIO is for the list in your head that has no category.</strong> Your top 10 albums from last year. Best films you've seen twice. Restaurants worth the wait.
+                    <br><br>
+                    Make it. Rank it. <em>Own it.</em>
+                </p>
+            </div>
+
+            <!-- ─ 9. Generic — LinkedIn post ──────────────────── -->
+            <div class="copy-card" data-category="social">
+                <div class="card-meta">
+                    <span class="card-type type-social">Social Caption</span>
+                    <span class="card-client">Concept — LinkedIn</span>
+                </div>
+                <span class="social-platform">LinkedIn</span>
+                <p class="social-body">Hot take: the brief is the first creative deliverable.
+
+A vague brief doesn't save time — it just moves the confusion downstream, where it costs more to fix.
+
+The best projects I've worked on started with a client who knew what feeling they were chasing, even if they didn't know what it looked like yet.
+
+That clarity is half the design work done.</p>
+                <p class="social-tags">#design #clientwork #process</p>
+            </div>
+
+            <!-- ─ 10. TOUCHÉ — Long-form / game description ───── -->
+            <div class="copy-card full" data-category="long">
+                <div class="card-meta">
+                    <span class="card-type type-long">Long-form / Game Description</span>
+                    <span class="card-client">Touché — Romcom Visual Novel</span>
+                </div>
+                <p class="longform-title">Steam page — game description</p>
+                <p class="longform-body" style="max-width: 700px;">
+                    Amélie didn't plan on staying. One semester abroad, a few cultural misunderstandings, and a flight home at the end of it. Clean. Simple. Predictable.
+                    <br><br>
+                    <strong>Then she met him in the stairwell of the wrong building at the wrong time, and the semester got complicated.</strong>
+                    <br><br>
+                    Touché is a romcom visual novel about two people who are terrible at saying what they mean. Multiple routes. Branching dialogue. An ending that depends entirely on how honest you're willing to be.
+                    <br><br>
+                    <em>Some things don't translate. Feelings aren't one of them.</em>
+                </p>
+            </div>
+
+            <!-- ─ 11. Generic — manifesto ─────────────────────── -->
+            <div class="copy-card full manifesto-card" data-category="concept">
+                <div class="card-meta">
+                    <span class="card-type type-concept">Manifesto / Brand Voice</span>
+                    <span class="card-client">Concept — Creative Agency</span>
+                </div>
+                <p class="longform-title" style="margin-bottom: 28px;">How We Work</p>
+                <ul class="manifesto-lines">
+                    <li>We show up on time and send work that doesn't need an explanation attached.</li>
+                    <li>We push back when something is wrong. We ship when something is right.</li>
+                    <li>The best idea wins, regardless of who had it.</li>
+                    <li>We don't do vague. Vague is expensive.</li>
+                    <li>Good work is its own argument. We let it speak first.</li>
+                </ul>
+            </div>
+
+        </div><!-- /copy-grid (brand) -->
+
+    </div><!-- /copy-section -->
+
+    <!-- ── CTA ────────────────────────────────────────────────── -->
+    <div class="copy-cta fade-in">
+        <div class="copy-cta-inner">
+        <p>Looking for someone who can <strong>write the copy, design the flow, and think in systems</strong>?</p>
+        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+            <a href="contact.html" class="btn btn-primary">Get In Touch</a>
+            <a href="work.html" class="btn">View Work</a>
+        </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2026 JOSEPH KOH. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.copy-card[data-category]');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                cards.forEach(card => {
+                    // Support space-separated multi-category: "ux microcopy onboarding"
+                    const categories = card.dataset.category.split(' ');
+                    if (filter === 'all' || categories.includes(filter)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                // Show/hide section headers based on visible cards
+                const uxGrid = document.querySelectorAll('.copy-grid')[0];
+                const brandGrid = document.querySelectorAll('.copy-grid')[1];
+
+                const uxVisible = uxGrid.querySelectorAll('.copy-card:not(.hidden)').length > 0;
+                const brandVisible = brandGrid.querySelectorAll('.copy-card:not(.hidden)').length > 0;
+
+                const sectionHeaders = document.querySelectorAll('.section-header');
+                if (sectionHeaders[0]) sectionHeaders[0].closest('div').style.display = uxVisible ? '' : 'none';
+                if (sectionHeaders[1]) sectionHeaders[1].closest('div').style.display = brandVisible ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
